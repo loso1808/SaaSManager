@@ -1,0 +1,45 @@
+{
+    "dev": true,
+    "oracle": {
+        "host": "localhost",
+        "database": "ORCL",
+        "password": "",
+        "user": "",
+        "pool": {
+            "min": 0,
+            "max": 25
+        }
+    },
+    "ldap": {
+        "url": "ldap://52.8.173.248",
+        "baseDN": "cn=Users,dc=ldap,dc=teselagen,dc=com",
+        "functional": {
+            "username": "rpavez@ldap.teselagen.com",
+            "password": "Te#test"
+        }
+    },
+    "https": {
+        "key": "testcertificates/server.key",
+        "cert": "testcertificates/server.crt"
+    },
+    "logSettings": {
+        "default":{
+            "db": false,
+            "logRequestBody": false,
+            "console": {
+                "level": "silly"
+            },
+            "file": {
+                "level": "debug"
+            }
+        }
+    },
+    "masterPassword": "master#0503",
+    "password00": "te#rocks",
+    "password01": "dev#rocks",
+    "password02": "X+lLN+06kOe7pVKT06z9b1lEPeuBam1EdQtUk965Wj8=",
+    "password02": "Te#demo",
+    "linkedin_api_key": "755kf6qykxdsbh",
+    "linkedin_secret_key": "P9rDwFcDRLBGOVfq"
+}
+

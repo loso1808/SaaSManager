@@ -1,0 +1,10 @@
+{
+  "name"             : "peony-app-A7",
+  "cwd"              : "/Users/adamthomas/Documents/TeselaGen/GitHub/ve/api_server_bookshelf",
+  "script"           : "app.js",
+  "env": {
+    "NODE_ENV": "dev",
+    "config": "/Users/adamthomas/peony_configs/appconfig.A7.json",
+    "PORT": 3001
+  }
+}

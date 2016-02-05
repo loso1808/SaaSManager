@@ -1,0 +1,30 @@
+{
+  "name": "peony_mgr",
+  "version": "1.0.0",
+  "description": "Peony Manager",
+  "repository": {},
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "bookshelf": "^0.9.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "knex": "^0.9.0",
+    "lodash": "^4.2.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "password-generator": "^2.0.2",
+    "pm2": "^1.0.0",
+    "shelljs": "^0.5.3",
+    "strong-oracle": "^1.8.0",
+    "trycatch": "^1.5.21",
+    "winston": "^2.1.1"
+  }
+}

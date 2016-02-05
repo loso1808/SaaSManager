@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Peony Saas Manager</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/sb-admin.css" rel="stylesheet">
+    <link href="assets/css/login-form.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div class="card card-container">
+        <div class="profile-img-card">
+            <span class="glyphicon glyphicon-user gi-xlarge"></span>
+        </div>
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" action="/login" method="post">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username"" required autofocus>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <!--<div id="remember" class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>-->
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </form><!-- /form -->
+        <!--<a href="#" class="forgot-password">
+            Forgot the password?
+        </a>-->
+        
+        <div class="alert alert-danger hidden" id="alertMsg"></div>
+    </div><!-- /card-container -->
+           
+    <!-- jQuery -->
+    <script src="assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            var msg = getParameterByName("msg");
+            if(msg != ""){
+                $("#alertMsg").html(msg);
+                $("#alertMsg").removeClass("hidden");
+                setTimeout(function(){
+                    $("#alertMsg").hide();
+                }, 5000);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
