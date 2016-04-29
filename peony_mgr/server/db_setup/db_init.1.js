@@ -2,7 +2,7 @@
 
 module.exports = function(knex){
 
-      return knex.schema.createTable('DE_bin', function(table){
+    return knex.schema.createTable('DE_bin', function(table){
             table.increments('id').primary();
             table.specificType('directionForward', 'NUMBER');
             table.specificType('dsf', 'NUMBER');
@@ -33,30 +33,11 @@ module.exports = function(knex){
         });
 
     }).then(function(){
-        return knex.schema.createTable('attached_tag', function(table){
-            table.increments('id').primary();
-            table.specificType('tagged_data_id', 'NUMBER');
-            table.specificType('tag_id', 'NUMBER');
-            table.string('tagged_data_type', 64);
-            table.timestamp('dateCreated');
-            table.timestamp('dateModified');
-        });
-
-    }).then(function(){
         return knex.schema.createTable('clob_buffer', function(table){
             table.increments('id').primary();
             table.string('chunk', 4000);
             table.string('bufferId', 400);
             table.specificType('chunkIndex', 'NUMBER');
-            table.timestamp('dateCreated');
-        });
-
-    }).then(function(){
-        return knex.schema.createTable('clob_test', function(table){
-            table.increments('id').primary();
-            table.string('name', 400);
-            table.text('data');
-            table.specificType('size', 'NUMBER');
             table.timestamp('dateCreated');
         });
 
@@ -277,9 +258,9 @@ module.exports = function(knex){
             table.text('masterDirectSynthesesList');
             table.text('masterOligoList');
             table.text('masterPlasmidList');
-            table.increments('id').primary();
             table.timestamp('dateCreated');
             table.timestamp('dateModified');
+            table.increments('id').primary();
         });
 
     }).then(function(){
@@ -306,9 +287,9 @@ module.exports = function(knex){
         return knex.schema.createTable('preset', function(table){
             table.specificType('id', 'NUMBER');
             table.string('presetName', 256);
+            table.string('j5parameters', 256);
             table.timestamp('dateCreated');
             table.timestamp('dateModified');
-            table.string('j5parameters', 4000);
         });
 
     }).then(function(){
@@ -428,8 +409,6 @@ module.exports = function(knex){
             table.string('shared_repo', 400);
             table.string('type', 16);
             table.string('molecule_type', 400);
-            table.specificType('SYS_STSS8U63D9TSCJ6OH##5_HZYEW', 'NUMBER');
-            table.specificType('SYS_STS6BT_1$3P64G#F0G75G2VM3L', 'NUMBER');
         });
 
     }).then(function(){
@@ -475,13 +454,12 @@ module.exports = function(knex){
         });
 
     }).then(function(){
-        return knex.schema.createTable('tag', function(table){
-            table.string('name', 256);
-            table.string('color', 20);
-            table.timestamp('dateCreated');
-            table.timestamp('dateModified');
-            table.specificType('user_id', 'NUMBER');
+        return knex.schema.createTable('test_knex_2', function(table){
             table.increments('id').primary();
+            table.string('name', 400).notNullable();
+            table.specificType('num', 'NUMBER');
+            table.text('metadata');
+            table.timestamp('dateCreated');
         });
 
     }).then(function(){
@@ -507,9 +485,6 @@ module.exports = function(knex){
             table.timestamp('dateModified');
             table.string('userAccount', 256);
             table.text('userRestrictionEnzymeGroups');
-            table.text('masterDirectSynthesesList');
-            table.text('masterOligoList');
-            table.text('masterPlasmidList');
         });
 
     }).then(function(){
@@ -819,7 +794,7 @@ module.exports = function(knex){
 
     }).then(function(){
         return knex.schema.createTable('z_master', function(table){
-            table.specificType('logId', 'NUMBER');
+            table.increments('logId').primary();
             table.string('logSessionId', 50);
             table.specificType('id', 'NUMBER');
             table.string('logAction', 400);
@@ -827,9 +802,9 @@ module.exports = function(knex){
             table.text('masterDirectSynthesesList');
             table.text('masterOligoList');
             table.text('masterPlasmidList');
-            table.specificType('user_id', 'NUMBER');
             table.timestamp('dateCreated');
             table.timestamp('dateModified');
+            table.specificType('user_id', 'NUMBER');
         });
 
     }).then(function(){
@@ -864,12 +839,12 @@ module.exports = function(knex){
             table.string('logSessionId', 50);
             table.specificType('id', 'NUMBER');
             table.string('presetName', 256);
+            table.string('j5parameters', 256);
             table.specificType('user_id', 'NUMBER');
             table.timestamp('dateCreated');
             table.timestamp('dateModified');
             table.string('logAction', 400);
             table.timestamp('dateLogged');
-            table.string('j5parameters', 4000);
         });
 
     }).then(function(){
@@ -1358,7 +1333,5 @@ module.exports = function(knex){
             table.specificType('user_id', 'NUMBER').references('id').inTable('user');
         });
     });
-
-
 
 };

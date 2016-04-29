@@ -23,7 +23,7 @@
     "password-generator": "^2.0.2",
     "pm2": "^1.0.0",
     "shelljs": "^0.5.3",
-    "strong-oracle": "^1.8.0",
+    "strong-oracle": "^1.8.1",
     "trycatch": "^1.5.21",
     "winston": "^2.1.1"
   }

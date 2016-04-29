@@ -1,4 +1,4 @@
-module.exports = (function(){
+module.exports = function(connectionInfo){
     
     var pm2 = require('pm2');
     var shelljs = require('shelljs');
@@ -9,31 +9,35 @@ module.exports = (function(){
     var createSchemaObjects = require("./db_init.js");
     var appConfigFolder = "/users/adamthomas/peony_configs/";
 
-    var knexSys = require('knex')({
-        client: 'strong-oracle',
-        connection: {
-            "host": "localhost",
-            "database": "ORCL",
-            "password": "oracle",
-            "user": "SYSTEM"
-        },
-        debug: false
-    });
+    // var knexSys = require('knex')({
+    //     client: 'strong-oracle',
+    //     connection: {
+    //         "host": "localhost",
+    //         "database": "ORCL",
+    //         "password": "oracle",
+    //         "user": "SYSTEM"
+    //     },
+    //     debug: false
+    // });
 
-    var knexPnyMgr = require('knex')({
-        client: "strong-oracle",
-        connection: {
-        "host": "localhost",
-        "database": "ORCL",
-        "password": "owner#0503",
-        "user": "pnymgr_owner"
-        },
-        pool: {
-            "min": 0,
-            "max": 25
-        },
-        debug: false             
-    });
+    // var knexPnyMgr = require('knex')({
+    //     client: "strong-oracle",
+    //     connection: {
+    //     "host": "localhost",
+    //     "database": "ORCL",
+    //     "password": "owner#0503",
+    //     "user": "pnymgr_owner"
+    //     },
+    //     pool: {
+    //         "min": 0,
+    //         "max": 25
+    //     },
+    //     debug: false             
+    // });
+    
+        
+    var knexPnyMgr = require('knex')(connectionInfo.managerConnection);
+    var knexSys = require('knex')(connectionInfo.deploymentConnection);
     
     function validateClientIdAndSetup(clientCode, clientName, callback){
         var clientId = clientCode;
@@ -62,30 +66,37 @@ module.exports = (function(){
                 console.log(errMsg);
                 return callback(errMsg);
             }else{            
+                // var clientConnection = {
+                //     client: 'strong-oracle',
+                //     connection: {
+                //         "host": "localhost",
+                //         "database": "ORCL",
+                //         "password": result.ownerPassword,
+                //         "user": result.ownerSchema
+                //     },
+                //     debug: false
+                // };
+                var clientConnection = JSON.parse(JSON.stringify(connectionInfo.deploymentConnection));
+                clientConnection.connection.password = "";
+                clientConnection.connection.user = "";
+                clientConnection.debug = false;
                 console.log("Creating client with code: " + clientId);
-                return setupClient(clientId, clientName, callback);
+                return setupClient(clientId, clientName, clientConnection, callback);
             }            
         });
     };
 
 
-    function setupClient(clientId, clientName, callback){
+    function setupClient(clientId, clientName, clientConnection, callback){
         var newConnInfo = {};
                 
-        provisionClientSchema(knexSys, clientId)
+        provisionClientSchema(knexSys, clientId, connectionInfo.isManagedTablespaces)
         .then(function(result){
-        newConnInfo = result;
-        console.log(util.inspect(result)); 
-        var knexOwner = require('knex')({
-                client: 'strong-oracle',
-                connection: {
-                    "host": "localhost",
-                    "database": "ORCL",
-                    "password": result.ownerPassword,
-                    "user": result.ownerSchema
-                },
-                debug: false
-            });
+            newConnInfo = result;
+            console.log(util.inspect(result)); 
+            clientConnection.connection.password = result.ownerPassword;
+            clientConnection.connection.user = result.ownerSchema;
+            var knexOwner = require('knex')(clientConnection);
             
             return createSchemaObjects(knexOwner)
                 .then(function(results){
@@ -221,17 +232,30 @@ module.exports = (function(){
         console.log(msg);
     }
 
-    function provisionClientSchema(knex, clientId){
+    function provisionClientSchema(knex, clientId, isManagedTablespaces){
         var ownerPassword = generatePassword();
         var appPassword = generatePassword();
 
-        logInfo("Creating data tablespace");
-        return knex.raw("CREATE TABLESPACE PNY_DATA_" + clientId + " DATAFILE 'PNY_DATA_" + clientId + ".dat' SIZE 20M AUTOEXTEND ON MAXSIZE 1G ONLINE")
-        .then(function(results){
-            logInfo("Creating temp tablespace");
-            return knex.raw("CREATE TEMPORARY TABLESPACE TMP_PNY_DATA_" + clientId + " TEMPFILE 'TMP_PNY_DATA_" + clientId + ".data' SIZE 5M REUSE AUTOEXTEND ON MAXSIZE 1G");
-        })
-        .then(function(results){
+        
+        var createLocalTablespace = function () {
+            logInfo("Creating data tablespace");
+            return knex.raw("CREATE TABLESPACE PNY_DATA_" + clientId + " DATAFILE 'PNY_DATA_" + clientId + ".dat' SIZE 20M AUTOEXTEND ON MAXSIZE 1G ONLINE")
+            .then(function(results){
+                logInfo("Creating temp tablespace");
+                return knex.raw("CREATE TEMPORARY TABLESPACE TMP_PNY_DATA_" + clientId + " TEMPFILE 'TMP_PNY_DATA_" + clientId + ".data' SIZE 5M REUSE AUTOEXTEND ON MAXSIZE 1G");
+            });
+        };
+        
+        var createManagedTablespace = function () {
+            logInfo("Creating data tablespace");
+            return knex.raw("CREATE TABLESPACE PNY_DATA_" + clientId + " ")
+            .then(function(results){
+                logInfo("Creating temp tablespace");
+                return knex.raw("CREATE TEMPORARY TABLESPACE TMP_PNY_DATA_" + clientId + " ");
+            });
+        };
+        
+        var createSchema = function(){
             logInfo("Creating owner schema");
             return knex.raw(""+
             "    CREATE USER PNY_DBO_" + clientId + " " +                    
@@ -239,7 +263,18 @@ module.exports = (function(){
             "    DEFAULT TABLESPACE PNY_DATA_" + clientId + " " +             
             "    TEMPORARY TABLESPACE TMP_PNY_DATA_" + clientId + " " +   
             "");
-        })
+        };
+        
+        var createSchemaWithTablespace = function () {
+            if(isManagedTablespaces){
+                return createManagedTablespace().then(createSchema);
+            }else{
+                return createLocalTablespace().then(createSchema);
+            }
+        };
+        
+        
+        return createSchemaWithTablespace()
         .then(function(results){
             logInfo("Granting unlimited tablespace to owner");
             return knex.raw("GRANT unlimited tablespace to PNY_DBO_" + clientId + " ");
@@ -296,4 +331,4 @@ module.exports = (function(){
 
     
     return validateClientIdAndSetup;
-})();
+};
