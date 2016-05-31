@@ -30,6 +30,9 @@ SET SERVEROUTPUT ON;
 --create synonyms
 @@createAppUserSynonyms.sql;
 
+--init values: roles, app user, admin user
+@@insertInitialValues.sql;
+
 --save passwords
 @@savePasswords.sql;
 
