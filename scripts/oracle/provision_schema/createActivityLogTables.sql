@@ -19,7 +19,7 @@ DECLARE
                                       ' "logAction" VARCHAR2(400 BYTE),' || chr(10) ||
                                       ' "dateLogged" TIMESTAMP (6) DEFAULT SYSDATE NOT NULL,' || chr(10) ||
                                       ' "loggedBy" NUMBER,' || chr(10) ||
-                                      '\3';
+                                      '\3 TABLESPACE "&LOG_TABLESPACE_NAME"';
                                       
   logDetailSearch VARCHAR2(1000) :=   'CREATE TABLE\s+(".+")\s+(\()([^.]+)';                           
                                     
