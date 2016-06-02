@@ -1,7 +1,8 @@
 --DEFINE the following at the top of your schemaConfig script or pass it in as a parameter 
 --DEFINE SCHEMA_CODE = 'TESELAGEN';
 
-@@schemaConfig.sql;
+--Removed this so you can run from schemaConfig.sql
+--@@schemaConfig.sql;
 
 COLUMN C1 NEW_VAL SCHEMA_OWNER_NAME;
 SELECT 'PNY_' || '&SCHEMA_CODE' || '_DBO' C1 FROM DUAL;
