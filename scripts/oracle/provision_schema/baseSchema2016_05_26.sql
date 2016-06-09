@@ -2572,3 +2572,5 @@ BEGIN
 END CONCAT_CLOB_BUFFER;
 
 /
+
+@@alter_base_schema_2016_06-09.sql;
