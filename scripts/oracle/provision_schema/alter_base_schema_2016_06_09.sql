@@ -10,6 +10,8 @@ where "id" IN
     p."id" is null
 );
 
+commit;
+
 alter table "dd_part" 
       add constraint "dd_part_part_id_fk" foreign key("part_id") 
       references "part" ("id") ON DELETE CASCADE ENABLE;
