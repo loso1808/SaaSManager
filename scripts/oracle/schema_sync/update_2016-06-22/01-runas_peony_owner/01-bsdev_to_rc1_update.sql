@@ -1,3 +1,8 @@
+--Set the following defines appropriately for your instance
+
+DEFINE SCHEMA_OWNER_NAME = PNY_DOWTEST_DBO;
+DEFINE APP_ROLE = PNY_DOWTEST_AR;
+
 --run validation
 @@validate_naming.sql;
 
@@ -6,9 +11,6 @@
 
 --drop extraneous tables
 @@drop_extraneous_tables.sql;
-
---drop extraneous columns
-@@drop_extraneous_columns.sql;
 
 --drop triggers
 @@drop_triggers.sql;
@@ -36,6 +38,9 @@
 
 --enable foreign keys
 @@enable_foreign_keys.sql;
+
+--re-grant privileges to app_role
+@@grantPrivilegesToAppRole.sql;
 
 --validate changes
 @@validate_naming.sql;

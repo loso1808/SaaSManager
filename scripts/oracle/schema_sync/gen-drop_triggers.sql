@@ -1,10 +1,11 @@
 set pagesize 1000;
 set linesize 1000;
---select 'DROP TRIGGER "' || TRIGGER_NAME || '"; ' from user_triggers;
+select 'DROP TRIGGER "' || TRIGGER_NAME || '"; ' from user_triggers;
 --select 'DROP SEQUENCE "' || SEQUENCE_NAME || '"; ' from user_sequences;
 
 --select 'DROP SEQUENCE "' || SEQUENCE_NAME || '"; ' from user_sequences;
 
+/*
 select 'ALTER TABLE "' || TABLE_NAME || '" MODIFY ("' || COLUMN_NAME || '" DEFAULT ON NULL "s_' || TABLE_NAME || '".NEXTVAL ); '
 FROM
   (
@@ -30,6 +31,7 @@ FROM
     where uc.constraint_type = 'P' 
     and ucc.constraint_name not like 'BIN$%'
     and uc.TABLE_NAME like 'z_%' ) idCols;
+*/
 /*
 select 'ALTER TABLE "' || TABLE_NAME || 
        '" RENAME CONSTRAINT "' || CONSTRAINT_NAME || '" ' ||
