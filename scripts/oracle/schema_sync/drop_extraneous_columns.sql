@@ -1,4 +1,3 @@
 
-ALTER TABLE "user" DROP "masterDirectSynthesisList";
-ALTER TABLE "user" DROP "masterOligoList";
-ALTER TABLE "user" DROP "masterPlasmidList";
+ALTER TABLE "user" DROP ("masterDirectSynthesesList","masterOligoList","masterPlasmidList");
+

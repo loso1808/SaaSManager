@@ -19,7 +19,7 @@ BEGIN
   FOR execObj in (
     select  
       object_name,
-      'GRANT EXECUTE ON "' || object_name || '" TO &APP_ROLE' str
+      'GRANT EXECUTE ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str
     from all_objects
     where object_type in ('FUNCTION', 'PROCEDURE','PACKAGE')
     and owner = '&SCHEMA_OWNER_NAME'
@@ -32,9 +32,9 @@ BEGIN
   FOR cruObj in (
     select  
       object_name,
-      'GRANT SELECT ON "' || object_name || '" TO &APP_ROLE' str,
-      'GRANT INSERT ON "' || object_name || '" TO &APP_ROLE' str2,
-      'GRANT UPDATE ON "' || object_name || '" TO &APP_ROLE' str3
+      'GRANT SELECT ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str,
+      'GRANT INSERT ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str2,
+      'GRANT UPDATE ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str3
     from all_objects
     where object_type in ('TABLE')
     and owner = '&SCHEMA_OWNER_NAME'
@@ -49,7 +49,7 @@ BEGIN
   FOR delObj in (
     select  
       object_name,
-      'GRANT DELETE ON "' || object_name || '" TO &APP_ROLE' str
+      'GRANT DELETE ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str
     from all_objects
     where object_type in ('TABLE')
     and object_name not like 'z_%'
@@ -63,7 +63,7 @@ BEGIN
   FOR seqObj in (
     select  
       object_name,
-      'GRANT SELECT ON "' || object_name || '" TO &APP_ROLE' str
+      'GRANT SELECT ON "&SCHEMA_OWNER_NAME"."' || object_name || '" TO &APP_ROLE' str
     from all_objects
     where object_type in ('SEQUENCE')
     and owner = '&SCHEMA_OWNER_NAME'

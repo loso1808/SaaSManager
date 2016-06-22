@@ -1,6 +1,5 @@
 DROP TRIGGER "DE_BIN_ID_TRIG";                                                  
-DROP TRIGGER "DE_BIN_CELL_ID_TRIG";                                             
-DROP TRIGGER "DE_BIN_TAG_ID_TRIG";                                              
+DROP TRIGGER "DE_BIN_CELL_ID_TRIG";                                              
 DROP TRIGGER "access_control_trg";                                              
 DROP TRIGGER "ATTACHED_TAG_ID_TRIG";                                            
 DROP TRIGGER "clob_buffer_trg";                                                 
@@ -19,8 +18,7 @@ DROP TRIGGER "PROTOCOL_ID_TRIG";
 DROP TRIGGER "role_TRG";                                                        
 DROP TRIGGER "SEQ_BLACKLIST_ID_TRIG";                                           
 DROP TRIGGER "SEQ_FEATURE_ID_TRIG";                                             
-DROP TRIGGER "SEQUENCE_ID_TRIG";                                                
-DROP TRIGGER "sequence_segment_trg";                                            
+DROP TRIGGER "SEQUENCE_ID_TRIG";                                                 
 DROP TRIGGER "STRAIN_ID_TRIG";                                                  
 DROP TRIGGER "STRAIN_PLASMID_ID_TRIG";                                          
 DROP TRIGGER "TAG_ID_TRIG";                                                     

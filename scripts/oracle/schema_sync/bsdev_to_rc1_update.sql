@@ -1,4 +1,5 @@
-
+--run validation
+@@validate_naming.sql;
 
 --disable foreign keys
 @@disable_foreign_keys.sql;
@@ -27,11 +28,16 @@
 --create default on null nextval
 @@recreate_seqnextval.sql;
 
---rename foreign keys
+--apply schema patches
+@@schema_patches_rc1.sql;
 
+--rename foreign keys
+@@rename_foreign_keys.sql;
 
 --enable foreign keys
 @@enable_foreign_keys.sql;
 
---apply schema patches
+--validate changes
+@@validate_naming.sql;
+
 

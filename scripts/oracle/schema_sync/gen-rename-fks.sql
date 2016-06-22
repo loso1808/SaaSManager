@@ -1,4 +1,12 @@
-  SELECT
+set pagesize 1000;
+set linesize 1000;
+
+
+select
+  'ALTER TABLE "' || TABLE_NAME ||'" RENAME CONSTRAINT "' || CONSTRAINT_NAME || '" TO "' || FKNAME || '" ;' 
+FROM
+  
+  (SELECT
     TABLE_NAME, 
     CONSTRAINT_NAME, 
     COLUMN_NAME,
@@ -27,4 +35,10 @@
       on uc.constraint_name = ucc.constraint_name
   where uc.constraint_type = 'R' 
   and ucc.constraint_name not like 'BIN$%'
-  and uc.TABLE_NAME not like 'z_%') fk_col ;
+  and uc.TABLE_NAME not like 'z_%') fk_col ) fk2 
+
+where CONSTRAINT_NAME <> FKNAME;
+
+
+
+
