@@ -1,0 +1,44 @@
+{
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "09WVJl9QlMJ7X2Vnn",
+            "user": "PNY_TEST_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false
+    },    
+    "ora-vb-pny_test_dbo": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "ZKeIubH3e7W7OUJcE",
+            "user": "PNY_TEST_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": true
+    },
+    "right": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "master#0503",
+            "user": "PNY_DOWTEST_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false
+    }
+}

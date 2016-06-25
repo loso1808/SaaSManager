@@ -1,0 +1,20 @@
+{
+  "name": "diff-tool",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "cli-table": "^0.3.1",
+    "easy-table": "^1.0.0",
+    "knex": "^0.11.7",
+    "lodash": "^4.13.1",
+    "strong-oracle": "^1.9.0",
+    "table": "^3.7.8"
+  }
+}
