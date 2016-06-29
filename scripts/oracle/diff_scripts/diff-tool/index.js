@@ -33,7 +33,19 @@ var fnList = [
     getColumnTypePrecision,
     getColumnTypeScale,
     getColumnDefaults,
-    getNullableColumns
+    getNullableColumns,
+    getColumnDataDefaults,
+    getIndexColumnSortDirection,
+    getIndexColumns,
+    getIndexColumnPosition,
+    getIndexTable,
+    getConstraints,
+    getGeneratedConstraints,
+    getForeignKeyDeleteRule,
+    getForeignKeyConstraints,
+    getPrimaryKeyConstraints,
+    getCheckConstraints,
+    getConstraintColumns
 ];
 
 generateDimensions(fnList, knexLeft, knexRight)
@@ -203,6 +215,158 @@ function getColumnDefaults(knex){
            .where({USER_GENERATED: 'YES'});
 }
 
+function getColumnDataDefaults(knex){
+    return knex.raw(
+                "SELECT " + 
+                "    TABLE_NAME, COLUMN_NAME, REPLACE(DATA_DEFAULT, '\"' || sys_context( 'userenv', 'current_schema' ) || '\".', '' ) DATA_DEFAULT " + 
+                "FROM " +  
+                    "(SELECT " + 
+                    "    dbms_xmlgen.getxmltype('select TABLE_NAME, COLUMN_NAME, DATA_DEFAULT from user_tab_cols where user_generated = ''YES''') utc " +
+                    "FROM dual) dd, " +
+                    "XMLTABLE('/ROWSET/ROW' PASSING dd.utc " +
+                    "          COLUMNS " + 
+                    "                \"TABLE_NAME\" VARCHAR2(30) PATH 'TABLE_NAME', " +
+                    "                \"COLUMN_NAME\" VARCHAR2(30) PATH 'COLUMN_NAME', " + 
+                    "                \"DATA_DEFAULT\" VARCHAR2(4000) PATH 'DATA_DEFAULT') ");
+}
+
+function getIndexColumnSortDirection(knex){
+    return knex.raw(
+        "select " +
+        "    uic.INDEX_NAME, uic.TABLE_NAME, uic.COLUMN_NAME, uic.COLUMN_POSITION, uic.DESCEND " +
+        "from " + 
+        "    user_objects uo " +
+        "        inner join " + 
+        "    user_ind_columns uic " +
+        "        on uo.object_name = uic.index_name " +    
+        "where " +
+        "    uo.object_type = 'INDEX' "+ 
+        "    and uo.generated = 'N'"
+    );
+}
+
+function getIndexColumns(knex){
+    return knex.raw(
+        "select " +
+        "    uic.INDEX_NAME, uic.TABLE_NAME, uic.COLUMN_NAME " +
+        "from " + 
+        "    user_objects uo " +
+        "        inner join " + 
+        "    user_ind_columns uic " +
+        "        on uo.object_name = uic.index_name " +    
+        "where " +
+        "    uo.object_type = 'INDEX' "+ 
+        "    and uo.generated = 'N'"
+    );
+}
+
+function getIndexColumnPosition(knex){
+    return knex.raw(
+        "select " +
+        "    uic.INDEX_NAME, uic.TABLE_NAME, uic.COLUMN_NAME, uic.COLUMN_POSITION " +
+        "from " + 
+        "    user_objects uo " +
+        "        inner join " + 
+        "    user_ind_columns uic " +
+        "        on uo.object_name = uic.index_name " +    
+        "where " +
+        "    uo.object_type = 'INDEX' "+ 
+        "    and uo.generated = 'N'"
+    );
+}
+
+function getIndexTable(knex){
+    return knex.raw(
+        "select " +
+        "    uic.INDEX_NAME, uic.TABLE_NAME " +
+        "from " + 
+        "    user_objects uo " +
+        "        inner join " + 
+        "    user_ind_columns uic " +
+        "        on uo.object_name = uic.index_name " +    
+        "where " +
+        "    uo.object_type = 'INDEX' "+ 
+        "    and uo.generated = 'N'"
+    );
+}
+
+function getConstraints(knex){
+    return knex.raw(
+        "select " +
+        "    CONSTRAINT_NAME, TABLE_NAME " +
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated = 'USER NAME'"
+    );
+}
+
+function getGeneratedConstraints(knex){
+    return knex.raw(
+        "select " +
+        "    'GENERATED NAME' CONSTRAINT_NAME, TABLE_NAME, CONSTRAINT_TYPE, STATUS, R_OWNER, R_CONSTRAINT_NAME, DELETE_RULE, INDEX_NAME, SEARCH_CONDITION_VC " +
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated <> 'USER NAME'"
+    );
+}
+
+function getForeignKeyConstraints(knex){
+    return knex.raw(
+        "select " +
+        "   CONSTRAINT_NAME, TABLE_NAME, R_CONSTRAINT_NAME "+
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated = 'USER NAME' " +
+        "    and constraint_type = 'R'"
+    );
+
+}
+
+function getForeignKeyDeleteRule(knex){
+    return knex.raw(
+        "select " +
+        "    CONSTRAINT_NAME, TABLE_NAME, DELETE_RULE "+
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated = 'USER NAME' " +
+        "    and constraint_type = 'R'"
+    );
+}
+
+function getPrimaryKeyConstraints(knex){
+    return knex.raw(
+        "select " +
+        "    CONSTRAINT_NAME, TABLE_NAME, INDEX_NAME "+
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated = 'USER NAME' " +
+        "    and constraint_type = 'P'"
+    );
+}
+
+function getCheckConstraints(knex) {
+    return knex.raw(
+        "select " +
+        "    CONSTRAINT_NAME, TABLE_NAME, SEARCH_CONDITION_VC "+
+        "from " +
+        "    user_constraints " + 
+        "where " +
+        "    generated = 'USER NAME' " +
+        "    and constraint_type = 'C'"
+    );
+}
+
+function getConstraintColumns(knex){
+    return knex.raw(
+        "select CONSTRAINT_NAME, TABLE_NAME, COLUMN_NAME from user_cons_columns where constraint_name not like 'SYS\\_%' escape '\\'"
+    );
+}
+
 function getSchemaName(knex){
     return knex.client.config.connection.user;
 }
@@ -267,9 +431,21 @@ function formatDiffReport2(compareResult) {
     // reportRows.forEach(function (row) {
     //     table.push(row); 
     // });
+    var config = {
+                    columns: {
+                        0: {
+                            width: 80,
+                            wrapWord: true
+                        },
+                        1: {
+                            width: 80,
+                            wrapWord: true
+                        }
+                    }
+                };
 
-    reportStr += ToTable(reportRows);
-    reportStr += "\n\nTotal Differences: " + reportRows.length + "\n";
+    reportStr += ToTable(reportRows, config);
+    reportStr += "\n\nTotal Differences: " + (reportRows.length - 1) + "\n";
 
     return reportStr;
 }

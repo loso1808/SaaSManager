@@ -8,10 +8,11 @@
             "user": "PNY_TEST_DBO",
             "pool": {
                 "min": 0,
-                "max": 25
+                "max": 100
             }
         },
-        "debug": false
+        "debug": false,
+        "acquireConnectionTimeout": 120000
     },    
     "ora-vb-pny_test_dbo": {
         "client": "strong-oracle",
@@ -22,7 +23,7 @@
             "user": "PNY_TEST_DBO",
             "pool": {
                 "min": 0,
-                "max": 25
+                "max": 100
             }
         },
         "debug": true
@@ -39,6 +40,7 @@
                 "max": 25
             }
         },
-        "debug": false
+        "debug": false,
+        "acquireConnectionTimeout": 120000
     }
 }
