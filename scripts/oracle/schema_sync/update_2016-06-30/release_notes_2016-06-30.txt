@@ -1,0 +1,15 @@
+Release Notes for 2016-06-30
+
+This is a set a scripts to patch the 2016-06-22 release which was missing some schema updates.
+
+Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+Open the folder prefixed with “01-“ and run the script file prefixed with “01-“.  This script will run the other scripts in the folder. The scripts should run without errors.
+
+This script set patches the following:
+
+1. Removes a not null constraint from the access_control table.
+2. Adds a not null and default value to the dateLogged column in the log tables.
+3. Adds a CASCADE ON DELETE action to the foreign key between the group_user and group tables.
+4. Increases the size of j5parameters column in the preset table.
+5. Removes an extraneous column from the z_j5run log table.
