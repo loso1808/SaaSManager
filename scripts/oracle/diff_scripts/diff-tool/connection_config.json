@@ -14,7 +14,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },    
-    "ora-vb-pny_test_dbo": {
+    "old-rc1": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
