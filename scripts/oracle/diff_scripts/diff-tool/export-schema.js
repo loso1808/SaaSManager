@@ -25,10 +25,20 @@ SimpleOracleDB.extend(oracledb);
 
 var dbConn;
 
-testExportTableDDL();
+//testExportTableDDL();
+
+getTableDDL();
 
 function getTableDDL(tableName){
-    oracledb.getConnection(connInfo);
+    oracledb.getConnection(connInfo)
+    .then(setConnection)
+    .then(getUserObjects)
+    .then(log)
+    .then(done);
+}
+
+function setConnection(conn) {
+    dbConn = conn;
 }
 
 function testGetObjects(){
@@ -71,12 +81,15 @@ function getConnection(cb){
     });
 }
 
-function getUserObjects(cb){
-    log(cb);
-    runQuery(qryUserObjects(schemaConfig.schemaName), cb);
+function getUserObjects(){
+    runQuery(qryUserObjects(schemaConfig.schemaName));
 }
 
-function runQuery(qry, cb){
+function execQuery(qry){
+    return dbConn.execute(qry.cmd, qry.bindings, { outFormat: oracledb.OBJECT });
+}
+
+function runQuery(qry){
     log("Hello");
     dbConn.execute(qry.cmd, qry.bindings, { outFormat: oracledb.OBJECT }, cb);
 }
