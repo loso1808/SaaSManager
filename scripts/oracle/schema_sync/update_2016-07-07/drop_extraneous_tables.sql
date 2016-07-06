@@ -9,3 +9,5 @@ drop sequence "sz_custom_fields";
 alter table "z_user" drop column "masterDirectSynthesesList";
 alter table "z_user" drop column "masterOligoList";
 alter table "z_user" drop column "masterPlasmidList";
+
+

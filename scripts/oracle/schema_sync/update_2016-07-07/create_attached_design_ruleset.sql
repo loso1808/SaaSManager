@@ -14,6 +14,8 @@
    (	"id" NUMBER DEFAULT ON NULL "s_attached_design_ruleset"."NEXTVAL", 
 	"devicedesign_id" NUMBER, 
 	"design_ruleset_id" NUMBER, 
+  "shouldFilter" VARCHAR2(1),
+  "shouldValidate" VARCHAR2(1),
 	"dateCreated" DATE, 
 	"dateModified" DATE
    )  ;

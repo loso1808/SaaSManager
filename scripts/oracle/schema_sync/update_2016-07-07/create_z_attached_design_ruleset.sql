@@ -15,6 +15,8 @@
 	"logSessionId" VARCHAR2(50 BYTE), 
 	"logAction" VARCHAR2(400 BYTE), 
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE, 
+  "shouldFilter" VARCHAR2(1),
+  "shouldValidate" VARCHAR2(1),
 	"dateCreated" DATE, 
 	"dateModified" DATE, 
 	"design_ruleset_id" NUMBER, 

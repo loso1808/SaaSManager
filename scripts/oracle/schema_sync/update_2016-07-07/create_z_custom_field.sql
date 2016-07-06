@@ -18,7 +18,7 @@
 	"name" VARCHAR2(400 BYTE), 
 	"logAction" VARCHAR2(400 BYTE), 
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE, 
-	"required" NUMBER(*,0), 
+	"required" NUMBER, 
 	"dateCreated" DATE, 
 	"dateModified" DATE, 
 	"searchable" NUMBER, 
@@ -26,7 +26,7 @@
 	"defaultValueString" VARCHAR2(4000 BYTE), 
 	"defaultValueNumber" NUMBER, 
 	"defaultValueDate" VARCHAR2(20 BYTE), 
-	"defaultValueFlag" NUMBER(38,0)
+	"defaultValueFlag" NUMBER
    )  TABLESPACE &&LOG_TABLESPACE_NAME ;
 --------------------------------------------------------
 --  DDL for Index z_custom_field_pk

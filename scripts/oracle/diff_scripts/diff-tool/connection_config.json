@@ -43,13 +43,28 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "rc_1_4_3": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
             "database": "ORCL",
             "password": "12cMYsHPPDI1SHnXS",
             "user": "PNY_RC_1_4_3_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "TCITWJ7OOU0F4RZwz",
+            "user": "PNY_SFDEV_DBO",
             "pool": {
                 "min": 0,
                 "max": 25

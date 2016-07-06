@@ -13,6 +13,8 @@
    (	"id" NUMBER DEFAULT ON NULL "s_design_ruleset"."NEXTVAL", 
 	"name" VARCHAR2(32 BYTE), 
 	"description" VARCHAR2(256 BYTE), 
+  "shouldFilter" VARCHAR2(1),
+  "shouldValidate" VARCHAR2(1),
 	"user_id" NUMBER, 
 	"dateCreated" DATE, 
 	"dateModified" DATE

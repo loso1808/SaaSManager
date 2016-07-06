@@ -32,3 +32,8 @@ drop table "z_DE_bin_tag" cascade constraints purge;
 drop table "test_knex_2" cascade constraints purge;
 drop table "company" cascade constraints purge;
 drop table "migration" cascade constraints purge;
+
+
+drop table "z_lock" cascade constraints purge;
+drop table "z_custom_field" cascade constraints purge;
+drop table "z_design_rule" cascade constraints purge;

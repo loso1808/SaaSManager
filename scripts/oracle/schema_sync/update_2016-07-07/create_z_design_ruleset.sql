@@ -14,6 +14,8 @@
 	"user_id" NUMBER, 
 	"name" VARCHAR2(32 BYTE), 
 	"description" VARCHAR2(256 BYTE), 
+  "shouldFilter" VARCHAR2(1),
+  "shouldValidate" VARCHAR2(1),
 	"dateCreated" DATE, 
 	"dateModified" DATE
    ) TABLESPACE &&LOG_TABLESPACE_NAME ;
