@@ -409,12 +409,14 @@ function formatDiffReport2(compareResult) {
 
     leftDiff.forEach(function (item) {
        var arr = item.split('/');
+       var pathCount = arr.length;
        arr.pop();
        arr.pop();
        var dimPath = arr.join('/');
        var rightMatch = "(missing)";
        var idx = _.findIndex(rightDiff,function (val) {
-           return _.startsWith(val, dimPath); 
+           var valPathCount = val.split('/').length;
+           return (_.startsWith(val, dimPath) && pathCount == valPathCount); 
        });
        if(idx > -1){
            rightMatch = _.pullAt(rightDiff, idx);

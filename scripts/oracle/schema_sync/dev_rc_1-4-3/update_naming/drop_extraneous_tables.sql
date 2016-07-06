@@ -30,3 +30,5 @@ drop table "z_feature_type" cascade constraints purge;
 drop table "z_DE_bin_tag" cascade constraints purge;
 
 drop table "test_knex_2" cascade constraints purge;
+drop table "company" cascade constraints purge;
+drop table "migration" cascade constraints purge;

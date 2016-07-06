@@ -45,8 +45,8 @@ FROM
 
 select  
   ut.TABLE_NAME, us.SEQUENCE_NAME, ('s_' || ut.table_name), ('s' || ut.table_name), 
-  case when ut.table_name is null then 'Tables without corresponding sequences' 
-       when us.sequence_name is null then 'Sequences without corresponding tables' 
+  case when ut.table_name is null then 'Sequences without corresponding tables' 
+       when us.sequence_name is null then 'Tables without corresponding sequences'
        else 'Correctly named sequences' end sequence_naming 
 from
   user_tables ut

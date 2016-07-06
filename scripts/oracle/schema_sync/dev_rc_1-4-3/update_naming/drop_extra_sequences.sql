@@ -1,0 +1,1 @@
+drop sequence "s_company";

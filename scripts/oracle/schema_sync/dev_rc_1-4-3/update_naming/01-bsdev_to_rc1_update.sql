@@ -2,19 +2,20 @@
 
 DEFINE SCHEMA_OWNER_NAME = PNY_DEV_1_4_3_DBO;
 DEFINE APP_ROLE = PNY_DEV_1_4_3_AR;
+DEFINE LOG_TABLESPACE_NAME = PNY_DEV_1_4_3_LOG;
 
 --run validation
-@@validate_naming.sql;
+--@@validate_naming.sql;
 
 --disable foreign keys
 @@disable_foreign_keys.sql;
 
 --drop extraneous tables
-@@drop_extraneous_tables.sql;
-@@drop_extraneous_columns.sql;
+--@@drop_extraneous_tables.sql;
+--@@drop_extraneous_columns.sql;
 
 --drop triggers
-@@drop_triggers.sql;
+--@@drop_triggers.sql;
 
 --drop sequences
 @@drop_sequences.sql;
@@ -40,8 +41,11 @@ DEFINE APP_ROLE = PNY_DEV_1_4_3_AR;
 --enable foreign keys
 @@enable_foreign_keys.sql;
 
+@@add-missing-log-tables.sql;
+
+@@add-missing-log-columns.sql;
 --re-grant privileges to app_role
-@@grantPrivilegesToAppRole.sql;
+--@@grantPrivilegesToAppRole.sql;
 
 --validate changes
 @@validate_naming.sql;
