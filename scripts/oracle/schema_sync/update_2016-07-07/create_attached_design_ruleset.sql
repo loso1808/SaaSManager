@@ -28,7 +28,7 @@
 --  Constraints for Table attached_design_ruleset
 --------------------------------------------------------
 
-  ALTER TABLE "attached_design_ruleset" MODIFY ("id" NOT NULL ENABLE);
+ -- ALTER TABLE "attached_design_ruleset" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "attached_design_ruleset" MODIFY ("devicedesign_id" NOT NULL ENABLE);
   ALTER TABLE "attached_design_ruleset" ADD CONSTRAINT "attached_design_ruleset_pk" PRIMARY KEY ("id")  ENABLE;
   ALTER TABLE "attached_design_ruleset" MODIFY ("design_ruleset_id" NOT NULL ENABLE);

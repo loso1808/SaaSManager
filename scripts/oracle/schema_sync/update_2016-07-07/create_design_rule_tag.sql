@@ -26,7 +26,7 @@
 --  Constraints for Table design_rule_tag
 --------------------------------------------------------
 
-  ALTER TABLE "design_rule_tag" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "design_rule_tag" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "design_rule_tag" MODIFY ("design_rule_id" NOT NULL ENABLE);
   ALTER TABLE "design_rule_tag" MODIFY ("tag_id" NOT NULL ENABLE);
   ALTER TABLE "design_rule_tag" ADD CONSTRAINT "design_rule_tag_pk" PRIMARY KEY ("id") ENABLE;

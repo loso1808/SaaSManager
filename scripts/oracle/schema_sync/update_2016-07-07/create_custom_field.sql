@@ -35,4 +35,4 @@
   ALTER TABLE "custom_field" ADD CONSTRAINT "custom_field_pk" PRIMARY KEY ("id") ENABLE;
   ALTER TABLE "custom_field" MODIFY ("name" NOT NULL ENABLE);
   ALTER TABLE "custom_field" MODIFY ("objectName" NOT NULL ENABLE);
-  ALTER TABLE "custom_field" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "custom_field" MODIFY ("id" NOT NULL ENABLE);

@@ -31,7 +31,7 @@
 --  Constraints for Table custom_field_value
 --------------------------------------------------------
 
-  ALTER TABLE "custom_field_value" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "custom_field_value" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "custom_field_value" MODIFY ("custom_field_id" NOT NULL ENABLE);
   ALTER TABLE "custom_field_value" ADD CONSTRAINT "custom_field_value_pk" PRIMARY KEY ("id") ENABLE;
 --------------------------------------------------------

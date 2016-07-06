@@ -32,6 +32,6 @@
 --  Constraints for Table z_attached_design_ruleset
 --------------------------------------------------------
 
-  ALTER TABLE "z_attached_design_ruleset" MODIFY ("logId" NOT NULL ENABLE);
-  ALTER TABLE "z_attached_design_ruleset" MODIFY ("dateLogged" NOT NULL ENABLE);
+ -- ALTER TABLE "z_attached_design_ruleset" MODIFY ("logId" NOT NULL ENABLE);
+ -- ALTER TABLE "z_attached_design_ruleset" MODIFY ("dateLogged" NOT NULL ENABLE);
   ALTER TABLE "z_attached_design_ruleset" ADD CONSTRAINT "z_attached_design_ruleset_pk" PRIMARY KEY ("logId") ENABLE;

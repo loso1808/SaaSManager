@@ -29,6 +29,6 @@
 --  Constraints for Table custom_setting
 --------------------------------------------------------
 
-  ALTER TABLE "custom_setting" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "custom_setting" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "custom_setting" MODIFY ("key" NOT NULL ENABLE);
   ALTER TABLE "custom_setting" ADD CONSTRAINT "custom_setting_pk" PRIMARY KEY ("id") ENABLE;

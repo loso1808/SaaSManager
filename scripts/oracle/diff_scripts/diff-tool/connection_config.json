@@ -43,7 +43,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "rc_1_4_3": {
+    "left": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -58,7 +58,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "sfdev": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",

@@ -34,6 +34,6 @@
 --  Constraints for Table z_custom_setting
 --------------------------------------------------------
 
-  ALTER TABLE "z_custom_setting" MODIFY ("logId" NOT NULL ENABLE);
-  ALTER TABLE "z_custom_setting" MODIFY ("dateLogged" NOT NULL ENABLE);
+  --ALTER TABLE "z_custom_setting" MODIFY ("logId" NOT NULL ENABLE);
+  --ALTER TABLE "z_custom_setting" MODIFY ("dateLogged" NOT NULL ENABLE);
   ALTER TABLE "z_custom_setting" ADD CONSTRAINT "z_custom_setting_pk" PRIMARY KEY ("logId") ENABLE;

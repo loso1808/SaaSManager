@@ -31,7 +31,7 @@
 --  Constraints for Table design_rule
 --------------------------------------------------------
 
-  ALTER TABLE "design_rule" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "design_rule" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "design_rule" ADD CONSTRAINT "design_rule_pk" PRIMARY KEY ("id") ENABLE;
 --------------------------------------------------------
 --  Ref Constraints for Table design_rule

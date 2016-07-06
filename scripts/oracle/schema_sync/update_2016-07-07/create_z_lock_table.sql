@@ -32,6 +32,6 @@
 --  Constraints for Table z_lock
 --------------------------------------------------------
 
-  ALTER TABLE "z_lock" MODIFY ("logId" NOT NULL ENABLE);
-  ALTER TABLE "z_lock" MODIFY ("dateLogged" NOT NULL ENABLE);
+  --ALTER TABLE "z_lock" MODIFY ("logId" NOT NULL ENABLE);
+  --ALTER TABLE "z_lock" MODIFY ("dateLogged" NOT NULL ENABLE);
   ALTER TABLE "z_lock" ADD CONSTRAINT "z_lock_pk" PRIMARY KEY ("logId") ENABLE;

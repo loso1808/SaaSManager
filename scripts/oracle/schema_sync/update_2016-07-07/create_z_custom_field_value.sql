@@ -36,6 +36,6 @@
 --  Constraints for Table z_custom_field_value
 --------------------------------------------------------
 
-  ALTER TABLE "z_custom_field_value" MODIFY ("logId" NOT NULL ENABLE);
+  --ALTER TABLE "z_custom_field_value" MODIFY ("logId" NOT NULL ENABLE);
   ALTER TABLE "z_custom_field_value" ADD CONSTRAINT "z_custom_field_value_pk" PRIMARY KEY ("logId")  ENABLE;
-  ALTER TABLE "z_custom_field_value" MODIFY ("dateLogged" NOT NULL ENABLE);
+  --ALTER TABLE "z_custom_field_value" MODIFY ("dateLogged" NOT NULL ENABLE);

@@ -30,7 +30,7 @@
 --------------------------------------------------------
 
   ALTER TABLE "lock" ADD CONSTRAINT "lock_pk" PRIMARY KEY ("id") ENABLE;
-  ALTER TABLE "lock" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "lock" MODIFY ("id" NOT NULL ENABLE);
   
 --------------------------------------------------------
 --  Ref Constraints for Table lock

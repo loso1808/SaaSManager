@@ -28,5 +28,5 @@
 --  Constraints for Table design_ruleset
 --------------------------------------------------------
 
-  ALTER TABLE "design_ruleset" MODIFY ("id" NOT NULL ENABLE);
+  --ALTER TABLE "design_ruleset" MODIFY ("id" NOT NULL ENABLE);
   ALTER TABLE "design_ruleset" ADD CONSTRAINT "design_ruleset_pk" PRIMARY KEY ("id") ENABLE;

@@ -33,6 +33,6 @@
 --  Constraints for Table z_design_rule_tag
 --------------------------------------------------------
 
-  ALTER TABLE "z_design_rule_tag" MODIFY ("logId" NOT NULL ENABLE);
-  ALTER TABLE "z_design_rule_tag" MODIFY ("dateLogged" NOT NULL ENABLE);
+  --ALTER TABLE "z_design_rule_tag" MODIFY ("logId" NOT NULL ENABLE);
+  --ALTER TABLE "z_design_rule_tag" MODIFY ("dateLogged" NOT NULL ENABLE);
   ALTER TABLE "z_design_rule_tag" ADD CONSTRAINT "z_design_rule_tag_pk" PRIMARY KEY ("logId") ENABLE;
