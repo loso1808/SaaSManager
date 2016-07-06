@@ -15,5 +15,5 @@ EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SIZE_
 EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'EMIT_SCHEMA',true);
 
 
-select dbms_metadata.get_ddl('TABLE','access_control','PNY_DOWTEST_DBO') acddl from dual;
+select dbms_metadata.get_ddl('TABLE','access_control','PNY_DOWTEST_DBO') ddl from dual;
 

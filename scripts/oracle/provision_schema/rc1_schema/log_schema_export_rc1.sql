@@ -1,5 +1,5 @@
 
-DEFINE LOG_TABLESPACE_NAME = 'PNY_ARZEDA_LOG';
+DEFINE LOG_TABLESPACE_NAME = 'PNY_RC_1_4_3_LOG';
 
 --http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.CommonDBATasks.html#Appendix.Oracle.CommonDBATasks.SettingDefaultTablespace
 --alter database default tablespace PNY_PROD_LOG; --for local tablespaces

@@ -13,15 +13,16 @@ var path = require('path');
 var util = require('util');
 var async = require('async');
 var _ = require('lodash');
+var Promise = require('bluebird');
 
 //load the oracledb library 
 var oracledb = require('oracledb');
  
 //load the simple oracledb 
-var SimpleOracleDB = require('simple-oracledb');
+//var SimpleOracleDB = require('simple-oracledb');
  
 //modify the original oracledb library 
-SimpleOracleDB.extend(oracledb);
+//SimpleOracleDB.extend(oracledb);
 
 var dbConn;
 
@@ -32,8 +33,10 @@ getTableDDL();
 function getTableDDL(tableName){
     oracledb.getConnection(connInfo)
     .then(setConnection)
-    .then(getUserObjects)
+    .then(getTables)
+    .then(generateTableDDL)
     .then(log)
+    .then(closeConnection)
     .then(done);
 }
 
@@ -81,21 +84,54 @@ function getConnection(cb){
     });
 }
 
-function getUserObjects(){
-    runQuery(qryUserObjects(schemaConfig.schemaName));
+function generateTableDDL(tables) {
+    var tableDDL = "";
+    log(tables);
+    return runQuery(qryTransformCommandsForTableOnly())
+           .then(function (result) {                        
+                return Promise.each(tables.rows, function (item) {
+                    log(item);
+                    var tableName = item.TABLE_NAME;
+                    return runQuery(qryTableDDLNoConstraints(tableName, schemaConfig.schemaName))
+                           .then(function(result){
+                               log(result);
+                               tableDDL += result.rows[0]["DDL"];
+                           });
+                           
+                }, function (result) {
+                    return tableDDL;
+                });
+           })
+           .catch(function(err){
+                log("Error");
+                log(err);
+           });
 }
 
-function execQuery(qry){
-    return dbConn.execute(qry.cmd, qry.bindings, { outFormat: oracledb.OBJECT });
+function getTables(){
+    return runQuery(qryTables(schemaConfig.schemaName));
+}
+
+function getUserObjects(){
+    return runQuery(qryUserObjects(schemaConfig.schemaName));
 }
 
 function runQuery(qry){
-    log("Hello");
-    dbConn.execute(qry.cmd, qry.bindings, { outFormat: oracledb.OBJECT }, cb);
+    if(Array.isArray(qry)){
+        return Promise.each(qry, function (item) {
+            return runQuery(item);
+        });
+    }
+    return dbConn.execute(qry.cmd, qry.bindings, { outFormat: oracledb.OBJECT })
+           .catch(function(err){
+                log("Error running query: ");
+                log(qry);
+                throw err;
+           });
 }
 
-function closeConnection(cb) {
-    dbConn.close(cb);
+function closeConnection() {
+    return dbConn.close();
 }
 
 function done(){
@@ -106,19 +142,26 @@ function done(){
 
 function qryTransformCommandsForTableOnly(){
     var cmds = [
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'PRETTY',true)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SQLTERMINATOR',true)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'STORAGE',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SEGMENT_ATTRIBUTES',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLESPACE',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'REF_CONSTRAINTS',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS_AS_ALTER',true)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'OID',false)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SIZE_BYTE_KEYWORD',true)",
-        "EXECUTE DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'EMIT_SCHEMA',true)"
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'PRETTY',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SQLTERMINATOR',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'STORAGE',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SEGMENT_ATTRIBUTES',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLESPACE',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'REF_CONSTRAINTS',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS_AS_ALTER',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'OID',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SIZE_BYTE_KEYWORD',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'EMIT_SCHEMA',true)"
     ];
 
+    cmds.forEach(function(cmd, i){
+        cmds[i] = "BEGIN " + cmd + "; END;";
+    });
+    log(cmds);
+    //cmds = cmds.join("; ");
+    //cmds = "BEGIN " + cmds + "; END;";
+    //cmds = [cmds];
     cmds = assignEmptyBindingsToCommandArray(cmds);
     return cmds;
 }
@@ -138,6 +181,13 @@ function assignEmptyBindingsToCommandArray(cmds){
 function qryUserObjects(schemaName){
     return {
         cmd: "SELECT OBJECT_NAME, OBJECT_TYPE FROM all_objects where owner = :owner",
+        bindings: [schemaName]
+    };
+}
+
+function qryTables(schemaName){
+    return {
+        cmd: "SELECT OBJECT_NAME TABLE_NAME FROM all_objects where owner = :owner and OBJECT_TYPE = 'TABLE'",
         bindings: [schemaName]
     };
 }

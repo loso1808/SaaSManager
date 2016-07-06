@@ -1,4 +1,4 @@
-DEFINE SCHEMA_OWNER_NAME = 'PNY_ARZEDA_DBO';
+DEFINE SCHEMA_OWNER_NAME = 'PNY_RC_1_4_3_DBO';
 
 --------------------------------------------------------
 --  File created - Wednesday-June-29-2016   
