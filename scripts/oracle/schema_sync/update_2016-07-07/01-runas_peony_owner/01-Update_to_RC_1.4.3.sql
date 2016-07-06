@@ -10,6 +10,9 @@ DEFINE APP_ROLE = PNY_RC_1_4_3_AR;
 --creates new tables
 @@create_tables.sql;
 
+--fix defaultDate data type
+@@alter_default_date_type.sql;
+
 --modifies dateLogged in the log tables to default on null to sysdate
 @@modify-dateLogged.sql;
 

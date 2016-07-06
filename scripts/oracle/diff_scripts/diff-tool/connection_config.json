@@ -13,7 +13,22 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 120000
-    },    
+    },      
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "O5HcFaL9IL8AAZqUR",
+            "user": "PNY_RC_1_4_3_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },   
     "old-rc1": {
         "client": "strong-oracle",
         "connection": {
@@ -28,7 +43,7 @@
         },
         "debug": true
     },
-    "old-dowref": {
+    "right": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -43,7 +58,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "local_rc143": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -73,7 +88,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "right": {
+    "dev143": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
