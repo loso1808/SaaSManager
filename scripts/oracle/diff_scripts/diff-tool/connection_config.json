@@ -14,7 +14,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },      
-    "left": {
+    "aws_rc143": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
@@ -43,7 +43,7 @@
         },
         "debug": true
     },
-    "right": {
+    "left": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -58,7 +58,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "local_rc143": {
+    "rc143": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -73,7 +73,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "sfdev": {
+    "right": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
