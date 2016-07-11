@@ -48,17 +48,15 @@ var fnList = [
     getConstraintColumns
 ];
 
-// generateDimensions(fnList, knexLeft, knexRight)
-// .then(compareDimensions)
-// .then(formatDiffReport2)
-// .then(log)
-// .then(performSelfReport)
-// .then(log)
-// .then(done);
-
-performSelfReport()
+generateDimensions(fnList, knexLeft, knexRight)
+.then(compareDimensions)
+.then(formatDiffReport2)
 .then(log)
 .then(done);
+
+// performSelfReport()
+// .then(log)
+// .then(done);
 
 function test1(){
     var dimensions = { left: [], right: [] };
