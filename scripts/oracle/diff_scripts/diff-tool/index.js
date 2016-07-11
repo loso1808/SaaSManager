@@ -6,6 +6,8 @@ var EzTable = require('easy-table');
 var ToTable = require('table').default;
 var util = require('util');
 var compareDimensions = require('./dimensional-compare.js');
+var loadScript = require('./load-sql-script.js');
+var runSelfReport = require('./run-self-reports');
 
 var knexLeft = require('knex')(
     connInfo.left
@@ -24,9 +26,7 @@ var objectCounts = {};
 
 
 var fnList = [
- //   getUserObjectCount,
     getUserObjects,
-  //   getUserTabCols
     getTableColumns,
     getColumnTypes,
     getColumnSize,
@@ -48,13 +48,17 @@ var fnList = [
     getConstraintColumns
 ];
 
-generateDimensions(fnList, knexLeft, knexRight)
-//.tap(log)
-.then(compareDimensions)
-.then(formatDiffReport2)
+// generateDimensions(fnList, knexLeft, knexRight)
+// .then(compareDimensions)
+// .then(formatDiffReport2)
+// .then(log)
+// .then(performSelfReport)
+// .then(log)
+// .then(done);
+
+performSelfReport()
 .then(log)
 .then(done);
-
 
 function test1(){
     var dimensions = { left: [], right: [] };
@@ -80,6 +84,10 @@ function log(msg) {
         str = util.inspect(msg, true, 12);
     }
     console.log(str);
+}
+
+function performSelfReport(){
+    return runSelfReport(knexLeft, knexRight);
 }
 
 function generateDimensions(fnList, knexLeft, knexRight){

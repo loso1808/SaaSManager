@@ -1,8 +1,9 @@
 --updates to RC 1.4.3
 --Set the following defines appropriately for your instance
 
-DEFINE SCHEMA_OWNER_NAME = PNY_RC_1_4_3_DBO;
-DEFINE APP_ROLE = PNY_RC_1_4_3_AR;
+DEFINE SCHEMA_OWNER_NAME = PNY_DOWTEST_DBO;
+DEFINE APP_ROLE = PNY_DOWTEST_AR;
+DEFINE LOG_TABLESPACE_NAME = PNY_DOWTEST_LOG;
 
 --drops old custom fields table and migrated user preseferences log columns
 @@drop_extraneous_objects.sql;

@@ -43,7 +43,7 @@
         },
         "debug": true
     },
-    "left": {
+    "local-dowtest": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -95,6 +95,21 @@
             "database": "ORCL",
             "password": "N5nQvIS5CE6AZZPFc",
             "user": "PNY_DEV_1_4_3_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "tesela.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "TESELA",
+            "password": "master#0503",
+            "user": "TESELAGEN",
             "pool": {
                 "min": 0,
                 "max": 25
