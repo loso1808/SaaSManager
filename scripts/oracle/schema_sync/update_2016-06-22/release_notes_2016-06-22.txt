@@ -1,0 +1,19 @@
+Release Notes for 2016-06-22
+
+The scripts inside the contained folders update the database schema to be compatible with the current version of the app.
+
+Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+The scripts in this release are structured differently than previous releases. There are two sets of scripts. One set to be run as the schema owner and the other to be run as the app user. The schema owner script should be run first. Each script set has a master script prefixed with “01-“. Each master script has a defines section at the top which must be adjusted to match your specific schema and role names. Each master script will run all other scripts in the folder in the correct order.
+
+These script sets perform the following updates:
+
+1. This script set performs the following: 
+	a. Renames primary keys, primary key indexes, sequences, and foreign keys to use a specific naming convention. 
+	b. It removes all triggers and replaces them with Oracle 12c DEFAULT ON NULL sequence.NEXTVAL syntax. 
+	c. It modifies several foreign keys constraints to have CASCADE ON DELETE behavior. 
+	d. It fixes a missing foreign key on the dd_part table. 
+
+*This script set also runs a validation script at the before and after all the other scripts have been run. All counts of validation script run after should be 0 except for the “Correctly named sequences” stat which should be the only non-zero stat.
+
+2. This script set drops all synonyms for the app user and recreates them.

@@ -1,0 +1,1 @@
+select TRIGGER_NAME, TABLE_NAME from user_triggers

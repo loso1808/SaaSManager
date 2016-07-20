@@ -1,0 +1,1 @@
+ALTER TABLE "z_j5run" DROP COLUMN "clobTest";
