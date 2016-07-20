@@ -14,7 +14,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },      
-    "aws_rc143": {
+    "aws-rc143": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
@@ -73,7 +73,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "right": {
+    "sfdev": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -103,7 +103,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "dowdev": {
         "client": "strong-oracle",
         "connection": {
             "host": "tesela.c1grsxamme4w.us-west-1.rds.amazonaws.com",
@@ -113,6 +113,51 @@
             "pool": {
                 "min": 0,
                 "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "sfdev-po": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "192.168.1.28",
+            "database": "ORCL",
+            "password": "master#0503",
+            "user": "PEONY_OWNER",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "SZdGSe75pYR5FGFCm",
+            "user": "PNY_RC_1_7_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },      
+    "right": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "7LrGBYPOnZS6AIMRR",
+            "user": "PNY_RC_1_7_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
             }
         },
         "debug": false,
