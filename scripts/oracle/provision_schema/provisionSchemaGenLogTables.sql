@@ -21,6 +21,9 @@ SET SERVEROUTPUT ON;
 --create schema
 @@createBaseSchema.sql;
 
+--create activity logging tables
+@@createActivityLogTables.sql;
+
 --GRANT privileges to APP_ROLE on all tables and functions
 @@grantPrivilegesToAppRole.sql;
 
