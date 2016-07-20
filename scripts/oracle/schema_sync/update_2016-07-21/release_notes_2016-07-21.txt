@@ -1,0 +1,11 @@
+Release Notes for 2016-07-21
+
+The scripts inside the contained folders update the database schema from RC 1.4.3 to be compatible with the version RC 1.7.0.
+
+Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+This update contains one script prefixed with “01-“ in the folder prefixed with “01-“ to be runas peony owner.
+
+This script performs the following update:
+
+1. This script adds a column to the custom fields table.
