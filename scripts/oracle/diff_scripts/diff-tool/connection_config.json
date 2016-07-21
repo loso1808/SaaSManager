@@ -14,7 +14,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },      
-    "aws-rc143": {
+    "right": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
@@ -133,7 +133,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "rc170": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -148,13 +148,43 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },      
-    "right": {
+    "aws-rc170": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
             "database": "ORCL",
             "password": "7LrGBYPOnZS6AIMRR",
             "user": "PNY_RC_1_7_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "prod-arzeda": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "O2FWxI0UtUP6JPSAi",
+            "user": "PNY_ARZEDA_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "left": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "STdqcMM6OXAOH9sfg",
+            "user": "PNY_PROD_DBO",
             "pool": {
                 "min": 0,
                 "max": 100
