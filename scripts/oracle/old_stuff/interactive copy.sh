@@ -1,0 +1,1 @@
+sqlplus 'admin/master#0503@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=orcl.c1grsxamme4w.us-west-1.rds.amazonaws.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ORCL)))'
