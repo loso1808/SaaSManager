@@ -133,7 +133,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "rc170": {
+    "left": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -178,7 +178,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "left": {
+    "prod": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",

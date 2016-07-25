@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var Promise = require('bluebird');
 
-module.exports = function(knexLeft, knexRight){
+module.exports = function(knexLeft, knexRight, options){
     var fnList = [
         getUserObjects,
         getTableColumns,
