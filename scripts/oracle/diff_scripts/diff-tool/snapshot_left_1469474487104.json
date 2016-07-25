@@ -1,0 +1,18 @@
+{
+  "connInfo": {
+    "client": "strong-oracle",
+    "connection": {
+      "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+      "database": "ORCL",
+      "password": "STdqcMM6OXAOH9sfg",
+      "user": "PNY_PROD_DBO",
+      "pool": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    "debug": false,
+    "acquireConnectionTimeout": 120000
+  },
+  "dependents": false
+}

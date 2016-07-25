@@ -1,0 +1,216 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="44A66851-28DB-0FD9-9BFD-B9FB5D3DC5D3" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="z_activity_log">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>z_activity_log</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:10 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="6A9CE5C0-8810-AE30-4602-C88EFA0C37A0">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>id</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<defaultValue>&quot;PNY_RC_1_7_0_DBO&quot;.&quot;sz_activity_log&quot;.&quot;NEXTVAL&quot;</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="objectName" id="8A6346DC-D520-1C1C-F06E-17203B9B9A58">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>objectName</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="objectId" id="BA8B3581-E7EF-CA61-0607-8DE8C3C8AE75">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>objectId</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_id" id="1961A6ED-4077-CDE6-81C0-D94537704DC0">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>user_id</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9F0015E1-692C-A097-CF0F-C52453E10D1B" referredColumn="C33C63CD-314E-13B3-F3CB-EE0EC95B03E7"/>
+</associations>
+</Column>
+<Column name="logSessionId" id="5067EE78-6FAE-222F-7B91-D7A66458EB9B">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>logSessionId</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="logAction" id="725797E4-2960-5FC1-D28C-F9B5F42E2790">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>logAction</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="2887DC16-5D1D-15AF-CDB7-8593CE085ECC">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>description</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dateLogged" id="916BB597-88AE-F7B2-D4D0-46D7EC8B7B55">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>dateLogged</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="recordsFetched" id="F21EF445-8082-5119-8A1F-73E6C3095EB2">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>recordsFetched</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rawQuery" id="222EF6DB-B2BD-1345-D4E2-46126ED7B17F">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>z_activity_log</sourceObjSchema>
+<sourceObjName>rawQuery</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D2FE059F-5CBB-E2E9-3444-7FBC26628A32" name="z_activity_log_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>z_activity_log_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:16 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A9CE5C0-8810-AE30-4602-C88EFA0C37A0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E937CC18-E4C5-5076-9AF2-B387169D2624" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="z_activity_log_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>z_activity_log_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:14 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A9CE5C0-8810-AE30-4602-C88EFA0C37A0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3FC9966D-4573-40F6-F5E7-CC9800A3510A" name="z_activity_log_fk_user_id">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:21 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1961A6ED-4077-CDE6-81C0-D94537704DC0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

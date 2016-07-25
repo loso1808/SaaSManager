@@ -1,0 +1,7 @@
+{
+  "connInfo": {
+    "configFile": "./connection_config.json",
+    "connectionName": "left"
+  },
+  "dependents": false
+}

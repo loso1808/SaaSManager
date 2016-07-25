@@ -1,0 +1,292 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="242C7786-56D8-9708-B696-F60D66CBFA6B" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="sequence">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>sequence</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:10 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="CA9D2FF6-105C-2DA0-8351-1237A91C0121">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>id</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<defaultValue>&quot;PNY_RC_1_7_0_DBO&quot;.&quot;s_sequence&quot;.&quot;NEXTVAL&quot;</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FQDN" id="80F3930B-973C-38CD-35CC-C56F790913EE">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>FQDN</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>512 BYTE</dataTypeSize>
+<ownDataTypeParameters>512 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hash" id="38285841-34FF-A3B8-2110-163536474C6A">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>hash</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256 BYTE</dataTypeSize>
+<ownDataTypeParameters>256 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="circular" id="6097BE70-0653-C883-B756-4B1BD50C0146">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>circular</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="505BA6EA-3E1E-05E6-C6B8-F8F9569A61BB">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>description</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>512 BYTE</dataTypeSize>
+<ownDataTypeParameters>512 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="size" id="0CFE128F-F4C8-8A7C-C4CD-00C0537F808A">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>size</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_id" id="85758D48-D8B4-234E-29C5-9A26F45BBD70">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>user_id</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="81951B1E-C28F-796F-7071-48E1E353E3EC" referredColumn="C33C63CD-314E-13B3-F3CB-EE0EC95B03E7"/>
+</associations>
+</Column>
+<Column name="name" id="BEEB9574-975A-D254-A21D-794C7E7EFBB1">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>name</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256 BYTE</dataTypeSize>
+<ownDataTypeParameters>256 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sequence" id="B239419C-264E-4FF5-D07E-7B8CDC3AD39D">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>sequence</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dateCreated" id="759E025C-8C2C-3738-38FF-30383C657A26">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>dateCreated</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dateModified" id="99FF7A6E-9DCE-1F4E-059C-70143382AF11">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>dateModified</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shared_repo" id="468BAF72-B90B-DCB9-2574-B53B0FE094D8">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>shared_repo</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="type" id="868725AE-4509-DDCD-A68B-01C0FCC1A473">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>type</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16 BYTE</dataTypeSize>
+<ownDataTypeParameters>16 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="molecule_type" id="23753791-8650-E45A-7D84-D6A389FAACE2">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>sequence</sourceObjSchema>
+<sourceObjName>molecule_type</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="034A7B84-96CE-ECBF-B5B2-D476ECE2A6DA" name="sequence_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>sequence_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:16 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA9D2FF6-105C-2DA0-8351-1237A91C0121"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4188B4D2-DB13-1E4D-0BE7-595E1F10586D" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="sequence_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>sequence_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:13 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA9D2FF6-105C-2DA0-8351-1237A91C0121"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3043CD13-68DF-F724-D31F-4BA81FD3964E" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="sequence_user_id_idx">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>sequence_user_id_idx</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:13 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85758D48-D8B4-234E-29C5-9A26F45BBD70"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5CF5613C-9827-E00C-8D36-454997F37CAE" name="sequence_user_fk">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:21 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85758D48-D8B4-234E-29C5-9A26F45BBD70"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

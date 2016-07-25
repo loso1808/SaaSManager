@@ -1,0 +1,248 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FB46FE30-B470-0E3C-F027-5DBBB7499E95" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="custom_field">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>custom_field</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:09 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="E6FF49D3-802A-A49B-C10B-1D6B1644EBDA">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>id</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<defaultValue>&quot;PNY_RC_1_7_0_DBO&quot;.&quot;s_custom_field&quot;.&quot;NEXTVAL&quot;</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="objectName" id="E5554E7D-334D-E394-8D1B-0A8664B05559">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>objectName</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="FD885E01-6681-C18B-3E1E-33873979DDA1">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>name</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="required" id="EDAEC75C-DF96-7B1C-818A-0EDA6296B4B4">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>required</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dateCreated" id="A4915CCC-BAF2-D66E-9049-EAA9DCF0993E">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>dateCreated</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dateModified" id="A1609972-3833-0C8A-A2E1-605FA3FDB591">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>dateModified</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="searchable" id="63B521D2-552C-A638-11C6-5084A0F3BC7C">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>searchable</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dataType" id="DDBE1766-B005-CC7C-A38E-CEE1484C6EFB">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>dataType</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="defaultValueString" id="6D8D1538-007C-96C7-0638-965373C663D7">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>defaultValueString</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="defaultValueNumber" id="EB387FE4-446D-750B-37AA-6C580113E1CF">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>defaultValueNumber</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="defaultValueDate" id="351FA223-896F-98C7-7BED-0ECA5AF42374">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>defaultValueDate</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="defaultValueFlag" id="B7EE9921-3E5D-9769-32D6-DC6E01781AB3">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>defaultValueFlag</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="isAdminCreated" id="3D116AD6-1F31-DBAA-89B6-09D79590DE1C">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>custom_field</sourceObjSchema>
+<sourceObjName>isAdminCreated</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8265907B-6136-FD0B-BEA3-FF006DCF795B" name="custom_field_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>custom_field_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:15 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6FF49D3-802A-A49B-C10B-1D6B1644EBDA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED23E782-7BA5-FEE3-1F31-6EAAA8D90755" schemaObject="2176BEE5-8AD0-AED0-C63A-11A005C8EC39" name="custom_field_pk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>custom_field_pk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:12 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6FF49D3-802A-A49B-C10B-1D6B1644EBDA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

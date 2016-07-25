@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="78534C31-C513-7C84-5D92-3B841370F165" containerWithKeyObject="12971C49-8004-0113-35B2-64A42BC026DA" localFKIndex="903A2BA0-DFF1-1688-E778-80DE413E9DD6" name="eugene_rule_devicedesign_fk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>eugene_rule_devicedesign_fk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:21 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>4B39B606-8953-46B8-C17C-4753DAB2EB41</referredTableID>
+<keyObject>58E068FB-D367-B0EE-9DCC-61A83A8573DC</keyObject>
+<referredKeyID>58E068FB-D367-B0EE-9DCC-61A83A8573DC</referredKeyID>
+<mandatory>false</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

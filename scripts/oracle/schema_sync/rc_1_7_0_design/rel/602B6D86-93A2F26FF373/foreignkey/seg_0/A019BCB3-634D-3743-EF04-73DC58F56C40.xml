@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A019BCB3-634D-3743-EF04-73DC58F56C40" containerWithKeyObject="915AD43A-5D23-2B9D-C07D-8E5012B31047" localFKIndex="C2D437B7-4F3D-58C9-5431-14B610223226" name="strain_plasmid_strain_fk">
+<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
+<sourceObjSchema>PNY_RC_1_7_0_DBO</sourceObjSchema>
+<sourceObjName>strain_plasmid_strain_fk</sourceObjName>
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:21 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>1A2B357A-F7BF-FFBD-9F96-67B3CF53EE0E</referredTableID>
+<keyObject>7055DD86-2945-8ABF-CC31-D533D7BA4098</keyObject>
+<referredKeyID>7055DD86-2945-8ABF-CC31-D533D7BA4098</referredKeyID>
+<mandatory>false</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

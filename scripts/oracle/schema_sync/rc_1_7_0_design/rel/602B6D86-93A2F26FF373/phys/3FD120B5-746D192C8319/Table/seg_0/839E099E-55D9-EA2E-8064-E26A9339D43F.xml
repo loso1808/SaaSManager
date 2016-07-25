@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="design_ruleset" directorySegmentName="seg_0" id="839E099E-55D9-EA2E-8064-E26A9339D43F">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:09 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>2176BEE5-8AD0-AED0-C63A-11A005C8EC39</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D182930F-02EB-00F5-8B2C-9535D658BE63</segment>
+<tableSpace>D610919A-09E9-4D10-A4C8-5F553CDE96B1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="user_id" id="05634B76-47BE-BAF7-E864-ED22DE1BDB42">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="name" id="27029A21-2DF2-CB02-28CE-F36198D953E3">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="dateModified" id="3BDD4892-F35D-A69E-C083-600B612B287D">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="shouldFilter" id="673450F8-9E7D-066E-C4AD-14A186547074">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="shouldValidate" id="7F774DF2-7BAB-F3E6-52FB-5BB926A964CA">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="description" id="94625B80-F102-249B-207B-AF7A5480AE15">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="id" id="E1F58A0B-4365-C58B-9DBC-A7601D20E82C">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<defaultValue>&quot;PNY_RC_1_7_0_DBO&quot;.&quot;s_design_ruleset&quot;.&quot;NEXTVAL&quot;</defaultValue>
+<defaultOnNull>YES</defaultOnNull>
+</ColumnProxy>
+<ColumnProxy name="dateCreated" id="F6A8985A-B24A-598A-F8D7-825EBDCAD75F">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:11 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="design_ruleset_pk" id="4AD76B7C-DEA5-AB7B-FC83-60DC96AB27A4">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:13 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>2176BEE5-8AD0-AED0-C63A-11A005C8EC39</schemaObject>
+<segment>9F2FACAF-48C8-9426-673D-AB1DABCC7A3C</segment>
+<tableSpace>D610919A-09E9-4D10-A4C8-5F553CDE96B1</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="design_ruleset_pk" id="65079E4C-9422-BC5A-0379-8EE4D652BFF4">
+<createdBy>adamthomas</createdBy>
+<createdTime>2016-07-22 17:58:15 UTC</createdTime>
+<ownerDesignName>rc_1_7_0_design</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<segment>9F2FACAF-48C8-9426-673D-AB1DABCC7A3C</segment>
+<tableSpace>D610919A-09E9-4D10-A4C8-5F553CDE96B1</tableSpace>
+<existingIndex>4AD76B7C-DEA5-AB7B-FC83-60DC96AB27A4</existingIndex>
+<indexSegment>9F2FACAF-48C8-9426-673D-AB1DABCC7A3C</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
