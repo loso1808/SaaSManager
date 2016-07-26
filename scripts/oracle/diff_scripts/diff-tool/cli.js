@@ -75,9 +75,49 @@ console.log(util.inspect(options));
 
 if(options.listConnections){
     console.log("Listing connection names is not yet implemented");
-    parseOptions(options);
+    var config = fse.readJsonSync(options.config);
+    var connectionNames = [];
+    var connNameOptions = _.keys(config);
+    var connCount = operationConnectionCount(options);
+
+    if(connCount === 0){
+        parseOptions(options);
+    }else{        
+        
+        var promptText = "Left Connection:";
+        if(connCount === 1){
+            promptText = "Connection:";
+        }
+
+        inquirer.list(promptText, connNameOptions)
+        .then(function (connName) {
+            connectionNames.push(connName);
+            
+            if(connCount === 1){
+	            options.connectionNames = connectionNames;
+                return parseOptions(options);
+            }else{
+                return inquirer.list("Right Connection: ", connNameOptions);
+            }
+        })
+        .then(function (connName) {
+            connectionNames.push(connName);
+            options.connectionNames = connectionNames;
+            return parseOptions(options);
+        });
+    }
 }else{
     parseOptions(options);
+}
+
+function operationConnectionCount(options){
+    if(options.hash !== false && options.hash !== true) return 0;
+    if(options.hash) return 1;
+    if(options.compare !== false && options.hash !== true) return 1;
+    if(options.detectVersion) return 1;
+    if(options.snapshot) return 1;
+    
+    return 2;
 }
 
 function parseOptions(options) {
