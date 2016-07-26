@@ -14,6 +14,9 @@ var _ = require('lodash');
 
 var getConnInfo = require('./getConnInfo');
 var generateSnapshot = require('./generateSnapshot');
+var generateDimensions = require('./generate-dimensions');
+var compareDimensions = require('./dimensional-compare.js');
+var ToTable = require('table').default;
 
 // var generateSnapShot = function (connInfo, dependents) {
 //     return Promise.resolve({ connInfo: connInfo, dependents: dependents });
@@ -64,14 +67,15 @@ options.release = program.release || null;
 //options.compareHash = program.compareHash || false;
 options.detectVersion = program.detectVersion || false;
 options.listConnections = program.listConnections || false;
-
+options.compare = program.compare || false;
 
 console.log(util.inspect(options));
 //console.log("Is Snapshot File: " + (options.snapshot !== false && options.snapshot !== true));
 //process.exit();
 
 if(options.listConnections){
-    
+    console.log("Listing connection names is not yet implemented");
+    parseOptions(options);
 }else{
     parseOptions(options);
 }
@@ -83,6 +87,8 @@ function parseOptions(options) {
         return performGetHash(options);
     }else if(options.detectVersion){
         return performDetectVersion(options);
+    }else if(options.compare){
+        return performSchemaComparison(options);
     }else{
         console.log("Current set of options is not yet supported.");
         return waitForExit();
@@ -215,7 +221,7 @@ function performDetectVersion(options) {
            .then(printVersion)
            .then(waitForExit)
            .catch(function (err) {
-                console.error("An error occurred detecing the database version");
+                console.error("An error occurred detecting the database version");
                 console.error(err);  
             });
 
@@ -244,6 +250,120 @@ function performDetectVersion(options) {
     function printVersion(version){
         console.log("The version for " + options.connectionNames[0] + " is " + version);
     }
+}
+
+function performSchemaComparison(options){
+    var rightConnectionName, leftConnectionName;
+    var leftSchemaName, rightSchemaName;
+    var connectionNames = [];
+    var rightSnapshot;
+
+    if(options.compare !== false && options.compare !== true){
+        var snapshotFilePath = path.resolve(options.compare);
+        rightSnapshot = fse.readJsonSync(snapshotFilePath);
+        rightConnectionName = path.basename(snapshotFilePath);
+        leftConnectionName = options.connectionNames[0];
+        connectionNames.push(leftConnectionName);
+    }else{
+        connectionNames = options.connectionNames;
+        leftConnectionName = options.connectionNames[0];
+        rightConnectionName = options.connectionNames[1];
+    }
+
+    return getDimensions(options, connectionNames)
+           .then(compareDimensions)
+           .then(formatDiffReport)
+           .then(printReport)
+           .then(waitForExit)
+           .catch(function (err) {
+                console.error("An error occurred comparing database schemas");
+                console.error(err);  
+            });
+
+    
+    function getSchemaName(knex){
+        return knex.client.config.connection.user;
+    }
+    
+    function printReport(diffReport){
+        console.log(diffReport);
+    }
+
+    function getDimensions(options, connectionNames) {
+        var connInfo = getConnInfo(options.config, connectionNames);
+        var knexLeft, knexRight;
+
+        knexLeft = require('knex')(connInfo[0]);
+        leftSchemaName = getSchemaName(knexLeft);
+        if(connInfo.length > 1){
+            knexRight = require('knex')(connInfo[1]);
+            rightSchemaName = getSchemaName(knexRight);
+        }else{
+            rightSchemaName = rightConnectionName;
+        }
+
+        return generateDimensions(knexLeft, knexRight, { diffSynonymDependents: options.dependents })
+               .then(function(results){
+                   if(rightSnapshot){
+                       results.right = rightSnapshot.dimensions;
+                   }
+                   return Promise.resolve(results);
+               })
+               .catch(function (err) {
+                    console.error(err);
+                    throw(err);
+               });
+    }
+
+    function formatDiffReport(compareResult) {
+        var reportStr = "";
+
+        var headerRow = [ leftSchemaName, rightSchemaName ];
+        var reportRows = [headerRow];
+
+        var leftDiff = compareResult.leftDiff.slice(0);
+        var rightDiff = compareResult.rightDiff.slice(0);
+
+        leftDiff.forEach(function (item) {
+        var arr = item.split('/');
+        var pathCount = arr.length;
+        arr.pop();
+        arr.pop();
+        var dimPath = arr.join('/');
+        var rightMatch = "(missing)";
+        var idx = _.findIndex(rightDiff,function (val) {
+            var valPathCount = val.split('/').length;
+            return (_.startsWith(val, dimPath) && pathCount == valPathCount); 
+        });
+        if(idx > -1){
+            rightMatch = _.pullAt(rightDiff, idx);
+        }
+        reportRows.push([item, rightMatch]);
+        });
+
+        rightDiff.forEach(function (item) {
+            reportRows.push(["(missing)", item]);
+        });
+
+        var config = {
+                        columns: {
+                            0: {
+                                width: 80,
+                                wrapWord: true
+                            },
+                            1: {
+                                width: 80,
+                                wrapWord: true
+                            }
+                        }
+                    };
+
+        reportStr += ToTable(reportRows, config);
+        reportStr += "\n\nTotal Differences: " + (reportRows.length - 1) + "\n";
+
+        return reportStr;
+    }
+           
 }
 
 function waitForExit(){
