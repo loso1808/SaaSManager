@@ -20,6 +20,26 @@
             "externalConsole": true,
             "sourceMaps": false,
             "outDir": null
+        },
+        {
+            "name": "Cli Detect",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/cli.js",
+            "stopOnEntry": false,
+            "args": ["-t", "-m", "mig_log.json"],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "externalConsole": true,
+            "sourceMaps": false,
+            "outDir": null
         },       
          {
             "name": "Launch Export Schema",
