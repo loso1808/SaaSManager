@@ -1,0 +1,2 @@
+echo "Running provisionSchema.sql.."
+sqlplus 'admin/master#0503@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com)(Port=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)))' @provisionSchema.sql
