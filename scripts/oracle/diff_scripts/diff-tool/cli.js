@@ -358,7 +358,7 @@ function performSchemaComparison(options){
     function formatDiffReport(compareResult) {
         var reportStr = "";
 
-        var headerRow = [ leftSchemaName, rightSchemaName ];
+        var headerRow = [ (leftConnectionName + " - " + leftSchemaName), (rightConnectionName + " - " + rightSchemaName) ];
         var reportRows = [headerRow];
 
         var leftDiff = compareResult.leftDiff.slice(0);
