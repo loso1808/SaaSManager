@@ -133,6 +133,36 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
+    "app_170": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "V8GVroSJe5JNXTbip",
+            "user": "PNY_RC_1_7_0_APP",
+            "pool": {
+                "min": 0,
+                "max": 25
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },         
+    "aws_app_170": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "8WFMGEHJTOMYSFONS",
+            "user": "PNY_RC_1_7_0_APP",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },   
     "left": {
         "client": "strong-oracle",
         "connection": {
