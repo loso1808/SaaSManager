@@ -135,7 +135,7 @@ module.exports = function(knexLeft, knexRight, options){
             
             if(rightSchemaOwner){
                 rightSchemaType = "owner";
-                fns.push(collectDimensionalData(dimensions.left, fn, knexRight, rightSchemaName, "owner")
+                fns.push(collectDimensionalData(fn, knexRight, rightSchemaName, "owner")
                         .then(function (result) {
                             console.log("Got " + fn.name + " for " + rightSchemaName);
                             rightDimension.push(result);
@@ -148,7 +148,7 @@ module.exports = function(knexLeft, knexRight, options){
                 rightSchemaType = "app";
             }
 
-            fns.push(collectDimensionalData(dimensions.right, fn, knexRight, rightSchemaName, "app")
+            fns.push(collectDimensionalData(fn, knexRight, rightSchemaName, "app")
                     .then(function (result) {
                         console.log("Got " + fn.name + " for " + rightSchemaName);
                         rightDimension.push(result);
