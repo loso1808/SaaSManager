@@ -25,5 +25,5 @@
 --  Ref Constraints for Table assembly_run
 --------------------------------------------------------
 
-  ALTER TABLE "assembly_operation" ADD CONSTRAINT "assembly_oper_assembly_run_fk" FOREIGN KEY ("assembly_run_id")
-	  REFERENCES "assembly_run" ("id") ENABLE;
+  ALTER TABLE "assembly_op_output" ADD CONSTRAINT "assembly_op_o_assembly_oper_fk" FOREIGN KEY ("assembly_operation_id")
+	  REFERENCES "assembly_operation" ("id") ENABLE;

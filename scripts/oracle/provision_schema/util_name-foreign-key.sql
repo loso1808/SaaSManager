@@ -1,5 +1,5 @@
-DEFINE TABLE_NAME = 'assembly_operation';
-DEFINE COLUMN_NAME = 'assembly_run_id';
+DEFINE TABLE_NAME = 'assembly_op_input';
+DEFINE COLUMN_NAME = 'assembly_op_output_id';
 
 
 

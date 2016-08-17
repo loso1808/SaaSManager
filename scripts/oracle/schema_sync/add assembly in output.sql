@@ -11,12 +11,14 @@
   CREATE TABLE "assembly_op_input" 
    (	"id" NUMBER DEFAULT ON NULL "s_assembly_op_input"."NEXTVAL", 
       CONSTRAINT "assembly_op_input_pk" PRIMARY KEY ("id"),
-      "name" VARCHAR2(400 BYTE), 
+      "assembly_operation_id" NUMBER,
       "assembly_op_output_id" NUMBER,
-      "description" VARCHAR2(4000),
-      "status" VARCHAR2(400),
-      "operationType" VARCHAR2(400),
-      "index" NUMBER,
+      "name" VARCHAR2(400 BYTE), 
+      "dataType" VARCHAR2(400),
+      "textValue" VARCHAR2(4000),
+      "numericValue" NUMBER,
+      "dateValue" TIMESTAMP (6),
+      "jsonValue" CLOB,
       "dateCreated" TIMESTAMP (6), 
       "dateModified" TIMESTAMP (6), 
       "user_id" NUMBER
@@ -24,9 +26,13 @@
 
 
 
+
 --------------------------------------------------------
 --  Ref Constraints for Table assembly_run
 --------------------------------------------------------
 
-  ALTER TABLE "assembly_operation" ADD CONSTRAINT "assembly_oper_assembly_run_fk" FOREIGN KEY ("assembly_run_id")
-	  REFERENCES "assembly_run" ("id") ENABLE;
+  ALTER TABLE "assembly_op_input" ADD CONSTRAINT "assembly_op_i_assembly_oper_fk" FOREIGN KEY ("assembly_operation_id")
+	  REFERENCES "assembly_operation" ("id") ENABLE;
+    
+      ALTER TABLE "assembly_op_input" ADD CONSTRAINT "assembly_op_i_assembly_op_o_fk" FOREIGN KEY ("assembly_op_output_id")
+	  REFERENCES "assembly_op_output" ("id") ENABLE;
