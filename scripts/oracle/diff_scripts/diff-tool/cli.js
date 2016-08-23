@@ -365,20 +365,22 @@ function performSchemaComparison(options){
         var rightDiff = compareResult.rightDiff.slice(0);
 
         leftDiff.forEach(function (item) {
-        var arr = item.split('/');
-        var pathCount = arr.length;
-        arr.pop();
-        arr.pop();
-        var dimPath = arr.join('/');
-        var rightMatch = "(missing)";
-        var idx = _.findIndex(rightDiff,function (val) {
-            var valPathCount = val.split('/').length;
-            return (_.startsWith(val, dimPath) && pathCount == valPathCount); 
-        });
-        if(idx > -1){
-            rightMatch = _.pullAt(rightDiff, idx);
-        }
-        reportRows.push([item, rightMatch]);
+            var arr = item.split('/');
+            var pathCount = arr.length;
+            arr.pop();
+            arr.pop();
+            var dimPath = arr.join('/');
+            var rightMatch = "(missing)";
+            var idx = _.findIndex(rightDiff,function (val) {
+                var valPathCount = val.split('/').length;
+                return (_.startsWith(val, dimPath) && pathCount == valPathCount); 
+            });
+            if(idx > -1){
+                rightMatch = _.pullAt(rightDiff, idx)[0];
+                rightMatch = rightMatch.replace('\n', ' ');
+            }
+
+            reportRows.push([item.replace('\n', ' '), rightMatch]);
         });
 
         rightDiff.forEach(function (item) {
@@ -397,6 +399,8 @@ function performSchemaComparison(options){
                             }
                         }
                     };
+
+        console.log(JSON.stringify(reportRows, null, 4));
 
         reportStr += ToTable(reportRows, config);
         reportStr += "\n\nTotal Differences: " + (reportRows.length - 1) + "\n";
