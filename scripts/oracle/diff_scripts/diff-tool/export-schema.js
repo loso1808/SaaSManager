@@ -19,16 +19,37 @@ var Promise = require('bluebird');
 var oracledb = require('oracledb');
  
 //load the simple oracledb 
-//var SimpleOracleDB = require('simple-oracledb');
+var SimpleOracleDB = require('simple-oracledb');
  
 //modify the original oracledb library 
-//SimpleOracleDB.extend(oracledb);
+SimpleOracleDB.extend(oracledb);
 
 var dbConn;
 
-//testExportTableDDL();
+testExportTableDDL();
 
-getTableDDL();
+function testExportTableDDL(){
+    var fns = [
+        getConnection,
+        execTransforms,
+        getTableName,
+        getTableDDL,
+        log,
+        closeConnection,
+        done
+    ];
+    log("Running testExportTableDDL");
+    async.waterfall(fns, function(err, result){
+        if(err){
+            log("Error!");
+            log(err);
+        }else{
+            log(result);
+        }
+    });
+}
+
+//getTableDDL();
 
 function getTableDDL(tableName){
     oracledb.getConnection(connInfo)

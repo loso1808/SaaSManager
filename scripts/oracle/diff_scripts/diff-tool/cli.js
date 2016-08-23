@@ -377,8 +377,9 @@ function performSchemaComparison(options){
         });
         if(idx > -1){
             rightMatch = _.pullAt(rightDiff, idx);
+            rightMatch = rightMatch.replace('\n', ' ');
         }
-        reportRows.push([item, rightMatch]);
+        reportRows.push([item.replace('\n', ' '), rightMatch]);
         });
 
         rightDiff.forEach(function (item) {

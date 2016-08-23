@@ -12,6 +12,8 @@
    (	"id" NUMBER DEFAULT ON NULL "s_assembly_op_output"."NEXTVAL", 
       CONSTRAINT "assembly_op_output_pk" PRIMARY KEY ("id"),
       "name" VARCHAR2(400 BYTE), 
+      "fullName" VARCHAR2(400 BYTE), 
+      "outputType" VARCHAR2(400 BYTE), 
       "assembly_operation_id" NUMBER,
       "jsonValue" CLOB,
       "dateCreated" TIMESTAMP (6), 
