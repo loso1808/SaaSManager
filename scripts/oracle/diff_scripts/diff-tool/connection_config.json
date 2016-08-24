@@ -282,5 +282,35 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 220000
+    },
+    "local_po": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "93WvaK4Kx99PDPYck",
+            "user": "PNY_AWS_PEONY_OWNER_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 220000
+    },      
+    "aws_rc180": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "PTDGya4JhUDI1DyCT",
+            "user": "PNY_RC_1_8_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 220000
     }
 }
