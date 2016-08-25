@@ -178,7 +178,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },   
-    "left": {
+    "local_rc170": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -305,6 +305,21 @@
             "database": "ORCL",
             "password": "PTDGya4JhUDI1DyCT",
             "user": "PNY_RC_1_8_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 220000
+    },
+    "local_arzeda": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "F2jeGKMGK1BLPAdmI",
+            "user": "PNY_ARZEDA_DBO",
             "pool": {
                 "min": 0,
                 "max": 100

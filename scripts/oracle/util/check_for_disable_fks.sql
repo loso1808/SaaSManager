@@ -1,0 +1,1 @@
+select * from user_constraints where constraint_type = 'R' and status <> 'ENABLED';

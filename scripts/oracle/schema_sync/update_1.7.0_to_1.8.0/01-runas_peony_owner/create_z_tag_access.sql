@@ -31,6 +31,5 @@
 --  Constraints for Table z_tag_access
 --------------------------------------------------------
 
-  ALTER TABLE "z_tag_access" MODIFY ("logId" NOT NULL ENABLE);
   ALTER TABLE "z_tag_access" MODIFY ("dateLogged" NOT NULL ENABLE);
   ALTER TABLE "z_tag_access" ADD CONSTRAINT "z_tag_access_pk" PRIMARY KEY ("logId") ENABLE;

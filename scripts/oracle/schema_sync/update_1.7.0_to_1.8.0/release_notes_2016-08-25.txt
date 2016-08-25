@@ -1,18 +1,21 @@
-Release Notes for 2016-07-07
+Release Notes for RC 1.8.x 2016-08-25
 
-The scripts inside the contained folders update the database schema from RC 1.4.1 (aka RC1) to be compatible with the version RC 1.4.3.
+The scripts inside the contained folders update the database schema from RC 1.7.x to be compatible with the version RC 1.8.x.
 
 Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+One of these update scripts requires the schema owner to have execute permission on the dbms_crypto package which by default they may not have.
 
 There are two sets of scripts. One set to be run as the schema owner and the other to be run as the app user. The schema owner script should be run first. Each script set has a master script prefixed with “01-“. Each master script has a defines section at the top which must be adjusted to match your specific schema and role names. Each master script will run all other scripts in the folder in the correct order.
 
 These script sets perform the following updates:
 
 1. This script set performs the following: 
-	a. Drops extraneous tables and columns left over from old and unused functionality
-	b. Adds new tables to support custom settings, custom fields, and design rules.
-	c. Modifies primary keys to all be auto generated ID’s to be DEFAULT ON NULL instead of DEFAULT
-	d. Modifies dateLogged to be DEFAULT ON NULL instead of DEFAULT
-	e. Grants privileges on new objects to APP ROLE
+	a. Adds new tables to support tag access
+	b. Adds new columns to the custom fields tables
+	c. Fixes orphaned parts and orphaned custom fields caused by a bug in the previous release
+	d. Recalculates the hashes on the sequences (requires dbms_crypto)
+	e. Fixes any issues with dateLogged default values and primary key default values
+	f. Grants privileges on objects to app role
 
 2. This script set drops all synonyms for the app user and recreates them.
