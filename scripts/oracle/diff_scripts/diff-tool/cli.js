@@ -358,7 +358,7 @@ function performSchemaComparison(options){
     function formatDiffReport(compareResult) {
         var reportStr = "";
 
-        var headerRow = [ leftSchemaName, rightSchemaName ];
+        var headerRow = [ (leftConnectionName + " - " + leftSchemaName), (rightConnectionName + " - " + rightSchemaName) ];
         var reportRows = [headerRow];
 
         var leftDiff = compareResult.leftDiff.slice(0);
@@ -400,7 +400,7 @@ function performSchemaComparison(options){
                         }
                     };
 
-        console.log(JSON.stringify(reportRows, null, 4));
+        //console.log(JSON.stringify(reportRows, null, 4));
 
         reportStr += ToTable(reportRows, config);
         reportStr += "\n\nTotal Differences: " + (reportRows.length - 1) + "\n";
