@@ -9,3 +9,6 @@ DEFINE SCHEMA_OWNER_NAME = PEONY_OWNER;
 --recreate all of the app user synonyms
 @@createAppUserSynonyms.sql;
 
+--add tag admin role
+@@add_TagAdmin_role.sql;
+
