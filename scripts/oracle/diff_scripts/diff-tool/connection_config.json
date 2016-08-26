@@ -223,6 +223,66 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
+    "prod-idt": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "VYUJxBQKiFWE6HwMe",
+            "user": "PNY_IDT_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "prod-intrexon": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "GWEOCGIFs1LJF7LGK",
+            "user": "PNY_INTREXON_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "prod-lanzatech": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "X2eRCrKXx5BXWFake",
+            "user": "PNY_LANZATECH_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
+    "prod-sentibio": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "K5XawUQ5UC1R9DOlG",
+            "user": "PNY_SENTIBIO_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },
     "prod": {
         "client": "strong-oracle",
         "connection": {

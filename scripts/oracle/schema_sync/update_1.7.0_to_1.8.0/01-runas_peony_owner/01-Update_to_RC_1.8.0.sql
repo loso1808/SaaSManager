@@ -2,8 +2,8 @@
 --Set the following defines appropriately for your instance
 --Schema owner needs execute dbms_crypto
 
-DEFINE SCHEMA_OWNER_NAME = PEONY_OWNER;
-DEFINE APP_ROLE = PEONY_APP_ROLE;
+DEFINE SCHEMA_OWNER_NAME = PNY_ARZEDA_DBO;
+DEFINE APP_ROLE = PNY_ARZEDA_APP;
 
 --create tag access tables
 @@create_tag_access.sql;
