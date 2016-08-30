@@ -318,6 +318,7 @@ function performSchemaComparison(options){
            .catch(function (err) {
                 console.error("An error occurred comparing database schemas");
                 console.error(err);  
+                console.error(err.stack);
             });
 
     
@@ -377,9 +378,12 @@ function performSchemaComparison(options){
             });
             if(idx > -1){
                 rightMatch = _.pullAt(rightDiff, idx)[0];
-                rightMatch = rightMatch.replace('\n', ' ');
+                if(rightMatch && rightMatch.replace){
+                    rightMatch = rightMatch.replace('\n', ' ');
+                }else{
+                    console.log("Undefined right match " + JSON.stringify(rightMatch, null, 4));
+                }
             }
-
             reportRows.push([item.replace('\n', ' '), rightMatch]);
         });
 
@@ -399,8 +403,6 @@ function performSchemaComparison(options){
                             }
                         }
                     };
-
-        //console.log(JSON.stringify(reportRows, null, 4));
 
         reportStr += ToTable(reportRows, config);
         reportStr += "\n\nTotal Differences: " + (reportRows.length - 1) + "\n";

@@ -41,6 +41,26 @@
             "sourceMaps": false,
             "outDir": null
         },       
+        {
+            "name": "Cli App Schema",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/cli.js",
+            "stopOnEntry": false,
+            "args": ["-cp", "-n", '"aws_app_170,app_170"'],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "externalConsole": true,
+            "sourceMaps": false,
+            "outDir": null
+        },       
          {
             "name": "Launch Export Schema",
             "type": "node",
