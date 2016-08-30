@@ -69,6 +69,7 @@ module.exports = function(knexLeft, knexRight, options){
                             dimensions.right = dimensions.right.concat(result.right);
                         }
                         console.log('Done executing ' + fn.name);
+                        //console.log("Dimensions:\n" + JSON.stringify(dimensions, null, 4));
                         return Promise.resolve();
                     })
                     .catch(function (err) {
@@ -86,6 +87,7 @@ module.exports = function(knexLeft, knexRight, options){
         return Promise.all(collectFns)
         .then(function (result) {
             console.log("Done Executing Queries");
+            //console.log("Dimensions:\n" + JSON.stringify(dimensions, null, 4));
             return Promise.resolve(dimensions);
         })
         .catch(function (err) {
@@ -184,6 +186,7 @@ module.exports = function(knexLeft, knexRight, options){
                 if(schemaType){
                     result = addPropsToAll({ SCHEMA_TYPE: schemaType }, result);
                 }
+                //console.log("Collected Dimension " + fn.name + " for " + schemaName + "\n" + JSON.stringify(result, 4, null));
                 return Promise.resolve(result);
             });
     }
@@ -463,7 +466,8 @@ module.exports = function(knexLeft, knexRight, options){
 
     function addPropsToAll(props, col){
         return _.map(col, function (item) {
-            return _.assign(props, item);
+            var templateObj = _.assign({}, props);
+            return _.assign(templateObj, item);
         });
     }
 
