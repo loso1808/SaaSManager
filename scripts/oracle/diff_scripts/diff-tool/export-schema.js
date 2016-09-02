@@ -53,47 +53,6 @@ SimpleOracleDB.extend(oracledb);
 
 var dbConn;
 
-//testSimpleOracle();
-
-function testSimpleOracle(){
-    log("Testing SimpleOracleDB");
-    oracledb.getConnection(connInfo)
-    .then(setConnection)
-    .then(selectObjects)
-    .then(log)
-    .catch(log);
-
-    function selectObjects(){
-        return dbConn.query('SELECT * FROM USER_OBJECTS');
-    }
-}
-
-
-
-
-//testExportTableDDL();
-
-function testExportTableDDL(){
-    var fns = [
-        getConnection,
-        execTransforms,
-        getTableName,
-        getTableDDL,
-        log,
-        closeConnection,
-        done
-    ];
-    log("Running testExportTableDDL");
-    async.waterfall(fns, function(err, result){
-        if(err){
-            log("Error!");
-            log(err);
-        }else{
-            log(result);
-        }
-    });
-}
-
 getTableDDL();
 
 function getTableDDL(tableName){
@@ -116,46 +75,6 @@ function setConnection(conn) {
     dbConn = conn;
 }
 
-function testGetObjects(){
-    // var fns = [
-    //     getConnection,
-    //     execTransforms,
-    //     getTableName,
-    //     getTableDDL,
-    //     log,
-    //     closeConnection,
-    //     done
-    // ];
-    log("Running testExportTableDDL");
-    var fns = [
-        getConnection,
-        getUserObjects,
-        logAsync,
-        closeConnection,
-        done
-    ];
-    async.waterfall(fns, function(err, result){
-        if(err){
-            log("Error!");
-            log(err);
-        }else{
-            log(result);
-        }
-    });
-}
-
-function getConnection(cb){
-    log("Getting connection");
-    oracledb.getConnection(connInfo, function(err, connection){
-        log("Got Connection");
-        if(err){
-            return cb(err);
-        }
-        dbConn = connection;
-        cb(null);
-    });
-}
-
 function generateObjectDDL(objects) {
     //log(tables);
     var combinedResult = [];
@@ -164,7 +83,8 @@ function generateObjectDDL(objects) {
         var objectType = row['OBJECT_TYPE'];
         log("Generating DDL for " + objectType + ": " + objectName);
         if(objectType === 'TABLE'){
-            return getDDLforTable(objectName)
+            //return getDDLforTable(objectName)
+            return getDDLforTableWithInlineConstraints(objectName)
                 .then(function(result){
                     combinedResult = combinedResult.concat(result);
                 });
@@ -180,6 +100,16 @@ function generateObjectDDL(objects) {
                 });
         }else if(objectType === 'FUNCTION'){
             return getDDLforFunction(objectName)
+                .then(function(result){
+                    combinedResult.push(result);
+                });
+        }else if(objectType === 'CONSTRAINT'){
+            return getDDLforConstraint(objectName)
+                .then(function(result){
+                    combinedResult.push(result);
+                });
+        }else if(objectType === 'REF_CONSTRAINT'){
+            return getDDLforRefConstraint(objectName)
                 .then(function(result){
                     combinedResult.push(result);
                 });
@@ -298,6 +228,131 @@ function getDDLforTable(tableName){
            });
 }
 
+
+function getDDLforTableWithInlineConstraints(tableName){
+    var originalDDLLines = 0;
+    var templateDDL;
+    var combinedResult = [];
+    return runQuery(qryTransformCommandsForTableInlineConstraints())
+           .then(function () {             
+                return runQuery(qryTableDDL(tableName, schemaConfig.schemaName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                //log(result);
+                var originalDDL = rows[0]["DDL"];
+                originalDDLLines = originalDDL.split(/\r\n|\n/).length;
+                //log("Original DDL");
+                //log(originalDDL);
+                //log("Original DDL Lines: " + originalDDLLines);
+
+                templateDDL = replaceAll(originalDDL, '"' + schemaConfig.schemaName + '".', '"{{SCHEMA_NAME}}".');
+
+           })
+           .then(function(){
+                return runQuery(qryColumns(schemaConfig.schemaName, tableName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                var tableDefs = extractDefinitions(templateDDL);
+                var colDefinitions = [];
+
+                rows.forEach(function(row){
+                    var columnName = row['COLUMN_NAME'];
+                    var colDef = findColumnDefinition(tableDefs, columnName);
+                    if(colDef){
+                        combinedResult.push({
+                            objectType: "column",
+                            tableName: tableName,
+                            name: columnName,
+                            definition: colDef,
+                            ddl: {
+                                add: 'ALTER TABLE "{{SCHEMA_NAME}}"."' + tableName + '" ADD (' + colDef + ')',
+                                modify: 'ALTER TABLE "{{SCHEMA_NAME}}"."' + tableName + '" MODIFY (' + colDef + ')',
+                                remove: 'ALTER TABLE "{{SCHEMA_NAME}}"."' + tableName + '" DROP "' + columnName + '" ',
+                                rename:  'ALTER TABLE "{{SCHEMA_NAME}}"."' + tableName + '" RENAME COLUMN "' + columnName + '" TO "{{NEW_COLUMN_NAME}}"'
+                            }
+                        });
+                        //log(colDef);
+                        colDefinitions.push(colDef);
+                    }else{
+                        log("Can't find definition for column " + columnName + " in table " + tableName);
+                    }
+                });
+                
+
+                                
+                var terminatorIdx = templateDDL.lastIndexOf(';');
+
+                var tableDDL = templateDDL.substr(0,terminatorIdx);
+                
+                if(tableName.indexOf("z_") === 0){
+                    tableDDL += ' TABLESPACE "{{LOG_TABLESPACE_NAME}}" ;\n';                
+                }else{
+                    tableDDL += ' TABLESPACE "{{TABLESPACE_NAME}}" ;\n';
+                }
+
+                var wrapper = extractDefinitionWrapper(tableDDL);
+                var tableDDL = wrapper.intro + "\n\t" + colDefinitions.join(" ,\n\t") + "\n" + wrapper.closing; 
+                //log(tableDDL);
+                combinedResult.push({
+                    objectType: "table",
+                    name: tableName,
+                    ddl: tableDDL 
+                });
+           })
+           .then(function(){
+               return Promise.resolve(combinedResult);
+           });
+
+    function findColumnDefinition(defs, columnName){
+        //log("Finding def for " + columnName);
+        var colDef;
+        var quotedColumnName = '"' + columnName + '"';
+        defs.some(function(item){
+            if(_.startsWith(item, quotedColumnName)){
+                //log(quotedColumnName + " in " + item);
+                colDef = item;
+                return true;
+            }
+            //log(quotedColumnName + " not in " + item);
+        })
+        return colDef;
+    }
+
+    function extractDefinitions(tableDDL){
+        var firstIdx = tableDDL.indexOf("(") + 1;
+        var lastIdx = tableDDL.lastIndexOf(")");
+        var defsBody = tableDDL.substr(0, lastIdx);
+        defsBody = defsBody.substr(firstIdx);
+        //log("Defs Body\n" + defsBody);
+        var defs = defsBody.split(/,[\s]*\n/);
+        //log("Defs");
+        defs.forEach(function(def, idx){
+            defs[idx] = _.trim(def);
+        });
+        //log(defs);
+        return defs;
+    }
+
+    function extractDefinitionWrapper(tableDDL){
+        var firstIdx = tableDDL.indexOf("(") + 1;
+        var lastIdx = tableDDL.lastIndexOf(")");
+        var intro = tableDDL.substr(0, firstIdx);
+        var closing = tableDDL.substr(lastIdx);
+
+        // log("Intro");
+        // log(intro);
+        // log("Closing");
+        // log(closing);
+
+        return {
+            intro: intro,
+            closing: closing
+        }
+    }
+}
+
 function getDDLforSequence(sequenceName){
 
     return runQuery(qryTransformCommandsForTableOnly())
@@ -314,7 +369,7 @@ function getDDLforSequence(sequenceName){
                 //log(tableDDL);
                 combinedResult = {
                     objectType: "sequence",
-                    sequenceName: sequenceName,
+                    name: sequenceName,
                     ddl: sequenceDDL 
                 };
 
@@ -349,7 +404,7 @@ function getDDLforIndex(indexName){
                 //log(tableDDL);
                 combinedResult = {
                     objectType: "index",
-                    indexName: indexName,
+                    name: indexName,
                     ddl: indexDDL 
                 };
 
@@ -373,7 +428,7 @@ function getDDLforFunction(functionName){
                 //log(tableDDL);
                 combinedResult = {
                     objectType: "function",
-                    functionName: functionName,
+                    name: functionName,
                     ddl: functionDDL 
                 };
 
@@ -381,12 +436,52 @@ function getDDLforFunction(functionName){
            });
 }
 
-function execTransforms(){
-    return runQuery(qryTransformCommandsForTableOnly());
+function getDDLforConstraint(constraintName){
+
+    return runQuery(qryTransformCommandsForTableOnly())
+           .then(function () {             
+                return runQuery(qryConstraintDDL(constraintName, schemaConfig.schemaName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                //log(result);
+                var originalDDL = rows[0]["DDL"];
+              
+                var constraintDDL = replaceAll(originalDDL, '"' + schemaConfig.schemaName + '".', '"{{SCHEMA_NAME}}".');
+                
+                //log(tableDDL);
+                combinedResult = {
+                    objectType: "constraint",
+                    name: constraintName,
+                    ddl: constraintDDL 
+                };
+
+                return Promise.resolve(combinedResult);
+           });
 }
 
-function getTables(){
-    return runQuery(qryTables(schemaConfig.schemaName));
+function getDDLforRefConstraint(refConstraintName){
+
+    return runQuery(qryTransformCommandsForTableOnly())
+           .then(function () {             
+                return runQuery(qryRefConstraintDDL(refConstraintName, schemaConfig.schemaName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                //log(result);
+                var originalDDL = rows[0]["DDL"];
+              
+                var refConstraintDDL = replaceAll(originalDDL, '"' + schemaConfig.schemaName + '".', '"{{SCHEMA_NAME}}".');
+                
+                //log(tableDDL);
+                combinedResult = {
+                    objectType: "refConstraint",
+                    name: refConstraintName,
+                    ddl: refConstraintDDL 
+                };
+
+                return Promise.resolve(combinedResult);
+           });
 }
 
 function getUserObjects(){
@@ -427,6 +522,33 @@ function done(){
 
 
 function qryTransformCommandsForTableOnly(){
+    var cmds = [
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'PRETTY',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SQLTERMINATOR',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'STORAGE',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SEGMENT_ATTRIBUTES',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLESPACE',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'REF_CONSTRAINTS',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS_AS_ALTER',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'OID',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SIZE_BYTE_KEYWORD',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'EMIT_SCHEMA',true)"
+    ];
+
+    cmds.forEach(function(cmd, i){
+        cmds[i] = "BEGIN " + cmd + "; END;";
+    });
+    //log(cmds);
+    //cmds = cmds.join("; ");
+    //cmds = "BEGIN " + cmds + "; END;";
+    //cmds = [cmds];
+    cmds = assignEmptyBindingsToCommandArray(cmds);
+    return cmds;
+}
+
+
+function qryTransformCommandsForTableInlineConstraints(){
     var cmds = [
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'PRETTY',true)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SQLTERMINATOR',true)",
@@ -521,17 +643,25 @@ function assignEmptyBindingsToCommandArray(cmds){
 
 function qryUserObjects(schemaName){
     return {
-        cmd: "SELECT OBJECT_NAME, OBJECT_TYPE FROM all_objects where owner = :owner and GENERATED = 'N' and object_type = 'TABLE' order by OBJECT_NAME",
-        bindings: [schemaName]
+        cmd: "SELECT OBJECT_NAME, OBJECT_TYPE FROM all_objects where owner = :1 and GENERATED = 'N' " +
+             "union all " +
+             "select CONSTRAINT_NAME, 'CONSTRAINT' from all_constraints where CONSTRAINT_TYPE = 'C' AND owner = :2 AND (SEARCH_CONDITION_VC NOT LIKE '%IS NOT NULL%' OR SEARCH_CONDITION_VC IS NULL) " +
+             "union all " +
+             "select CONSTRAINT_NAME, 'CONSTRAINT' from all_constraints where CONSTRAINT_TYPE = 'P' AND owner = :3 " +
+             "union all " +
+             "select CONSTRAINT_NAME, 'REF_CONSTRAINT' from all_constraints where CONSTRAINT_TYPE = 'R' AND owner = :4 ",
+        bindings: [schemaName, schemaName, schemaName, schemaName]
     };
 }
 
-function qryTables(schemaName){
+
+function qryColumns(schemaName, tableName){
     return {
-        cmd: "SELECT OBJECT_NAME TABLE_NAME FROM all_objects where owner = :owner and OBJECT_TYPE = 'TABLE' order by OBJECT_NAME",
-        bindings: [schemaName]
+        cmd: "SELECT COLUMN_NAME FROM all_tab_cols where owner = :owner and TABLE_NAME = :tableName order by COLUMN_ID",
+        bindings: [schemaName, tableName]
     };
 }
+
 
 function qryTableDDL(tableName, schemaName){
     return {
@@ -566,6 +696,23 @@ function qryFunctionDDL(functionName, schemaName){
         bindings: [functionName, schemaName]
     };
 }
+
+function qryConstraintDDL(constraintName, schemaName){
+    return {
+        fn: "query",
+        cmd: "select dbms_metadata.get_ddl('CONSTRAINT',:constraintName,:schemaName) DDL from dual",
+        bindings: [constraintName, schemaName]
+    };
+}
+
+function qryRefConstraintDDL(refConstraintName, schemaName){
+    return {
+        fn: "query",
+        cmd: "select dbms_metadata.get_ddl('REF_CONSTRAINT',:refConstraintName,:schemaName) DDL from dual",
+        bindings: [refConstraintName, schemaName]
+    };
+}
+
 
 
 function logAsync(msg, cb){
@@ -613,6 +760,14 @@ function outputCombinedDDL(combinedDDL){
             log(item.ddl);
         }
     });
+
+    //output tables
+    // log('\n\n----- Columns ------');
+    // combinedDDL.forEach(function(item){
+    //     if(item.objectType === 'column'){
+    //         log(item.definition);
+    //     }
+    // });
 
     //output indexes
     log('\n\n----- Table Indexes ------');
