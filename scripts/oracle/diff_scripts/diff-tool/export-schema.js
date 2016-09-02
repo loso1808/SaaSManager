@@ -101,6 +101,7 @@ function getTableDDL(tableName){
     .then(setConnection)
     .then(getUserObjects)
     .then(generateObjectDDL)
+    .then(removeTerminatorFromDDL)
     .then(outputCombinedDDL)
     .then(closeConnection)
     .then(done)
@@ -172,6 +173,16 @@ function generateObjectDDL(objects) {
                 .then(function(result){
                     combinedResult.push(result);
                 });
+        }else if(objectType === 'INDEX'){
+            return getDDLforIndex(objectName)
+                .then(function(result){
+                    combinedResult.push(result);
+                });
+        }else if(objectType === 'FUNCTION'){
+            return getDDLforFunction(objectName)
+                .then(function(result){
+                    combinedResult.push(result);
+                });
         }else{
             log("Object Type " + objectType + " unsupported for " + objectName);
         }
@@ -204,9 +215,9 @@ function getDDLforTable(tableName){
                 var tableDDL = tableDDL.substr(0,terminatorIdx);
                 
                 if(tableName.indexOf("z_") === 0){
-                    tableDDL += ' "{{LOG_TABLESPACE_NAME}}" ;\n';                
+                    tableDDL += ' TABLESPACE "{{LOG_TABLESPACE_NAME}}" ;\n';                
                 }else{
-                    tableDDL += ' "{{TABLESPACE_NAME}}" ;\n';
+                    tableDDL += ' TABLESPACE "{{TABLESPACE_NAME}}" ;\n';
                 }
                 //log(tableDDL);
                 combinedResult.push({
@@ -311,6 +322,65 @@ function getDDLforSequence(sequenceName){
            });
 }
 
+function getDDLforIndex(indexName){
+
+    return runQuery(qryTransformCommandsForTableOnly())
+           .then(function () {             
+                return runQuery(qryIndexDDL(indexName, schemaConfig.schemaName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                //log(result);
+                var originalDDL = rows[0]["DDL"];
+              
+                var indexDDL = replaceAll(originalDDL, '"' + schemaConfig.schemaName + '".', '"{{SCHEMA_NAME}}".');
+
+                var terminatorIdx = indexDDL.lastIndexOf(';');
+
+                indexDDL = indexDDL.substr(0,terminatorIdx);
+                
+                if(indexName.indexOf("z_") === 0){
+                    indexDDL += ' TABLESPACE "{{LOG_INDEX_TABLESPACE_NAME}}" ;';                
+                }else{
+                    indexDDL += ' TABLESPACE "{{INDEX_TABLESPACE_NAME}}" ;';
+                }
+
+                
+                //log(tableDDL);
+                combinedResult = {
+                    objectType: "index",
+                    indexName: indexName,
+                    ddl: indexDDL 
+                };
+
+                return Promise.resolve(combinedResult);
+           });
+}
+
+function getDDLforFunction(functionName){
+
+    return runQuery(qryTransformCommandsForTableOnly())
+           .then(function () {             
+                return runQuery(qryFunctionDDL(functionName, schemaConfig.schemaName));
+           })
+           .then(function(result){
+                var rows = result.rows || result;
+                //log(result);
+                var originalDDL = rows[0]["DDL"];
+              
+                var functionDDL = replaceAll(originalDDL, '"' + schemaConfig.schemaName + '".', '"{{SCHEMA_NAME}}".');
+                
+                //log(tableDDL);
+                combinedResult = {
+                    objectType: "function",
+                    functionName: functionName,
+                    ddl: functionDDL 
+                };
+
+                return Promise.resolve(combinedResult);
+           });
+}
+
 function execTransforms(){
     return runQuery(qryTransformCommandsForTableOnly());
 }
@@ -363,9 +433,9 @@ function qryTransformCommandsForTableOnly(){
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'STORAGE',false)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SEGMENT_ATTRIBUTES',false)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'TABLESPACE',false)",
-        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS',false)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS',true)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'REF_CONSTRAINTS',false)",
-        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS_AS_ALTER',true)",
+        "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'CONSTRAINTS_AS_ALTER',false)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'OID',false)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'SIZE_BYTE_KEYWORD',true)",
         "DBMS_METADATA.SET_TRANSFORM_PARAM(DBMS_METADATA.SESSION_TRANSFORM,'EMIT_SCHEMA',true)"
@@ -451,7 +521,7 @@ function assignEmptyBindingsToCommandArray(cmds){
 
 function qryUserObjects(schemaName){
     return {
-        cmd: "SELECT OBJECT_NAME, OBJECT_TYPE FROM all_objects where owner = :owner and GENERATED = 'N' order by OBJECT_NAME",
+        cmd: "SELECT OBJECT_NAME, OBJECT_TYPE FROM all_objects where owner = :owner and GENERATED = 'N' and object_type = 'TABLE' order by OBJECT_NAME",
         bindings: [schemaName]
     };
 }
@@ -479,6 +549,25 @@ function qrySequenceDDL(sequenceName, schemaName){
     };
 }
 
+
+function qryIndexDDL(indexName, schemaName){
+    return {
+        fn: "query",
+        cmd: "select dbms_metadata.get_ddl('INDEX',:indexName,:schemaName) DDL from dual",
+        bindings: [indexName, schemaName]
+    };
+}
+
+
+function qryFunctionDDL(functionName, schemaName){
+    return {
+        fn: "query",
+        cmd: "select dbms_metadata.get_ddl('FUNCTION',:functionName,:schemaName) DDL from dual",
+        bindings: [functionName, schemaName]
+    };
+}
+
+
 function logAsync(msg, cb){
     log(msg);
     cb(null, msg);
@@ -494,8 +583,18 @@ function log(msg){
     console.log(str);
 }
 
+function removeTerminatorFromDDL(combinedResult){
+    combinedResult.forEach(function(item, idx){
+        var ddl = _.trim(item.ddl);
+        ddl = _.trimEnd(ddl, ';');
+        combinedResult[idx].ddl = ddl;
+    });
+
+    return Promise.resolve(combinedResult);
+}
+
 function outputCombinedDDL(combinedDDL){
-    log(combinedDDL);
+    //log(combinedDDL);
     var strScript = "";
     log('\n\n----- DDL for ' + schemaConfig.schemaName + ' ------');
 
@@ -516,6 +615,12 @@ function outputCombinedDDL(combinedDDL){
     });
 
     //output indexes
+    log('\n\n----- Table Indexes ------');
+    combinedDDL.forEach(function(item){
+        if(item.objectType === 'index'){
+            log(item.ddl);
+        }
+    });
 
     //output Constraints
     log('\n\n----- Table Constraints ------');
@@ -534,6 +639,12 @@ function outputCombinedDDL(combinedDDL){
     });
 
     //output functions
+    log('\n\n----- Functions ------');
+    combinedDDL.forEach(function(item){
+        if(item.objectType === 'function'){
+            log(item.ddl);
+        }
+    });
 
     //output synonyms
 }
