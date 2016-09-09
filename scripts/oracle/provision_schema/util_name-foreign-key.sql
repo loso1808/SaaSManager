@@ -1,5 +1,5 @@
-DEFINE TABLE_NAME = 'assembly_op_input';
-DEFINE COLUMN_NAME = 'assembly_op_output_id';
+DEFINE TABLE_NAME = 'sequence_j5run';
+DEFINE COLUMN_NAME = 'j5run_id';
 
 
 

@@ -1,0 +1,15 @@
+{
+    "serverName": {
+        "host": "localhost",
+        "port": 1521,
+        "sid": "ORCL",
+        "service": "ORCL",
+        "is_AWS_RDS": false,
+        "oracleVersion": "Oracle 12c Standard Edition 2",
+        "location": "AWS California Northwest",
+        "custodian": "Teselagen",
+        "client": "Teselagen",
+        "environment": "dev,test,prod",
+        "description": "Example entry"
+    }
+}
