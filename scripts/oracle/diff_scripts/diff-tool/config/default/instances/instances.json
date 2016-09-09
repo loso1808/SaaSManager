@@ -1,0 +1,31 @@
+{
+    "instanceName": {
+        "serverName": "Adams Local Dev Environment",
+        "appUser": "credentialSetName",
+        "schemaOwner": "credentialSetName",
+        "appRole": "credentialSetName",
+        "tablespaces": [
+            {
+                "name": "tablespace name",
+                "isManaged": false,
+                "type": "temp,data-default,app,log,index,log-index",
+                "datafile": "data file path"
+            }
+        ],
+        "schemaVersion": "RC 1.8.0",
+        "schemaSnapshots": [
+
+        ],
+        "dataExports": [
+
+        ],
+        "description": "Describes purpose of instance",
+        "notes": [
+            {
+                "content": "Note text",
+                "dateCreated": "date note created",
+                "author": "User that created note"
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "_version": "1.0",
+    "repositories": [
+        {
+            "name": "default",
+            "path": "./default",
+            "description": "Default repository used when none is specified.",
+            "encrypted": false
+        }
+    ]
+}
