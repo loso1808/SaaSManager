@@ -207,6 +207,21 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 220000
+    },      
+    "aws_rc190": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "3AEmSUBFZYZIF2VrF",
+            "user": "PNY_RC_1_9_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 220000
     },
     "prod-arzeda": {
         "client": "strong-oracle",
@@ -313,7 +328,7 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },
-    "rc_180": {
+    "rc180": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
@@ -326,30 +341,30 @@
             }
         },
         "debug": false,
-        "acquireConnectionTimeout": 120000
-    },
-    "aws_po": {
+        "acquireConnectionTimeout": 320000
+    }, 
+    "rc190": {
         "client": "strong-oracle",
         "connection": {
-            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "host": "localhost",
             "database": "ORCL",
-            "password": "master#0503",
-            "user": "PEONY_OWNER",
+            "password": "U4obvVX6wDWKK3PjB",
+            "user": "PNY_RC_1_9_0_DBO",
             "pool": {
                 "min": 0,
                 "max": 100
             }
         },
         "debug": false,
-        "acquireConnectionTimeout": 220000
+        "acquireConnectionTimeout": 320000
     },
     "local_po": {
         "client": "strong-oracle",
         "connection": {
             "host": "localhost",
             "database": "ORCL",
-            "password": "93WvaK4Kx99PDPYck",
-            "user": "PNY_AWS_PEONY_OWNER_DBO",
+            "password": "master#0503",
+            "user": "PEONY_OWNER",
             "pool": {
                 "min": 0,
                 "max": 100
@@ -371,7 +386,7 @@
             }
         },
         "debug": false,
-        "acquireConnectionTimeout": 220000
+        "acquireConnectionTimeout": 320000
     },
     "local_arzeda": {
         "client": "strong-oracle",

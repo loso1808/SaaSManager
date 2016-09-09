@@ -28,7 +28,7 @@ SET SERVEROUTPUT ON;
 @@createAppUserSynonyms.sql;
 
 --init values: roles, app user, admin user
-@@insertInitialValues.sql;
+@@insertInitialValuesWithDevAccounts.sql;
 
 --save passwords
 @@savePasswords.sql;

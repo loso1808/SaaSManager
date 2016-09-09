@@ -1,11 +1,11 @@
-CREATE SEQUENCE "sz_assembly_op_input_pk" START WITH 1 INCREMENT BY 1 CACHE 20 NOCYCLE MINVALUE 1 NOMAXVALUE;
+CREATE SEQUENCE "sz_assembly_op_input" START WITH 1 INCREMENT BY 1 CACHE 20 NOCYCLE MINVALUE 1 NOMAXVALUE;
 
   CREATE TABLE "z_assembly_op_input" 
-   (	"logId" NUMBER DEFAULT "sz_assembly_op_input_pk"."NEXTVAL", 
+   (	"logId" NUMBER DEFAULT ON NULL "sz_assembly_op_input"."NEXTVAL", 
    CONSTRAINT "z_assembly_op_input_pk" PRIMARY KEY ("logId"),
 	"logSessionId" VARCHAR2(50 BYTE), 
 	"logAction" VARCHAR2(400 BYTE), 
-	"dateLogged" TIMESTAMP (6) DEFAULT SYSDATE, 
+	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE, 
   "id" NUMBER,
 	"assembly_operation_id" NUMBER, 
 	"assembly_op_output_id" NUMBER, 
