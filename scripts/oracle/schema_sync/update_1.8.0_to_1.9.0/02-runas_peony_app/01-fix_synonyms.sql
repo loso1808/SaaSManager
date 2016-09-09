@@ -1,6 +1,6 @@
 
-DEFINE APP_USER = PEONY_APP;
-DEFINE SCHEMA_OWNER_NAME = PEONY_OWNER;
+DEFINE APP_USER = PNY_DOCKER_APP;
+DEFINE SCHEMA_OWNER_NAME = PNY_DOCKER_DBO;
 
 
 --drop all the of the app user synonyms
@@ -8,7 +8,3 @@ DEFINE SCHEMA_OWNER_NAME = PEONY_OWNER;
 
 --recreate all of the app user synonyms
 @@createAppUserSynonyms.sql;
-
---add tag admin role
-@@add_TagAdmin_role.sql;
-

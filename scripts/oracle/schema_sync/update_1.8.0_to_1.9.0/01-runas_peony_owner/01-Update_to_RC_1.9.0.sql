@@ -2,8 +2,8 @@
 --Set the following defines appropriately for your instance
 --Schema owner needs execute dbms_crypto
 
-DEFINE SCHEMA_OWNER_NAME = PNY_RC_1_9_0_DBO;
-DEFINE APP_ROLE = PNY_RC_1_9_0_AR;
+DEFINE SCHEMA_OWNER_NAME = PNY_DOCKER_DBO;
+DEFINE APP_ROLE = PNY_DOCKER_AR;
 
 @create-assembly_run.sql;
 @create-assembly_operation.sql;

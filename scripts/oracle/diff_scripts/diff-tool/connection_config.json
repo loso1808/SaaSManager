@@ -14,7 +14,23 @@
         "debug": false,
         "acquireConnectionTimeout": 120000
     },      
-    "right": {
+    "docker": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "192.168.31.187",
+            "host": "192.168.0.113",
+            "database": "ORCL",
+            "password": "SJpRZZ1GcZWQX2LRV",
+            "user": "PNY_DOCKER_APP",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },    
+    "dev-1.4.3": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
@@ -207,7 +223,7 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 220000
-    },      
+    },       
     "aws_rc190": {
         "client": "strong-oracle",
         "connection": {
