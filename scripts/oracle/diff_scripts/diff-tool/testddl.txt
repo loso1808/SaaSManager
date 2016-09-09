@@ -1,0 +1,14 @@
+  CREATE TABLE "PNY_DOWTEST_DBO"."DE_bin" 
+   (	"id" NUMBER DEFAULT ON NULL "PNY_DOWTEST_DBO"."s_DE_bin"."NEXTVAL", 
+	"directionForward" NUMBER, 
+	"dsf" NUMBER, 
+	"fro" NUMBER, 
+	"extra5PrimeBps" VARCHAR2(256 BYTE), 
+	"extra3PrimeBps" VARCHAR2(256 BYTE), 
+	"binName" VARCHAR2(256 BYTE), 
+	"iconID" VARCHAR2(256 BYTE), 
+	"devicedesign_id" NUMBER, 
+	"DEIndex" NUMBER(*,0), 
+	"dateCreated" TIMESTAMP (6), 
+	"dateModified" TIMESTAMP (6)
+   ) ;
