@@ -520,6 +520,16 @@ function done(){
     process.exit();
 }
 
+function log(msg){
+    var str = "";
+    if(_.isString(msg)){
+        str = msg;
+    }else{
+        str = util.inspect(msg, { showHidden: false, depth: 12 });
+    }
+    console.log(str);
+}
+
 
 function qryTransformCommandsForTableOnly(){
     var cmds = [
