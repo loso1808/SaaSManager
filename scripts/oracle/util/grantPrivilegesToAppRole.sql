@@ -1,18 +1,5 @@
-----GRANT EXECUTE
---select * from all_objects where 
---object_type in ('FUNCTION', 'PROCEDURE','PACKAGE') and owner = 'PNY_DBO_TESELAGEN';
---
-----GRANT Insert, Update, and Select
---select * from all_objects where 
---object_type in ('TABLE') and owner = 'PNY_DBO_TESELAGEN';
--- 
-----GRANT Delete
---select * from all_objects where 
---object_type in ('TABLE') and owner = 'PNY_DBO_TESELAGEN' and object_name not like 'z_%';
---
-----GRANT Select
---select * from all_objects where 
---object_type in ('SEQUENCE') and owner = 'PNY_DBO_TESELAGEN';
+DEFINE SCHEMA_OWNER_NAME = PNY_RC_1_9_0_DBO;
+DEFINE APP_ROLE = PNY_RC_1_9_0_AR;
                                     
 BEGIN
 
