@@ -23,27 +23,27 @@ module.exports = function(dbConn, schemaName, objects, opts){
                     combinedResult = combinedResult.concat(result);
                 });
         }else if(objectType === 'SEQUENCE'){
-            return getDDLforSequence(objectName)
+            return getDDLforSequence(dbConn, schemaName, objectName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'INDEX'){
-            return getDDLforIndex(objectName)
+            return getDDLforIndex(dbConn, schemaName, objectName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'FUNCTION'){
-            return getDDLforFunction(objectName)
+            return getDDLforFunction(dbConn, schemaName, objectName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'CONSTRAINT'){
-            return getDDLforConstraint(objectName)
+            return getDDLforConstraint(dbConn, schemaName, objectName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'REF_CONSTRAINT'){
-            return getDDLforRefConstraint(objectName)
+            return getDDLforRefConstraint(dbConn, schemaName, objectName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });

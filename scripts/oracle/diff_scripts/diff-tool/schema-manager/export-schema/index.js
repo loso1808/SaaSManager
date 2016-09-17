@@ -16,6 +16,7 @@ SimpleOracleDB.extend(oracledb);
 
 var getUserObjects = require('./getUserObjects');
 var generateObjectDDL = require('./generateObjectDDL');
+var formatTemplatedScript = require('./formatTemplatedScript');
 
 module.exports = function(connInfo, opts){
 
@@ -41,8 +42,8 @@ module.exports = function(connInfo, opts){
                     .then(getUserObjectsAsync)
                     .then(generateObjectDDLAsync)
                     //.then(removeTerminatorFromDDL)
-                    //.then(outputCombinedDDL)
-                    .then(log)
+                    .then(outputCombinedDDL)
+                    //.then(log)
                     .then(closeConnection)
                     .then(returnResult)
                     .catch(function(err){
@@ -57,6 +58,7 @@ module.exports = function(connInfo, opts){
                 }
 
                 function getUserObjectsAsync(){
+                    log("Getting objects for schema " + schemaName);
                     return getUserObjects(dbConn, schemaName, { log: log });
                 }
 
@@ -67,6 +69,11 @@ module.exports = function(connInfo, opts){
                                result = objDDL;
                                return Promise.resolve(result);
                            });
+                }
+
+                function outputCombinedDDL(combinedDDL){
+                    log(formatTemplatedScript(schemaName, combinedDDL));
+                    return Promise.resolve(combinedDDL);
                 }
 
                 function closeConnection(){

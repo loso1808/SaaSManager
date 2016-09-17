@@ -2,11 +2,11 @@ var replaceAll = require('./replaceAll');
 var QueryRunner = require('./queryRunner');
 var _ = require('lodash');
 
-var qrySequenceDDL = require('./qrySequenceDDL');
+var qryTransformCommandsForTableOnly = require('./qryTransformCommandsForTableOnly');
+
 
 module.exports = function(dbConn, schemaName, sequenceName, opts){
-    var originalDDLLines = 0;
-    var templateDDL;
+
     var combinedResult = {};
     var runQuery = QueryRunner(dbConn);
     opts = opts || {};
@@ -32,4 +32,13 @@ module.exports = function(dbConn, schemaName, sequenceName, opts){
 
                 return Promise.resolve(combinedResult);
            });
+
+    
+    function qrySequenceDDL(sequenceName, schemaName){
+        return {
+            fn: "query",
+            cmd: "select dbms_metadata.get_ddl('SEQUENCE',:sequenceName,:schemaName) DDL from dual",
+            bindings: [sequenceName, schemaName]
+        };
+    }
 }
