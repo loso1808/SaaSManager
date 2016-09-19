@@ -13,7 +13,7 @@ module.exports = function (schemaName, combinedDDL){
     appendToScript('\n\n----- Sequences ------');
     combinedDDL.forEach(function(item){
         if(item.objectType === 'sequence'){
-            appendToScript(item.ddl);
+            appendToScript(item.ddl + ';');
         }
     });
 
@@ -21,7 +21,7 @@ module.exports = function (schemaName, combinedDDL){
     appendToScript('\n\n----- Tables ------');
     combinedDDL.forEach(function(item){
         if(item.objectType === 'table'){
-            appendToScript(item.ddl);
+            appendToScript(item.ddl + ';');
         }
     });
 
@@ -30,7 +30,7 @@ module.exports = function (schemaName, combinedDDL){
     appendToScript('\n\n----- Table Indexes ------');
     combinedDDL.forEach(function(item){
         if(item.objectType === 'index'){
-            appendToScript(item.ddl);
+            appendToScript(item.ddl + ';');
         }
     });
 
@@ -38,7 +38,7 @@ module.exports = function (schemaName, combinedDDL){
     appendToScript('\n\n----- Table Constraints ------');
     combinedDDL.forEach(function(item){
         if(item.objectType === 'constraint'){
-            appendToScript(item.ddl);
+            appendToScript(item.ddl + ';');
         }
     });
 
@@ -46,7 +46,7 @@ module.exports = function (schemaName, combinedDDL){
     appendToScript('\n\n----- Table Ref Constraints ------');
     combinedDDL.forEach(function(item){
         if(item.objectType === 'refConstraint'){
-            appendToScript(item.ddl);
+            appendToScript(item.ddl + ';');
         }
     });
 

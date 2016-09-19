@@ -16,34 +16,19 @@ SimpleOracleDB.extend(oracledb);
 
 var getUserObjects = require('./getUserObjects');
 var generateObjectDDL = require('./generateObjectDDL');
-var formatTemplatedScript = require('./formatTemplatedScript');
 
 module.exports = function(connInfo, opts){
 
-    return (function() {
+    return Promise.resolve((function() {
                 var dbConn;
                 var schemaName = connInfo.user;
                 var result;
                 
-                // return oracledb.getConnection(connInfo)
-                //     .then(setConnection)
-                //     .then(getUserObjectsAsync)
-                //     .then(log)
-                //     .then(closeConnection)
-                //     .catch(function(err){
-                //         log("Error occurred generating DDL");
-                //         log(err);
-                //         log(err.stack);
-                //         throw err;
-                //     });
-
                 return oracledb.getConnection(connInfo)
                     .then(setConnection)
                     .then(getUserObjectsAsync)
                     .then(generateObjectDDLAsync)
-                    //.then(removeTerminatorFromDDL)
-                    .then(outputCombinedDDL)
-                    //.then(log)
+                    .then(removeTerminatorFromDDL)
                     .then(closeConnection)
                     .then(returnResult)
                     .catch(function(err){
@@ -71,9 +56,16 @@ module.exports = function(connInfo, opts){
                            });
                 }
 
-                function outputCombinedDDL(combinedDDL){
-                    log(formatTemplatedScript(schemaName, combinedDDL));
-                    return Promise.resolve(combinedDDL);
+                function removeTerminatorFromDDL(combinedResult){
+                    combinedResult.forEach(function(item, idx){
+                        if(_.isString(item.ddl)){
+                            var ddl = _.trim(item.ddl);
+                            ddl = _.trimEnd(ddl, ';');
+                            combinedResult[idx].ddl = ddl;
+                        }
+                    });
+                    result = combinedResult;
+                    return Promise.resolve(combinedResult);
                 }
 
                 function closeConnection(){
@@ -81,6 +73,7 @@ module.exports = function(connInfo, opts){
                 }
 
                 function returnResult(){
+                    log("Returning result " + result.length);
                     return Promise.resolve(result);
                 }
 
@@ -93,5 +86,5 @@ module.exports = function(connInfo, opts){
                     }
                     console.log(str);
                 }
-            })();
+            })());
 }

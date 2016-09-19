@@ -16,6 +16,8 @@ module.exports = function(dbConn, schemaName, objects, opts){
     return Promise.each(objects, function(obj){
         var objectName = obj['OBJECT_NAME'];
         var objectType = obj['OBJECT_TYPE'];
+        var tableName = obj['TABLE_NAME'];
+
         log("Generating DDL for " + objectType + ": " + objectName);
         if(objectType === 'TABLE'){
             return getDDLforTableWithInlineConstraints(dbConn, schemaName, objectName, opts)
@@ -28,7 +30,7 @@ module.exports = function(dbConn, schemaName, objects, opts){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'INDEX'){
-            return getDDLforIndex(dbConn, schemaName, objectName, opts)
+            return getDDLforIndex(dbConn, schemaName, objectName, tableName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
@@ -38,12 +40,12 @@ module.exports = function(dbConn, schemaName, objects, opts){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'CONSTRAINT'){
-            return getDDLforConstraint(dbConn, schemaName, objectName, opts)
+            return getDDLforConstraint(dbConn, schemaName, objectName, tableName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });
         }else if(objectType === 'REF_CONSTRAINT'){
-            return getDDLforRefConstraint(dbConn, schemaName, objectName, opts)
+            return getDDLforRefConstraint(dbConn, schemaName, objectName, tableName, opts)
                 .then(function(result){
                     combinedResult.push(result);
                 });

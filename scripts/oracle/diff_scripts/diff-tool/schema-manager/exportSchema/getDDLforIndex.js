@@ -4,7 +4,7 @@ var _ = require('lodash');
 var qryTransformCommandsForTableOnly = require('./qryTransformCommandsForTableOnly');
 
 
-module.exports = function(dbConn, schemaName, indexName, opts){
+module.exports = function(dbConn, schemaName, indexName, tableName, opts){
     
     var combinedResult = {};
     var runQuery = QueryRunner(dbConn);
@@ -36,7 +36,8 @@ module.exports = function(dbConn, schemaName, indexName, opts){
                 combinedResult = {
                     objectType: "index",
                     name: indexName,
-                    ddl: indexDDL 
+                    ddl: indexDDL,
+                    tableName: tableName 
                 };
 
                 return Promise.resolve(combinedResult);
