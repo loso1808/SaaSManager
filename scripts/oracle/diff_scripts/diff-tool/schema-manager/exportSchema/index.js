@@ -73,7 +73,7 @@ module.exports = function(connInfo, opts){
                 }
 
                 function returnResult(){
-                    log("Returning result " + result.length);
+                    //log("Returning result " + result.length);
                     return Promise.resolve(result);
                 }
 

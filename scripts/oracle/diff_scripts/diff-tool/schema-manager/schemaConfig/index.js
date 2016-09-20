@@ -10,7 +10,8 @@ var passwordGenOpts = {
 };
 
 module.exports = function(opts){
-    
+    opts = opts || {};
+
     opts.isManagedTableSpace = opts.isManagedTableSpace || false;
 
     opts.tablespaceOpts = opts.tablespaceOpts || {};
@@ -38,12 +39,12 @@ module.exports = function(opts){
             opts.logTablespace = opts.logTablespace || 'PNY_' + opts.schemaCode + '_LOG';
             if(opts.tablespaceOpts.separateIndexTablespace){
                 opts.logIndexTablespace = opts.logIndexTablespace || 'PNY_' + opts.schemaCode + '_LIDX';
+            }else{
+                opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
             }
         }else{
             opts.logTablespace = opts.logTablespace || opts.dataTablespace;
-            if(opts.tablespaceOpts.separateIndexTablespace){
-                opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
-            }
+            opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
         }
     }else{
         opts.schemaOwner = opts.schemaOwner || 'PEONY_OWNER';
@@ -62,12 +63,13 @@ module.exports = function(opts){
             opts.logTablespace = opts.logTablespace || 'PEONY_LOG_DATA';
             if(opts.tablespaceOpts.separateIndexTablespace){
                 opts.logIndexTablespace = opts.logIndexTablespace || 'PEONY_LOG_IDX_DATA';
+            }else{
+                opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
             }
         }else{
             opts.logTablespace = opts.logTablespace || opts.dataTablespace;
-            if(opts.tablespaceOpts.separateIndexTablespace){
-                opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
-            }
+            opts.logIndexTablespace = opts.logIndexTablespace || opts.indexTablespace;
+
         }
     }
 

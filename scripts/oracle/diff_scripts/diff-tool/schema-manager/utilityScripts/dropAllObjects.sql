@@ -15,7 +15,7 @@ BEGIN
   FOR userObj in (
     select 'drop '||object_type||' "' || object_name || '" ' str
     
-    from user_objects
+    from all_objects
     where generated = 'N' and owner = '{{SCHEMA_NAME}}'
   )
   LOOP

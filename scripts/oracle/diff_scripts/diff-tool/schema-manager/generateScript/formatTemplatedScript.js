@@ -1,13 +1,11 @@
 
 
-module.exports = function (schemaName, combinedDDL){
+module.exports = function (combinedDDL){
     //appendToScript(combinedDDL);
     var strScript = "";
     var appendToScript = function(str){
         strScript += str + "\n";
     }
-
-    appendToScript('\n\n----- DDL for ' + schemaName + ' ------');
 
     //output sequences
     appendToScript('\n\n----- Sequences ------');

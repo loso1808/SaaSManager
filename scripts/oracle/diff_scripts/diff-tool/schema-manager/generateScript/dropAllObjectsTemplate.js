@@ -1,5 +1,5 @@
-var utilityScripts = require('../utilityScripts');
+var dropAllObjects = require('../utilityScripts/dropAllObjects');
 
 module.exports = function(){
-    return utilityScripts.dropAllObjects().cmd + "\n/\n";
+    return dropAllObjects().cmd + "\n";
 }
