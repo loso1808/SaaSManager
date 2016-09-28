@@ -149,7 +149,7 @@ CREATE TABLE "PEONY_OWNER"."strain"
 	"user_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."strain_plasmid" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_strain_plasmid"."NEXTVAL" NOT NULL ENABLE ,
@@ -157,7 +157,7 @@ CREATE TABLE "PEONY_OWNER"."strain_plasmid"
 	"sequence_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."tag" 
    (
 	"name" VARCHAR2(400 BYTE) ,
@@ -166,7 +166,7 @@ CREATE TABLE "PEONY_OWNER"."tag"
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER ,
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_tag"."NEXTVAL" NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."tag_access" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_tag_access"."NEXTVAL" NOT NULL ENABLE ,
@@ -176,7 +176,7 @@ CREATE TABLE "PEONY_OWNER"."tag_access"
 	"dateCreated" DATE ,
 	"user_id" NUMBER ,
 	"global" NUMBER(1,0)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."user" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_user"."NEXTVAL" NOT NULL ENABLE ,
@@ -201,7 +201,7 @@ CREATE TABLE "PEONY_OWNER"."user"
 	"userAccount" VARCHAR2(256 BYTE) ,
 	"userRestrictionEnzymeGroups" CLOB ,
 	"notificationPref" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."user_role" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_user_role"."NEXTVAL" NOT NULL ENABLE ,
@@ -209,7 +209,7 @@ CREATE TABLE "PEONY_OWNER"."user_role"
 	"role_id" NUMBER NOT NULL ENABLE ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_DE_bin" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_DE_bin"."NEXTVAL" NOT NULL ENABLE ,
@@ -228,7 +228,7 @@ CREATE TABLE "PEONY_OWNER"."z_DE_bin"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_DE_bin_cell" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_DE_bin_cell"."NEXTVAL" NOT NULL ENABLE ,
@@ -242,7 +242,7 @@ CREATE TABLE "PEONY_OWNER"."z_DE_bin_cell"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_access_control" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_access_control"."NEXTVAL" NOT NULL ENABLE ,
@@ -257,7 +257,7 @@ CREATE TABLE "PEONY_OWNER"."z_access_control"
 	"dependsOn" NUMBER ,
 	"groupId" NUMBER ,
 	"dateCreated" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_activity_log" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_activity_log"."NEXTVAL" NOT NULL ENABLE ,
@@ -270,7 +270,7 @@ CREATE TABLE "PEONY_OWNER"."z_activity_log"
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"recordsFetched" NUMBER ,
 	"rawQuery" CLOB
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_assembly_op_input" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_assembly_op_input"."NEXTVAL" NOT NULL ENABLE ,
@@ -289,7 +289,7 @@ CREATE TABLE "PEONY_OWNER"."z_assembly_op_input"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_assembly_op_output" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_assembly_op_output"."NEXTVAL" NOT NULL ENABLE ,
@@ -305,7 +305,7 @@ CREATE TABLE "PEONY_OWNER"."z_assembly_op_output"
 	"user_id" NUMBER ,
 	"fullName" VARCHAR2(400 BYTE) ,
 	"outputType" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_assembly_operation" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_assembly_operation"."NEXTVAL" NOT NULL ENABLE ,
@@ -322,7 +322,7 @@ CREATE TABLE "PEONY_OWNER"."z_assembly_operation"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_assembly_run" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_assembly_run"."NEXTVAL" NOT NULL ENABLE ,
@@ -335,7 +335,7 @@ CREATE TABLE "PEONY_OWNER"."z_assembly_run"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_attached_design_ruleset" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_attached_design_ruleset"."NEXTVAL" NOT NULL ENABLE ,
@@ -349,7 +349,7 @@ CREATE TABLE "PEONY_OWNER"."z_attached_design_ruleset"
 	"dateModified" DATE ,
 	"shouldFilter" VARCHAR2(1 BYTE) ,
 	"shouldValidate" VARCHAR2(1 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_attached_tag" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_attached_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -363,7 +363,7 @@ CREATE TABLE "PEONY_OWNER"."z_attached_tag"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"filterLogic" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_custom_field" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_custom_field"."NEXTVAL" NOT NULL ENABLE ,
@@ -384,7 +384,7 @@ CREATE TABLE "PEONY_OWNER"."z_custom_field"
 	"defaultValueDate" DATE ,
 	"isAdminCreated" NUMBER ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_custom_field_value" 
    (
 	"id" NUMBER ,
@@ -402,7 +402,7 @@ CREATE TABLE "PEONY_OWNER"."z_custom_field_value"
 	"valueFlag" NUMBER ,
 	"valueDate" DATE ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_custom_j5parameters" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_custom_j5parameters"."NEXTVAL" NOT NULL ENABLE ,
@@ -453,7 +453,7 @@ CREATE TABLE "PEONY_OWNER"."z_custom_j5parameters"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_custom_setting" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_custom_setting"."NEXTVAL" NOT NULL ENABLE ,
@@ -467,7 +467,7 @@ CREATE TABLE "PEONY_OWNER"."z_custom_setting"
 	"configCategory" VARCHAR2(400 BYTE) ,
 	"dateModified" DATE ,
 	"dateCreated" DATE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_dd_part" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_dd_part"."NEXTVAL" NOT NULL ENABLE ,
@@ -479,7 +479,7 @@ CREATE TABLE "PEONY_OWNER"."z_dd_part"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_design_rule" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_design_rule"."NEXTVAL" NOT NULL ENABLE ,
@@ -496,7 +496,7 @@ CREATE TABLE "PEONY_OWNER"."z_design_rule"
 	"design_ruleset_id" NUMBER ,
 	"columnName" VARCHAR2(256 BYTE) ,
 	"columnIndex" VARCHAR2(32 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_design_rule_tag" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_design_rule_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -509,7 +509,7 @@ CREATE TABLE "PEONY_OWNER"."z_design_rule_tag"
 	"existence" VARCHAR2(32 BYTE) ,
 	"dateCreated" DATE ,
 	"dateModified" DATE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_design_ruleset" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_design_ruleset"."NEXTVAL" NOT NULL ENABLE ,
@@ -520,7 +520,7 @@ CREATE TABLE "PEONY_OWNER"."z_design_ruleset"
 	"dateModified" DATE ,
 	"shouldFilter" VARCHAR2(1 BYTE) ,
 	"shouldValidate" VARCHAR2(1 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_devicedesign" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_devicedesign"."NEXTVAL" NOT NULL ENABLE ,
@@ -537,7 +537,7 @@ CREATE TABLE "PEONY_OWNER"."z_devicedesign"
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"assemblyMethod" VARCHAR2(256 BYTE) ,
 	"paramPreset" VARCHAR2(256 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_eugene_rule" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_eugene_rule"."NEXTVAL" NOT NULL ENABLE ,
@@ -556,7 +556,7 @@ CREATE TABLE "PEONY_OWNER"."z_eugene_rule"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_group" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_group"."NEXTVAL" NOT NULL ENABLE ,
@@ -569,7 +569,7 @@ CREATE TABLE "PEONY_OWNER"."z_group"
 	"user_id" NUMBER ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_group_user" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_group_user"."NEXTVAL" NOT NULL ENABLE ,
@@ -581,7 +581,7 @@ CREATE TABLE "PEONY_OWNER"."z_group_user"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_j5run" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_j5run"."NEXTVAL" NOT NULL ENABLE ,
@@ -606,7 +606,7 @@ CREATE TABLE "PEONY_OWNER"."z_j5run"
 	"results" CLOB ,
 	"j5output" CLOB ,
 	"preset_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."design_rule" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_design_rule"."NEXTVAL" NOT NULL ENABLE ,
@@ -619,7 +619,7 @@ CREATE TABLE "PEONY_OWNER"."design_rule"
 	"design_ruleset_id" NUMBER ,
 	"columnName" VARCHAR2(256 BYTE) ,
 	"columnIndex" VARCHAR2(32 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."design_rule_tag" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_design_rule_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -628,7 +628,7 @@ CREATE TABLE "PEONY_OWNER"."design_rule_tag"
 	"existence" VARCHAR2(32 BYTE) ,
 	"dateCreated" DATE ,
 	"dateModified" DATE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."design_ruleset" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_design_ruleset"."NEXTVAL" NOT NULL ENABLE ,
@@ -639,7 +639,7 @@ CREATE TABLE "PEONY_OWNER"."design_ruleset"
 	"dateModified" DATE ,
 	"shouldFilter" VARCHAR2(1 BYTE) ,
 	"shouldValidate" VARCHAR2(1 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."devicedesign" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_devicedesign"."NEXTVAL" NOT NULL ENABLE ,
@@ -652,7 +652,7 @@ CREATE TABLE "PEONY_OWNER"."devicedesign"
 	"dateModified" TIMESTAMP (6) ,
 	"assemblyMethod" VARCHAR2(256 BYTE) ,
 	"paramPreset" VARCHAR2(256 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."eugene_rule" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_eugene_rule"."NEXTVAL" NOT NULL ENABLE ,
@@ -667,7 +667,7 @@ CREATE TABLE "PEONY_OWNER"."eugene_rule"
 	"devicedesign_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."group" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_group"."NEXTVAL" NOT NULL ENABLE ,
@@ -676,7 +676,7 @@ CREATE TABLE "PEONY_OWNER"."group"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."group_user" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_group_user"."NEXTVAL" NOT NULL ENABLE ,
@@ -684,7 +684,7 @@ CREATE TABLE "PEONY_OWNER"."group_user"
 	"user_id" NUMBER NOT NULL ENABLE ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."j5run" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_j5run"."NEXTVAL" NOT NULL ENABLE ,
@@ -705,7 +705,7 @@ CREATE TABLE "PEONY_OWNER"."j5run"
 	"project_id" NUMBER(38,0) ,
 	"clientTimeDiff" VARCHAR2(256 BYTE) ,
 	"preset_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."lock" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_lock"."NEXTVAL" NOT NULL ENABLE ,
@@ -715,7 +715,7 @@ CREATE TABLE "PEONY_OWNER"."lock"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"lockExpires" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."master" 
    (
 	"user_id" NUMBER ,
@@ -725,7 +725,7 @@ CREATE TABLE "PEONY_OWNER"."master"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_master"."NEXTVAL" NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."part" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_part"."NEXTVAL" NOT NULL ENABLE ,
@@ -746,7 +746,7 @@ CREATE TABLE "PEONY_OWNER"."part"
 	"dateModified" TIMESTAMP (6) ,
 	"preferred3PrimeOverhangs" VARCHAR2(256 BYTE) ,
 	"preferred5PrimeOverhangs" VARCHAR2(256 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."part_tag" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_part_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -755,7 +755,7 @@ CREATE TABLE "PEONY_OWNER"."part_tag"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."plate" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_plate"."NEXTVAL" NOT NULL ENABLE ,
@@ -764,7 +764,7 @@ CREATE TABLE "PEONY_OWNER"."plate"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."plate_set" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_plate_set"."NEXTVAL" NOT NULL ENABLE ,
@@ -775,7 +775,7 @@ CREATE TABLE "PEONY_OWNER"."plate_set"
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER ,
 	"plateFormat" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."plate_well" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_plate_well"."NEXTVAL" NOT NULL ENABLE ,
@@ -788,7 +788,7 @@ CREATE TABLE "PEONY_OWNER"."plate_well"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."preset" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_preset"."NEXTVAL" NOT NULL ENABLE ,
@@ -797,7 +797,7 @@ CREATE TABLE "PEONY_OWNER"."preset"
 	"user_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."project" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_project"."NEXTVAL" NOT NULL ENABLE ,
@@ -805,7 +805,7 @@ CREATE TABLE "PEONY_OWNER"."project"
 	"user_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."protein" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_protein"."NEXTVAL" NOT NULL ENABLE ,
@@ -820,7 +820,7 @@ CREATE TABLE "PEONY_OWNER"."protein"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"shared_repo" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."protein_feature" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_protein_feature"."NEXTVAL" NOT NULL ENABLE ,
@@ -833,7 +833,7 @@ CREATE TABLE "PEONY_OWNER"."protein_feature"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"prot_feature_type_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."protocol" 
    (
 	"id" NUMBER(*,0) DEFAULT ON NULL "PEONY_OWNER"."s_protocol"."NEXTVAL" NOT NULL ENABLE ,
@@ -846,13 +846,13 @@ CREATE TABLE "PEONY_OWNER"."protocol"
 	"contact" VARCHAR2(256 BYTE) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."role" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_role"."NEXTVAL" NOT NULL ENABLE ,
 	"name" VARCHAR2(400 BYTE) NOT NULL ENABLE ,
 	"description" VARCHAR2(2000 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."seq_blacklist" 
    (
 	"user_id" NUMBER(*,0) ,
@@ -860,7 +860,7 @@ CREATE TABLE "PEONY_OWNER"."seq_blacklist"
 	"id" NUMBER(*,0) DEFAULT ON NULL "PEONY_OWNER"."s_seq_blacklist"."NEXTVAL" NOT NULL ENABLE ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."seq_feature" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_seq_feature"."NEXTVAL" NOT NULL ENABLE ,
@@ -874,7 +874,7 @@ CREATE TABLE "PEONY_OWNER"."seq_feature"
 	"protein_id" NUMBER(*,0) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."sequence" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_sequence"."NEXTVAL" NOT NULL ENABLE ,
@@ -891,7 +891,7 @@ CREATE TABLE "PEONY_OWNER"."sequence"
 	"shared_repo" VARCHAR2(400 BYTE) ,
 	"type" VARCHAR2(16 BYTE) ,
 	"molecule_type" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."sequence_j5run" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_sequence_j5run"."NEXTVAL" NOT NULL ENABLE ,
@@ -900,7 +900,7 @@ CREATE TABLE "PEONY_OWNER"."sequence_j5run"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"construct_index" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_part" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_part"."NEXTVAL" NOT NULL ENABLE ,
@@ -925,7 +925,7 @@ CREATE TABLE "PEONY_OWNER"."z_part"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_part_tag" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_part_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -938,7 +938,7 @@ CREATE TABLE "PEONY_OWNER"."z_part_tag"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_plate" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_plate"."NEXTVAL" NOT NULL ENABLE ,
@@ -951,7 +951,7 @@ CREATE TABLE "PEONY_OWNER"."z_plate"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_plate_set" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_plate_set"."NEXTVAL" NOT NULL ENABLE ,
@@ -966,7 +966,7 @@ CREATE TABLE "PEONY_OWNER"."z_plate_set"
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER ,
 	"plateFormat" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_plate_well" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_plate_well"."NEXTVAL" NOT NULL ENABLE ,
@@ -983,7 +983,7 @@ CREATE TABLE "PEONY_OWNER"."z_plate_well"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_preset" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_preset"."NEXTVAL" NOT NULL ENABLE ,
@@ -996,7 +996,7 @@ CREATE TABLE "PEONY_OWNER"."z_preset"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_project" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_project"."NEXTVAL" NOT NULL ENABLE ,
@@ -1008,7 +1008,7 @@ CREATE TABLE "PEONY_OWNER"."z_project"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_protein" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_protein"."NEXTVAL" NOT NULL ENABLE ,
@@ -1027,7 +1027,7 @@ CREATE TABLE "PEONY_OWNER"."z_protein"
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"shared_repo" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_protein_feature" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_protein_feature"."NEXTVAL" NOT NULL ENABLE ,
@@ -1044,7 +1044,7 @@ CREATE TABLE "PEONY_OWNER"."z_protein_feature"
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"prot_feature_type_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_protocol" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_protocol"."NEXTVAL" NOT NULL ENABLE ,
@@ -1061,7 +1061,7 @@ CREATE TABLE "PEONY_OWNER"."z_protocol"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_role" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_role"."NEXTVAL" NOT NULL ENABLE ,
@@ -1071,7 +1071,7 @@ CREATE TABLE "PEONY_OWNER"."z_role"
 	"description" VARCHAR2(2000 BYTE) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_seq_blacklist" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_seq_blacklist"."NEXTVAL" NOT NULL ENABLE ,
@@ -1083,7 +1083,7 @@ CREATE TABLE "PEONY_OWNER"."z_seq_blacklist"
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_seq_feature" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_seq_feature"."NEXTVAL" NOT NULL ENABLE ,
@@ -1101,7 +1101,7 @@ CREATE TABLE "PEONY_OWNER"."z_seq_feature"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_sequence" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_sequence"."NEXTVAL" NOT NULL ENABLE ,
@@ -1122,7 +1122,7 @@ CREATE TABLE "PEONY_OWNER"."z_sequence"
 	"shared_repo" VARCHAR2(400 BYTE) ,
 	"type" VARCHAR2(16 BYTE) ,
 	"molecule_type" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_sequence_j5run" 
    (
 	"logId" NUMBER DEFAULT "PEONY_OWNER"."sz_sequence_j5run"."NEXTVAL" ,
@@ -1135,7 +1135,7 @@ CREATE TABLE "PEONY_OWNER"."z_sequence_j5run"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"construct_index" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_strain" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_strain"."NEXTVAL" NOT NULL ENABLE ,
@@ -1163,7 +1163,7 @@ CREATE TABLE "PEONY_OWNER"."z_strain"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_strain_plasmid" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_strain_plasmid"."NEXTVAL" NOT NULL ENABLE ,
@@ -1175,7 +1175,7 @@ CREATE TABLE "PEONY_OWNER"."z_strain_plasmid"
 	"dateModified" TIMESTAMP (6) ,
 	"logAction" VARCHAR2(400 BYTE) ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_tag" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -1188,7 +1188,7 @@ CREATE TABLE "PEONY_OWNER"."z_tag"
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER ,
 	"id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_tag_access" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_tag_access"."NEXTVAL" NOT NULL ENABLE ,
@@ -1202,7 +1202,7 @@ CREATE TABLE "PEONY_OWNER"."z_tag_access"
 	"dateCreated" DATE ,
 	"user_id" NUMBER ,
 	"global" NUMBER(1,0)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_user" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_user"."NEXTVAL" NOT NULL ENABLE ,
@@ -1231,7 +1231,7 @@ CREATE TABLE "PEONY_OWNER"."z_user"
 	"userAccount" VARCHAR2(256 BYTE) ,
 	"userRestrictionEnzymeGroups" CLOB ,
 	"notificationPref" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_user_role" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_user_role"."NEXTVAL" NOT NULL ENABLE ,
@@ -1243,7 +1243,7 @@ CREATE TABLE "PEONY_OWNER"."z_user_role"
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_winston" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_winston"."NEXTVAL" NOT NULL ENABLE ,
@@ -1254,7 +1254,7 @@ CREATE TABLE "PEONY_OWNER"."z_winston"
 	"metadata" CLOB ,
 	"dateLogged" TIMESTAMP (6) DEFAULT ON NULL SYSDATE NOT NULL ENABLE ,
 	"channel" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."DE_bin" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_DE_bin"."NEXTVAL" NOT NULL ENABLE ,
@@ -1269,7 +1269,7 @@ CREATE TABLE "PEONY_OWNER"."DE_bin"
 	"DEIndex" NUMBER(*,0) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."DE_bin_cell" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_DE_bin_cell"."NEXTVAL" NOT NULL ENABLE ,
@@ -1279,7 +1279,7 @@ CREATE TABLE "PEONY_OWNER"."DE_bin_cell"
 	"part_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."access_control" 
    (
 	"acId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_access_control"."NEXTVAL" NOT NULL ENABLE ,
@@ -1290,7 +1290,7 @@ CREATE TABLE "PEONY_OWNER"."access_control"
 	"dateCreated" TIMESTAMP (6) ,
 	"creatorId" NUMBER ,
 	"dependsOn" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."assembly_op_input" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_assembly_op_input"."NEXTVAL" NOT NULL ENABLE ,
@@ -1305,7 +1305,7 @@ CREATE TABLE "PEONY_OWNER"."assembly_op_input"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."assembly_op_output" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_assembly_op_output"."NEXTVAL" NOT NULL ENABLE ,
@@ -1317,7 +1317,7 @@ CREATE TABLE "PEONY_OWNER"."assembly_op_output"
 	"user_id" NUMBER ,
 	"fullName" VARCHAR2(400 BYTE) ,
 	"outputType" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."assembly_operation" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_assembly_operation"."NEXTVAL" NOT NULL ENABLE ,
@@ -1330,7 +1330,7 @@ CREATE TABLE "PEONY_OWNER"."assembly_operation"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."assembly_run" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_assembly_run"."NEXTVAL" NOT NULL ENABLE ,
@@ -1339,7 +1339,7 @@ CREATE TABLE "PEONY_OWNER"."assembly_run"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."attached_design_ruleset" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_attached_design_ruleset"."NEXTVAL" NOT NULL ENABLE ,
@@ -1349,7 +1349,7 @@ CREATE TABLE "PEONY_OWNER"."attached_design_ruleset"
 	"dateModified" DATE ,
 	"shouldFilter" VARCHAR2(1 BYTE) ,
 	"shouldValidate" VARCHAR2(1 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."attached_tag" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_attached_tag"."NEXTVAL" NOT NULL ENABLE ,
@@ -1359,7 +1359,7 @@ CREATE TABLE "PEONY_OWNER"."attached_tag"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"filterLogic" VARCHAR2(400 BYTE)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."clob_buffer" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_clob_buffer"."NEXTVAL" NOT NULL ENABLE ,
@@ -1367,7 +1367,7 @@ CREATE TABLE "PEONY_OWNER"."clob_buffer"
 	"bufferId" VARCHAR2(400 BYTE) ,
 	"chunkIndex" NUMBER ,
 	"dateCreated" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."custom_field" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_custom_field"."NEXTVAL" NOT NULL ENABLE ,
@@ -1384,7 +1384,7 @@ CREATE TABLE "PEONY_OWNER"."custom_field"
 	"defaultValueDate" DATE ,
 	"isAdminCreated" NUMBER ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."custom_field_value" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_custom_field_value"."NEXTVAL" NOT NULL ENABLE ,
@@ -1398,7 +1398,7 @@ CREATE TABLE "PEONY_OWNER"."custom_field_value"
 	"valueFlag" NUMBER ,
 	"valueDate" DATE ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."custom_j5parameters" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_custom_j5parameters"."NEXTVAL" NOT NULL ENABLE ,
@@ -1445,7 +1445,7 @@ CREATE TABLE "PEONY_OWNER"."custom_j5parameters"
 	"master_oligo_num_of_digits" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."custom_setting" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_custom_setting"."NEXTVAL" NOT NULL ENABLE ,
@@ -1455,7 +1455,7 @@ CREATE TABLE "PEONY_OWNER"."custom_setting"
 	"configCategory" VARCHAR2(400 BYTE) ,
 	"dateModified" DATE ,
 	"dateCreated" DATE
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."dd_part" 
    (
 	"id" NUMBER DEFAULT ON NULL "PEONY_OWNER"."s_dd_part"."NEXTVAL" NOT NULL ENABLE ,
@@ -1463,7 +1463,7 @@ CREATE TABLE "PEONY_OWNER"."dd_part"
 	"part_id" NUMBER ,
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6)
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_lock" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_lock"."NEXTVAL" NOT NULL ENABLE ,
@@ -1477,7 +1477,7 @@ CREATE TABLE "PEONY_OWNER"."z_lock"
 	"dateModified" TIMESTAMP (6) ,
 	"dateCreated" TIMESTAMP (6) ,
 	"lockExpires" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 CREATE TABLE "PEONY_OWNER"."z_master" 
    (
 	"logId" NUMBER DEFAULT ON NULL "PEONY_OWNER"."sz_master"."NEXTVAL" NOT NULL ENABLE ,
@@ -1491,226 +1491,226 @@ CREATE TABLE "PEONY_OWNER"."z_master"
 	"dateCreated" TIMESTAMP (6) ,
 	"dateModified" TIMESTAMP (6) ,
 	"user_id" NUMBER
-)  TABLESPACE "PEONY_DATA" ;
+)   ;
 
 
 ----- Table Indexes ------
 CREATE UNIQUE INDEX "PEONY_OWNER"."role_pk" ON "PEONY_OWNER"."role" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."user_role_user_id_idx" ON "PEONY_OWNER"."user_role" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."user_pk" ON "PEONY_OWNER"."user" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."user_role_pk" ON "PEONY_OWNER"."user_role" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."protocol_user_id_idx" ON "PEONY_OWNER"."protocol" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."assembly_operation_pk" ON "PEONY_OWNER"."assembly_operation" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_attached_design_ruleset_pk" ON "PEONY_OWNER"."z_attached_design_ruleset" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."project_pk" ON "PEONY_OWNER"."project" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."seq_blacklist_pk" ON "PEONY_OWNER"."seq_blacklist" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_project_pk" ON "PEONY_OWNER"."z_project" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."tag_pk" ON "PEONY_OWNER"."tag" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."plate_set_pk" ON "PEONY_OWNER"."plate_set" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_assembly_op_output_pk" ON "PEONY_OWNER"."z_assembly_op_output" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_group_pk" ON "PEONY_OWNER"."z_group" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."seq_blacklist_user_id_idx" ON "PEONY_OWNER"."seq_blacklist" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_protein_feature_pk" ON "PEONY_OWNER"."z_protein_feature" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_eugene_rule_pk" ON "PEONY_OWNER"."z_eugene_rule" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_sequence_j5run_pk" ON "PEONY_OWNER"."z_sequence_j5run" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_custom_j5parameters_pk" ON "PEONY_OWNER"."z_custom_j5parameters" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."preset_user_id_idx" ON "PEONY_OWNER"."preset" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_tag_pk" ON "PEONY_OWNER"."z_tag" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."strain_user_id_idx" ON "PEONY_OWNER"."strain" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_strain_pk" ON "PEONY_OWNER"."z_strain" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_attached_tag_pk" ON "PEONY_OWNER"."z_attached_tag" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_custom_setting_pk" ON "PEONY_OWNER"."z_custom_setting" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."j5run_user_id_idx" ON "PEONY_OWNER"."j5run" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."custom_j5parameter_user_id_idx" ON "PEONY_OWNER"."custom_j5parameters" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_assembly_operation_pk" ON "PEONY_OWNER"."z_assembly_operation" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."group_user_id_idx" ON "PEONY_OWNER"."group" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."assembly_op_input_pk" ON "PEONY_OWNER"."assembly_op_input" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."plate_pk" ON "PEONY_OWNER"."plate" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."eugene_rule_pk" ON "PEONY_OWNER"."eugene_rule" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_plate_well_pk" ON "PEONY_OWNER"."z_plate_well" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_master_pk" ON "PEONY_OWNER"."z_master" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."strain_pk" ON "PEONY_OWNER"."strain" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."custom_j5parameters_pk" ON "PEONY_OWNER"."custom_j5parameters" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_preset_pk" ON "PEONY_OWNER"."z_preset" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."design_rule_pk" ON "PEONY_OWNER"."design_rule" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."group_user_pk" ON "PEONY_OWNER"."group_user" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."strain_plasmid_pk" ON "PEONY_OWNER"."strain_plasmid" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_role_pk" ON "PEONY_OWNER"."z_role" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_design_rule_tag_pk" ON "PEONY_OWNER"."z_design_rule_tag" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."sequence_j5run_pk" ON "PEONY_OWNER"."sequence_j5run" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_protocol_pk" ON "PEONY_OWNER"."z_protocol" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."group_pk" ON "PEONY_OWNER"."group" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."tag_access_pk" ON "PEONY_OWNER"."tag_access" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_DE_bin_pk" ON "PEONY_OWNER"."z_DE_bin" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."DE_bin_cell_pk" ON "PEONY_OWNER"."DE_bin_cell" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."access_control_obj_id_name_idx" ON "PEONY_OWNER"."access_control" ("objectId", "objectName") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."access_control_pk" ON "PEONY_OWNER"."access_control" ("acId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_user_pk" ON "PEONY_OWNER"."z_user" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."sequence_pk" ON "PEONY_OWNER"."sequence" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."lock_pk" ON "PEONY_OWNER"."lock" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_custom_field_value_pk" ON "PEONY_OWNER"."z_custom_field_value" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."part_user_id_idx" ON "PEONY_OWNER"."part" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."part_pk" ON "PEONY_OWNER"."part" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_part_pk" ON "PEONY_OWNER"."z_part" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_user_role_pk" ON "PEONY_OWNER"."z_user_role" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."DE_bin_pk" ON "PEONY_OWNER"."DE_bin" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_DE_bin_cell_pk" ON "PEONY_OWNER"."z_DE_bin_cell" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_lock_pk" ON "PEONY_OWNER"."z_lock" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."sequence_user_id_idx" ON "PEONY_OWNER"."sequence" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_sequence_pk" ON "PEONY_OWNER"."z_sequence" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."clob_buffer_pk" ON "PEONY_OWNER"."clob_buffer" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."custom_field_value_pk" ON "PEONY_OWNER"."custom_field_value" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."custom_field_pk" ON "PEONY_OWNER"."custom_field" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_activity_log_pk" ON "PEONY_OWNER"."z_activity_log" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_custom_field_pk" ON "PEONY_OWNER"."z_custom_field" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_access_control_pk" ON "PEONY_OWNER"."z_access_control" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."devicedesign_user_id_idx" ON "PEONY_OWNER"."devicedesign" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."devicedesign_pk" ON "PEONY_OWNER"."devicedesign" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_devicedesign_pk" ON "PEONY_OWNER"."z_devicedesign" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."seq_feature_pk" ON "PEONY_OWNER"."seq_feature" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_seq_feature_pk" ON "PEONY_OWNER"."z_seq_feature" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."dd_part_pk" ON "PEONY_OWNER"."dd_part" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_dd_part_pk" ON "PEONY_OWNER"."z_dd_part" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_plate_set_pk" ON "PEONY_OWNER"."z_plate_set" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_group_user_pk" ON "PEONY_OWNER"."z_group_user" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."attached_tag_pk" ON "PEONY_OWNER"."attached_tag" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_design_rule_pk" ON "PEONY_OWNER"."z_design_rule" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."project_user_id_idx" ON "PEONY_OWNER"."project" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_part_tag_pk" ON "PEONY_OWNER"."z_part_tag" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_strain_plasmid_pk" ON "PEONY_OWNER"."z_strain_plasmid" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_assembly_run_pk" ON "PEONY_OWNER"."z_assembly_run" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."part_tag_pk" ON "PEONY_OWNER"."part_tag" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."master_pk" ON "PEONY_OWNER"."master" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."protein_feature_pk" ON "PEONY_OWNER"."protein_feature" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."assembly_op_output_pk" ON "PEONY_OWNER"."assembly_op_output" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."preset_pk" ON "PEONY_OWNER"."preset" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_winston_pk" ON "PEONY_OWNER"."z_winston" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."j5run_pk" ON "PEONY_OWNER"."j5run" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."group_user_user_id_idx" ON "PEONY_OWNER"."group_user" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE INDEX "PEONY_OWNER"."protein_user_id_idx" ON "PEONY_OWNER"."protein" ("user_id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_j5run_pk" ON "PEONY_OWNER"."z_j5run" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_seq_blacklist_pk" ON "PEONY_OWNER"."z_seq_blacklist" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_assembly_op_input_pk" ON "PEONY_OWNER"."z_assembly_op_input" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."custom_setting_pk" ON "PEONY_OWNER"."custom_setting" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."protocol_pk" ON "PEONY_OWNER"."protocol" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_tag_access_pk" ON "PEONY_OWNER"."z_tag_access" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."plate_well_pk" ON "PEONY_OWNER"."plate_well" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_plate_pk" ON "PEONY_OWNER"."z_plate" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."attached_design_ruleset_pk" ON "PEONY_OWNER"."attached_design_ruleset" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."design_ruleset_pk" ON "PEONY_OWNER"."design_ruleset" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."protein_pk" ON "PEONY_OWNER"."protein" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."design_rule_tag_pk" ON "PEONY_OWNER"."design_rule_tag" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_design_ruleset_pk" ON "PEONY_OWNER"."z_design_ruleset" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."z_protein_pk" ON "PEONY_OWNER"."z_protein" ("logId") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 CREATE UNIQUE INDEX "PEONY_OWNER"."assembly_run_pk" ON "PEONY_OWNER"."assembly_run" ("id") 
-   TABLESPACE "PEONY_DATA" ;
+    ;
 
 
 ----- Table Constraints ------
@@ -2050,29 +2050,16 @@ END CONCAT_CLOB_BUFFER;
 /
 
 
-insert into "PEONY_OWNER"."user" ("id","username","firstName","lastName") values (0, 'app','app','server');
+------ Insert Initial Values --------
 
-Insert into "PEONY_OWNER"."role" ("id","name","description") values (4,'viewer','Can view data in the shared Peony repo');
-Insert into "PEONY_OWNER"."role" ("id","name","description") values (5,'contributor','Can add data into the shared Peony repo');
+insert into "PEONY_OWNER"."user" ("id","username","firstName","lastName") values (0, 'app','app','server');
 Insert into "PEONY_OWNER"."role" ("id","name","description") values (1,'editor','Can edit their own non-shared data');
 Insert into "PEONY_OWNER"."role" ("id","name","description") values (2,'admin','Full access to all app functionality.');
 Insert into "PEONY_OWNER"."role" ("id","name","description") values (3,'user_manager','Can manage users and assign roles.');
+Insert into "PEONY_OWNER"."role" ("id","name","description") values (4,'viewer','Can view data in the shared Peony repo');
+Insert into "PEONY_OWNER"."role" ("id","name","description") values (5,'contributor','Can add data into the shared Peony repo');
 Insert into "PEONY_OWNER"."role" ("id","name","description") values (6,'tag_admin','Can manage and assign permissions for tags.');
-
---increase sequence
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-select "PEONY_OWNER"."s_role".NEXTVAL from dual;
-
-insert into "PEONY_OWNER"."user" ("id","username","firstName","lastName", "password", "activated", "activeFlag") 
-values (1, 'admin','Admin','User', '$2a$10$a3BOTytYHBko.I4aKpAPR.4b6Sr3s93mUH.UNwMyDGhdxo42sm.GW', 1, 1);
-
---increase sequence
-select "PEONY_OWNER"."s_user".NEXTVAL from dual;
-
+Insert into "PEONY_OWNER"."user" ("id","username","firstName","lastName", "password", "activated", "activeFlag") values (1, 'admin','Admin','User', '$2a$10$a3BOTytYHBko.I4aKpAPR.4b6Sr3s93mUH.UNwMyDGhdxo42sm.GW', 1, 1);
 insert into "PEONY_OWNER"."user_role" ("user_id", "role_id") values (1, 2);
-
 commit;
+

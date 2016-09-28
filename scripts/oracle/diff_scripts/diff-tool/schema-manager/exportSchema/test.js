@@ -36,9 +36,9 @@ var connInfo = {
 
 var exportSchema = require('./index');
 
-exportSchemaAndGenerateScript();
+//exportSchemaAndGenerateScript();
 //exportSchemaAndSaveToScratch();
-//generateScriptFromScratch();
+generateScriptFromScratch();
 
 function exportSchemaAndSaveToScratch(){
     exportSchema(connInfo)
@@ -115,7 +115,7 @@ function log(msg){
 
 function outputTemplatedScript(combinedDDL){
     log(schemaConfig);
-    return Promise.resolve(generateScript(combinedDDL, schemaConfig));
+    return Promise.resolve(generateScript(combinedDDL, schemaConfig, { noTablespace: true }));
 }
 
 // function outputCombinedDDL(combinedDDL){
