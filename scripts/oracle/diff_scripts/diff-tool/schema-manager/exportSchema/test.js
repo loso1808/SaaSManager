@@ -11,16 +11,17 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')();
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_10_0' });
+
 
 var scratchPath = path.resolve(__dirname, '..', 'scratch', 'combinedDDL.json');
 var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', 'schema.sql');
 
-var connInfo = {
-    user: "PEONY_OWNER",
-    password: "master#0503",
-    connectString: "localhost/ORCL"
-};
+// var connInfo = {
+//     user: "PEONY_OWNER",
+//     password: "master#0503",
+//     connectString: "localhost/ORCL"
+// };
 
 // var connInfo = {
 //     user: "PEONY_OWNER",
@@ -28,17 +29,17 @@ var connInfo = {
 //     connectString: "192.168.1.28/ORCL"
 // };
 
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
+var connInfo = {
+    user: "PEONY_OWNER",
+    password: "master#0503",
+    connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+};
 
 var exportSchema = require('./index');
 
-//exportSchemaAndGenerateScript();
+exportSchemaAndGenerateScript();
 //exportSchemaAndSaveToScratch();
-generateScriptFromScratch();
+//generateScriptFromScratch();
 
 function exportSchemaAndSaveToScratch(){
     exportSchema(connInfo)

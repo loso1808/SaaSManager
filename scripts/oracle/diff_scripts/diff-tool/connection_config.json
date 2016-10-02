@@ -403,7 +403,22 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 320000
-    },
+    },         
+    "aws_rc1100": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "58YefAHBfGTB1MopJ",
+            "user": "PNY_RC_1_10_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 320000
+    },    
     "local_arzeda": {
         "client": "strong-oracle",
         "connection": {
