@@ -18,13 +18,18 @@ var getUserObjects = require('./getUserObjects');
 var generateObjectDDL = require('./generateObjectDDL');
 
 module.exports = function(connInfo, opts){
+    opts = opts || {};
+    opts.log = opts.log || log;
 
     return Promise.resolve((function() {
-                var dbConn;
+                var dbPool;
                 var schemaName = connInfo.user;
                 var result;
-                
-                return oracledb.getConnection(connInfo)
+                var poolAttr = _.assign({}, connInfo);
+                poolAttr.poolMax = 100;
+
+                //return oracledb.getConnection(connInfo)
+                 return oracledb.createPool(poolAttr)
                     .then(setConnection)
                     .then(getUserObjectsAsync)
                     .then(generateObjectDDLAsync)
@@ -39,21 +44,24 @@ module.exports = function(connInfo, opts){
                     });
 
                 function setConnection(conn) {
-                    dbConn = conn;
+                    dbPool = conn;
                 }
 
                 function getUserObjectsAsync(){
                     log("Getting objects for schema " + schemaName);
-                    return getUserObjects(dbConn, schemaName, { log: log });
+                    return dbPool.getConnection()
+                           .then(function(dbConn){
+                                return getUserObjects(dbConn, schemaName, opts);
+                           });
                 }
 
                 function generateObjectDDLAsync(results){
                     var objects = results.rows;
-                    return generateObjectDDL(dbConn, schemaName, objects, { log: log })
-                           .then(function(objDDL){
-                               result = objDDL;
-                               return Promise.resolve(result);
-                           });
+                    return generateObjectDDL(dbPool, schemaName, objects, opts)
+                            .then(function(objDDL){
+                                result = objDDL;
+                                return Promise.resolve(result);
+                            });
                 }
 
                 function removeTerminatorFromDDL(combinedResult){
@@ -69,22 +77,22 @@ module.exports = function(connInfo, opts){
                 }
 
                 function closeConnection(){
-                    return dbConn.close();
+                    return dbPool.close();
                 }
 
                 function returnResult(){
                     //log("Returning result " + result.length);
                     return Promise.resolve(result);
                 }
-
-                function log(msg){
-                    var str = "";
-                    if(_.isString(msg)){
-                        str = msg;
-                    }else{
-                        str = util.inspect(msg, { showHidden: false, depth: 12 });
-                    }
-                    console.log(str);
-                }
             })());
+
+    function log(msg){
+        var str = "";
+        if(_.isString(msg)){
+            str = msg;
+        }else{
+            str = util.inspect(msg, { showHidden: false, depth: 12 });
+        }
+        console.log(str);
+    }
 }

@@ -8,7 +8,7 @@ var log = require('../../logger');
 runJob({
         type: 'sync-schema',
         source: {
-            connectionName: "local_rc170"
+            connectionName: "aws_sfdev"
         },
         target: {
             connectionName: "local_po"
