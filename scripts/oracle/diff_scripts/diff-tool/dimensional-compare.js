@@ -40,7 +40,7 @@ function getCompoundKey(obj, sep){
     //keys.sort();
     var compoundKey = "";
     keys.forEach(function (k) {
-        compoundKey += k + sep + obj[k] + sep; 
+        compoundKey += k + sep + _.trim(obj[k]) + sep; 
     });
     //console.log('Compound Key: ' + compoundKey);
     return compoundKey;
