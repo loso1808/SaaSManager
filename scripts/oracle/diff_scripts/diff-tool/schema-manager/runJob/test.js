@@ -12,7 +12,8 @@ runJob({
         },
         target: {
             connectionName: "local_po"
-        }
+        },
+        templateFromFile: true
     }, { log: log })
 .then(done)
 .catch(function(err){

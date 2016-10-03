@@ -22,14 +22,15 @@ module.exports = function(connInfo, opts){
     opts.log = opts.log || log;
 
     return Promise.resolve((function() {
-                var dbPool;
+                //var dbPool;
+                var dbConn;
                 var schemaName = connInfo.user;
                 var result;
                 var poolAttr = _.assign({}, connInfo);
                 poolAttr.poolMax = 100;
 
-                //return oracledb.getConnection(connInfo)
-                 return oracledb.createPool(poolAttr)
+                return oracledb.getConnection(connInfo)
+                //return oracledb.createPool(poolAttr)
                     .then(setConnection)
                     .then(getUserObjectsAsync)
                     .then(generateObjectDDLAsync)
@@ -44,20 +45,21 @@ module.exports = function(connInfo, opts){
                     });
 
                 function setConnection(conn) {
-                    dbPool = conn;
+                    dbConn = conn;
                 }
 
                 function getUserObjectsAsync(){
                     log("Getting objects for schema " + schemaName);
-                    return dbPool.getConnection()
-                           .then(function(dbConn){
-                                return getUserObjects(dbConn, schemaName, opts);
-                           });
+                    return getUserObjects(dbConn, schemaName, opts);
+                    // return dbPool.getConnection()
+                    //        .then(function(dbConn){
+                    //             return getUserObjects(dbConn, schemaName, opts);
+                    //        });
                 }
 
                 function generateObjectDDLAsync(results){
                     var objects = results.rows;
-                    return generateObjectDDL(dbPool, schemaName, objects, opts)
+                    return generateObjectDDL(dbConn, schemaName, objects, opts)
                             .then(function(objDDL){
                                 result = objDDL;
                                 return Promise.resolve(result);
@@ -77,7 +79,7 @@ module.exports = function(connInfo, opts){
                 }
 
                 function closeConnection(){
-                    return dbPool.close();
+                    return dbConn.close();
                 }
 
                 function returnResult(){

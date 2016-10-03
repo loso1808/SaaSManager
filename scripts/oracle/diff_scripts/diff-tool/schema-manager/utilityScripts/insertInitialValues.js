@@ -1,6 +1,9 @@
+
+var Mustache = require('mustache');
+
 var assignEmptyBindingsToCommandArray = require('../exportSchema/assignEmptyBindingsToCommandArray');
 
-module.exports = function(){
+module.exports = function(templateData){
 
     var statements = [
         "insert into \"{{SCHEMA_NAME}}\".\"user\" (\"id\",\"username\",\"firstName\",\"lastName\") values (0, 'app','app','server')",
@@ -18,7 +21,12 @@ module.exports = function(){
     var cmds = [];
 
     statements.forEach(function(cmd, i){
-        cmds.push("BEGIN " + cmd + "; END;");
+        if(templateData){
+            var script = Mustache.render(cmd, templateData);
+            cmds.push("BEGIN " + script + "; END;");
+        }else{
+            cmds.push("BEGIN " + cmd + "; END;");
+        }
     });
     
     cmds = assignEmptyBindingsToCommandArray(cmds);

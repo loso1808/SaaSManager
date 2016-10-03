@@ -3,7 +3,8 @@ var Promise = require('bluebird');
 var oracledb = require('oracledb');
 
 module.exports = function(dbConn, opts){
-
+    opts = opts || {};
+    var log = opts.log || function() {};
     //console.log("In QueryRunner");
     //console.log(JSON.stringify(dbConn, null, 4));
 

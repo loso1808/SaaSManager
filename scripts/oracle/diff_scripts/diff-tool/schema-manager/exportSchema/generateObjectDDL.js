@@ -8,7 +8,7 @@ var getDDLforRefConstraint = require('./getDDLforRefConstraint');
 var getDDLforSequence = require('./getDDLforSequence');
 var getDDLforTableWithInlineConstraints = require('./getDDLforTableWithInlineConstraints');
 
-module.exports = function(dbPool, schemaName, objects, opts){
+module.exports = function(dbConn, schemaName, objects, opts){
     opts = opts || {};
     var log = opts.log || function() {};
 
@@ -16,10 +16,7 @@ module.exports = function(dbPool, schemaName, objects, opts){
 
     var combinedResult = [];
     return Promise.map(objects, function(obj){
-        return dbPool.getConnection()
-               .then(function(dbConn){
-                   return generateDDLforObject(dbConn, schemaName, obj, opts);
-                })
+                return generateDDLforObject(dbConn, schemaName, obj, opts)
                 .then(function(resultsArray){
                     combinedResult = combinedResult.concat(resultsArray);
 
@@ -32,7 +29,7 @@ module.exports = function(dbPool, schemaName, objects, opts){
                     log(err.stack);
                     throw err;
                 });
-    }, { concurrency: concurrency })
+    }, { concurrency: 1 })
     .then(function(){
         return Promise.resolve(combinedResult);
     })
