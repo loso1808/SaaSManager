@@ -1,0 +1,9 @@
+{
+    "type": "sync-schema",
+    "source": {
+        "connectionName": "aws_sfdev"
+    },
+    "target": {
+        "connectionName": "local_po"
+    }
+}

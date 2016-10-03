@@ -1,3 +1,5 @@
+
+
 process.on('SIGINT', function() {
   process.exit();
 });
@@ -69,7 +71,7 @@ options.detectVersion = program.detectVersion || false;
 options.listConnections = program.listConnections || false;
 options.compare = program.compare || false;
 
-console.log(util.inspect(options));
+//console.log(util.inspect(options));
 //console.log("Is Snapshot File: " + (options.snapshot !== false && options.snapshot !== true));
 //process.exit();
 
