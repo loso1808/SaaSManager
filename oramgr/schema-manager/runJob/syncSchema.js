@@ -56,7 +56,7 @@ function getSchemaTemplate(jobConfig, opts) {
         log("Generating schema template from database:");
 
         var connInfo = getConnInfo(jobConfig.sourceConfigEntry);
-        log(connInfo);
+        log("\t" + connInfo.user + "@" + connInfo.connectString);
         
         return exportSchema(connInfo, opts)
             .then(function (schemaTemplate) {
