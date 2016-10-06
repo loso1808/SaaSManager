@@ -1,0 +1,9 @@
+{
+    "type": "sync-schema",
+    "source": {
+        "connectionName": "aws_rc110"
+    },
+    "target": {
+        "connectionName": "se2_rcqa"
+    }
+}

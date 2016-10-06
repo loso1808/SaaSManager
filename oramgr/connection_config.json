@@ -1,4 +1,35 @@
 {
+    "se2_rc110": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "OSDsPM1DPYGHOVGUp",
+            "user": "PNY_RC_1_10_0_DBO",
+            "port": 3521,
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },     
+    "se2_rcqa": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "localhost",
+            "database": "ORCL",
+            "password": "1CzeRbOOrK0D89roz",
+            "user": "PNY_RC_QA_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    },     
     "old-aws-rc1": {
         "client": "strong-oracle",
         "connection": {
@@ -404,7 +435,7 @@
         "debug": false,
         "acquireConnectionTimeout": 320000
     },         
-    "aws_rc1100": {
+    "aws_rc110": {
         "client": "strong-oracle",
         "connection": {
             "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
