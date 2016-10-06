@@ -1,8 +1,8 @@
 --updates to RC 1.10.0
 --Set the following defines appropriately for your instance
 
-DEFINE SCHEMA_OWNER_NAME = PNY_DOCKER_DBO;
-DEFINE APP_ROLE = PNY_DOCKER_AR;
+DEFINE SCHEMA_OWNER_NAME = PNY_RC_1_10_0_DBO;
+DEFINE APP_ROLE = PNY_RC_1_10_0_AR;
 
 --Recreate the assembly operation tables
 @drop_assembly_operation_tables.sql;
