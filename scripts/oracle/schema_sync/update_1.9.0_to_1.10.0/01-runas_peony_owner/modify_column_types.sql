@@ -14,3 +14,7 @@ update "z_protocol" set "versionStr" = TO_CHAR("version");
 commit;
 alter table "z_protocol" drop column "version";
 alter table "z_protocol" rename column "versionStr" to "version";
+
+
+alter table "design_ruleset" modify ("name" VARCHAR2(400));
+alter table "z_design_ruleset" modify ("name" VARCHAR2(400));

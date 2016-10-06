@@ -8,6 +8,11 @@ alter table "z_sequence_j5run" rename column "newId" to "id";
 alter table "z_j5run_construct" modify ("id" null);
 alter table "z_plate_set" modify ("id" null);
 
+alter table "design_ruleset" modify ("name" VARCHAR2(400));
+alter table "z_design_ruleset" modify ("name" VARCHAR2(400));
+
+alter table "j5run" drop constraint "j5run_protocol_fk";
+
 BEGIN
 
   FOR sequenceObj in (

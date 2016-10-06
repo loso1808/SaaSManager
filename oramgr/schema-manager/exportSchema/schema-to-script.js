@@ -37,7 +37,7 @@ var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', 'schema.sql');
 
 var connInfo = {
     user: "PNY_RC_1_10_0_DBO",
-    password: "master#0503",
+    password: "58YefAHBfGTB1MopJ",
     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
 };
 
