@@ -4,6 +4,10 @@
         "connectionName": "aws_rc110"
     },
     "target": {
-        "connectionName": "se2_rcqa"
-    }
+        "connectionName": "se2_rcqa",
+        "schemaConfig": {
+            "schemaCode": "RC_QA"
+        }
+    },
+    "templateFromFile": true
 }

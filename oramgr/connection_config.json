@@ -22,6 +22,7 @@
             "database": "ORCL",
             "password": "1CzeRbOOrK0D89roz",
             "user": "PNY_RC_QA_DBO",
+            "port": 3521,
             "pool": {
                 "min": 0,
                 "max": 100
@@ -49,7 +50,6 @@
         "client": "strong-oracle",
         "connection": {
             "host": "192.168.31.187",
-            "host": "192.168.0.113",
             "database": "ORCL",
             "password": "SJpRZZ1GcZWQX2LRV",
             "user": "PNY_DOCKER_APP",

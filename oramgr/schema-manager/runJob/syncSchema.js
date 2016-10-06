@@ -6,6 +6,7 @@ var fse = require('fs-extra');
 var exportSchema = require('../exportSchema');
 var applySchema = require('./applySchema');
 var getSchemaConfig = require('../schemaConfig');
+var testConnection = require('./testConnection');
 
 var connectionConfig = require('../../connection_config');
 
@@ -25,9 +26,10 @@ module.exports = function syncSchema(jobConfig, opts){
     jobConfig.saveTemplate = jobConfig.saveTemplate || true;
     
     var targetConfigEntry = connectionConfig[jobConfig.target.connectionName];
+    jobConfig.targetConfigEntry = targetConfigEntry;
 
-    var schemaConfig = jobConfig.schemaConfig;
-    schemaConfig = getSchemaConfig(schemaConfig);    
+    var schemaConfig = jobConfig.target.schemaConfig || { };
+    jobConfig.target.schemaConfig = getSchemaConfig(schemaConfig);    
 
     var workingDirectory = jobConfig.workingDirectory || path.resolve();
     workingDirectory = path.resolve(workingDirectory);
@@ -37,11 +39,53 @@ module.exports = function syncSchema(jobConfig, opts){
     schemaTemplatePath = path.resolve(schemaTemplatePath);
     jobConfig.schemaTemplatePath = schemaTemplatePath;
 
-    return getSchemaTemplate(jobConfig, opts)
+
+    return  testConnections(jobConfig, opts)
+            .then(function(){                
+                return getSchemaTemplate(jobConfig, opts)
+            })
             .then(function(schemaTemplate){
-                var targetConnInfo = getConnInfo(targetConfigEntry);
-                return applySchema(schemaTemplate, schemaConfig, targetConnInfo, opts);
+                var targetConnInfo = getConnInfo(jobConfig.targetConfigEntry);
+                var targetSchemaConfig = jobConfig.target.schemaConfig;
+                return applySchema(schemaTemplate, targetSchemaConfig, targetConnInfo, opts);
             });
+}
+
+function testConnections(jobConfig, opts){
+    opts = opts || {};
+    var log = opts.log || function () { };
+    var connInfo = "";
+
+    if(!jobConfig.templateFromFile){
+        log("Testing source connection");
+        connInfo = getConnInfo(jobConfig.sourceConfigEntry);
+        log("\t" + connInfo.user + "@" + connInfo.connectString);
+
+        return testConnection(connInfo, opts)
+               .then(function(){
+                    log("Successfully connected!\n");
+
+                    log("Testing target connection");
+                    connInfo = getConnInfo(jobConfig.targetConfigEntry);
+                    log("\t" + connInfo.user + "@" + connInfo.connectString);
+                    
+                    return testConnection(getConnInfo(jobConfig.targetConfigEntry), opts);
+               })
+               .then(function(){
+                   log("Successfully connected!\n");
+                   return Promise.resolve(true);
+               });
+    }else{
+        log("No source connection to test. Source schema from file:\n\t" + jobConfig.schemaTemplatePath);
+        log("Testing target connection");
+        connInfo = getConnInfo(jobConfig.targetConfigEntry);
+        log("\t" + connInfo.user + "@" + connInfo.connectString);
+        return testConnection(connInfo, opts)
+               .then(function(){
+                   log("Successfully connected!\n");
+                   return Promise.resolve(true);
+               });
+    }
 }
 
 function getSchemaTemplate(jobConfig, opts) {
