@@ -72,10 +72,12 @@ function getSchemaTemplate(jobConfig, opts) {
 function getConnInfo(configEntry){
     var conn = configEntry.connection;
 
+    var port = conn.port || '1521';
+
     var connInfo = {
         user: conn.user,
         password: conn.password,
-        connectString: conn.host + "/" + conn.database
+        connectString: conn.host + ":" + port + "/" + conn.database
     };
 
     return connInfo;

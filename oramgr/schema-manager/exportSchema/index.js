@@ -16,6 +16,7 @@ SimpleOracleDB.extend(oracledb);
 
 var getUserObjects = require('./getUserObjects');
 var generateObjectDDL = require('./generateObjectDDL');
+var annotateSequences = require('./annotateSequences');
 
 module.exports = function(connInfo, opts){
     opts = opts || {};
@@ -77,34 +78,6 @@ module.exports = function(connInfo, opts){
                     });
                     result = combinedResult;
                     return Promise.resolve(combinedResult);
-                }
-
-                function annotateSequences(combinedResult){
-                    combinedResult = _.map(combinedResult, function(item){
-                        if(item.objecType === 'sequence'){
-                            var col = findColumnUsingSequence(item.name);
-                            return _.assign(item, col);
-                        }else{
-                            return item;
-                        }
-                    });
-                    return Promise.resolve(combinedResult);
-
-                    function findColumnUsingSequence(sequenceName){
-                        var col = _.find(combinedResult, function(item){
-                            if(item.objecType === 'column'){
-                                return _.contains(item.definition, '"' + sequenceName + '"');
-                            }
-                            return false;
-                        });
-
-                        col = col || {};
-
-                        return {
-                            tableName: col.tableName,
-                            columnName: col.name
-                        };
-                    }
                 }
 
                 function closeConnection(){
