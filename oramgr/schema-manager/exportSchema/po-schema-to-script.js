@@ -27,17 +27,17 @@ var schemaConfig = require('../schemaConfig')({ schemaCode: 'PNY_DOCKER_DBO' });
 //     connectString: "192.168.1.28/ORCL"
 // };
 
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
-
 var connInfo = {
-    user: "PNY_RC_1_10_0_DBO",
-    password: "58YefAHBfGTB1MopJ",
+    user: "PEONY_OWNER",
+    password: "master#0503",
     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
 };
+
+// var connInfo = {
+//     user: "PNY_RC_1_10_0_DBO",
+//     password: "58YefAHBfGTB1MopJ",
+//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+// };
 
 
 var scratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_template.json');

@@ -11,11 +11,12 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')({ schemaCode: 'NEXTCUSTOMER' });
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_11_0' });
 
 
-var scratchPath = path.resolve(__dirname, '..', 'scratch', 'combinedDDL.json');
-var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', 'schema.sql');
+//var scratchPath = path.resolve(__dirname, '..', 'scratch', 'combinedDDL.json');
+var scratchPath = path.resolve(__dirname, '..', 'scratch', 'PNY_RC_1_10_0_DBO_template.json');
+var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', 'PNY_RC_1_10_0_DBO_schema.sql');
 
 
 var exportSchema = require('./index');
