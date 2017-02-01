@@ -11,16 +11,16 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_14_0' });
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_15_0' });
 //var schemaConfig = require('../schemaConfig')({ });
 
 
 
-var connInfo = {
-    user: "PEONY_OWNER",
-    password: "master#0503",
-    connectString: "localhost:3521/ORCL"
-};
+// var connInfo = {
+//     user: "PEONY_OWNER",
+//     password: "master#0503",
+//     connectString: "localhost:3521/ORCL"
+// };
 
 // var connInfo = {
 //     user: "PEONY_OWNER",
@@ -28,11 +28,11 @@ var connInfo = {
 //     connectString: "192.168.1.28/ORCL"
 // };
 
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
+var connInfo = {
+    user: "PEONY_OWNER",
+    password: "master#0503",
+    connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+};
 
 // var connInfo = {
 //     user: "PNY_RC_1_10_0_DBO",
