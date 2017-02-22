@@ -560,5 +560,20 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 220000
+    },         
+    "aws_rc116": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "12RKuaK8VFX8F5kZm",
+            "user": "PNY_RC_1_16_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 320000
     }
 }

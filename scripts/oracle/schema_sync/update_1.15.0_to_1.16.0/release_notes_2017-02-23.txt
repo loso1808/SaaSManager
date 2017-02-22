@@ -1,0 +1,17 @@
+Release Notes for RC 1.16.x 2017-02-23
+
+The scripts inside the contained folders update the database schema from RC 1.15.x to be compatible with the version RC 1.16.x.
+
+Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+There are two sets of scripts. One set to be run as the schema owner and the other to be run as the app user. The schema owner script should be run first. Each script set has a master script prefixed with “01-“. Each master script has a defines section at the top which must be adjusted to match your specific schema and role names. Each master script will run all other scripts in the folder in the correct order.
+
+These script sets perform the following updates:
+
+1. This script set performs the following: 
+	a. Fixes primary key and index names for j5 output naming table
+	b. Adds column to user table
+	c. Recreates default values for primary keys and date logged
+	d. Grants privileges on objects to app role
+
+2. This script set drops all synonyms for the app user and recreates them.

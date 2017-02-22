@@ -11,16 +11,16 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-//var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_11_0' });
-var schemaConfig = require('../schemaConfig')({ });
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_QA' });
+//var schemaConfig = require('../schemaConfig')({ });
 
 
 
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "localhost/ORCL"
-// };
+var connInfo = {
+    user: "PEONY_OWNER",
+    password: "master#0503",
+    connectString: "localhost:3521/ORCL"
+};
 
 // var connInfo = {
 //     user: "PNY_RC_1_11_0_DBO",
@@ -40,11 +40,11 @@ var schemaConfig = require('../schemaConfig')({ });
 //     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
 // };
 
-var connInfo = {
-    user: "PNY_RC_1_14_1_DBO",
-    password: "P1nrnt67ADQZ2JnEH",
-    connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-};
+// var connInfo = {
+//     user: "PNY_RC_1_14_1_DBO",
+//     password: "P1nrnt67ADQZ2JnEH",
+//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+// };
 
 
 var scratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_template.json');
