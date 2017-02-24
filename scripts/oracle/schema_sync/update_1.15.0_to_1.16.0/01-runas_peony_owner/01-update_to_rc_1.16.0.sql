@@ -10,6 +10,9 @@ DEFINE APP_ROLE = PEONY_APP_ROLE;
 --add completeProfile column to user
 @@add_completeProfile_to_user.sql;
 
+--add user logs table
+@@add_user_logs.sql;
+
 --recreate sequence on defaults
 @@recreate_seqnextval.sql;
 

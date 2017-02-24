@@ -11,7 +11,8 @@ These script sets perform the following updates:
 1. This script set performs the following: 
 	a. Fixes primary key and index names for j5 output naming table
 	b. Adds column to user table
-	c. Recreates default values for primary keys and date logged
-	d. Grants privileges on objects to app role
+	c. Adds table for user logs
+	d. Recreates default values for primary keys and date logged
+	e. Grants privileges on objects to app role
 
 2. This script set drops all synonyms for the app user and recreates them.
