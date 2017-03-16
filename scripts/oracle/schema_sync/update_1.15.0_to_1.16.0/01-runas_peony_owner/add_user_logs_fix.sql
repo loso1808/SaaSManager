@@ -1,17 +1,5 @@
---------------------------------------------------------
---  DDL for Sequence s_user_logs
---------------------------------------------------------
-
-   CREATE SEQUENCE  "s_user_logs"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 22174 CACHE 20 NOORDER  NOCYCLE  NOPARTITION ;
-
-
---------------------------------------------------------
---  DDL for Sequence s_user_logs
---------------------------------------------------------
-
-   CREATE SEQUENCE  "sz_user_logs"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 22174 CACHE 20 NOORDER  NOCYCLE  NOPARTITION ;
-
-
+ DROP TABLE "user_logs" cascade constraints purge;
+ DROP TABLE "z_user_logs" cascade constraints purge;
 --------------------------------------------------------
 --  DDL for Table user_logs
 --------------------------------------------------------

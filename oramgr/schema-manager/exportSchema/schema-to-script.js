@@ -16,11 +16,11 @@ var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_QA' });
 
 
 
-var connInfo = {
-    user: "PEONY_OWNER",
-    password: "master#0503",
-    connectString: "localhost:3521/ORCL"
-};
+// var connInfo = {
+//     user: "PEONY_OWNER",
+//     password: "master#0503",
+//     connectString: "localhost:3521/ORCL"
+// };
 
 // var connInfo = {
 //     user: "PNY_RC_1_11_0_DBO",
@@ -40,15 +40,15 @@ var connInfo = {
 //     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
 // };
 
-// var connInfo = {
-//     user: "PNY_RC_1_14_1_DBO",
-//     password: "P1nrnt67ADQZ2JnEH",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
+var connInfo = {
+    user: "PNY_RC_1_17_0_DBO",
+    password: "PZPRfJQYk4CCMUcJu",
+    connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+};
 
 
-var scratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_template.json');
-var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_schema.sql');
+var scratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_to_' + schemaConfig.schemaOwner + '_template.json');
+var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_to_' + schemaConfig.schemaOwner  + '_schema.sql');
 
 var exportSchema = require('./index');
 
