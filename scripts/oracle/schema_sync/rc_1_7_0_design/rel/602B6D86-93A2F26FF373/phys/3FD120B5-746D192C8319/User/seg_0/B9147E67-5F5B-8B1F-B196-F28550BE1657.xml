@@ -1,9 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="PNY_RC_1_7_0_DBO" directorySegmentName="seg_0" id="B9147E67-5F5B-8B1F-B196-F28550BE1657">
-<sourceConnName>PNY_RC_1_7_0_DBO</sourceConnName>
-<sourceObjName>PNY_RC_1_7_0_DBO</sourceObjName>
-<createdBy>adamthomas</createdBy>
-<createdTime>2016-07-22 17:58:08 UTC</createdTime>
-<ownerDesignName>rc_1_7_0_design</ownerDesignName>
-<schemaObject>2176BEE5-8AD0-AED0-C63A-11A005C8EC39</schemaObject>
-</UserOraclev10g>
