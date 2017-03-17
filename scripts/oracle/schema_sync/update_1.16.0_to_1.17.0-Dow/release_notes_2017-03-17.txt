@@ -9,9 +9,13 @@ There are two sets of scripts. One set to be run as the schema owner and the oth
 These script sets perform the following updates:
 
 1. This script set performs the following: 
-	a. Adds column to privileges and realOnly for access_control, devicedesign and sequences
+	a. Adds user logs tables
 	b. Fix user_logs_user_fk foreign key issue in user_logs table
-	c. Recreates default values for primary keys and date logged
-	d. Grants privileges on objects to app role
+	c. Changes attached design rulesets column types
+	d. Changes user logs column types
+	e. Add various columns to support readonly access
+	f. Add unique index to name column of the tag table
+	g. Recreates default values for primary keys and date logged
+	h. Grants privileges on objects to app role
 
 2. This script set drops all synonyms for the app user and recreates them.
