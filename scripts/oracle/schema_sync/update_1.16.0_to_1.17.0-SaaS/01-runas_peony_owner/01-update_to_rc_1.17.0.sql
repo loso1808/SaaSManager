@@ -1,8 +1,8 @@
 --updates to RC 1.17.0 for SaaS Clients
 --Set the following defines appropriately for your instance
 
-DEFINE SCHEMA_OWNER_NAME = PEONY_OWNER;
-DEFINE APP_ROLE = PEONY_APP_ROLE;
+DEFINE SCHEMA_OWNER_NAME = PNY_PROD_DBO;
+DEFINE APP_ROLE = PNY_PROD_AR;
 
 --change design ruleset column types
 @@design_ruleset_type_change.sql;
