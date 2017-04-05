@@ -65,13 +65,13 @@ count(*)
 from user_constraints 
 where constraint_type = 'P' 
 and constraint_name not like 'BIN$%'
-and constraint_name <> TABLE_NAME || '_pk';
+and constraint_name <> SUBSTR(TABLE_NAME, 1, 29) || '_pk' ;
 
 select count(*) "PK Indexes Invalid Names"
 from user_constraints 
 where constraint_type = 'P' 
 and constraint_name not like 'BIN$%'
-and index_name <> TABLE_NAME || '_pk';
+and index_name <> SUBSTR(TABLE_NAME, 1, 29) || '_pk' ;
 
 select count(*) "Log Columns Missing"
 from

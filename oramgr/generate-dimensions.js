@@ -59,7 +59,8 @@ module.exports = function(knexLeft, knexRight, options){
 
     function generateDimensions(fnList, knexLeft, knexRight, leftSchemaOwner, rightSchemaOwner){
         var dimensions = { left: [], right: [] };
-        var collectFns = _.map(fnList, function (fn) {
+        //var collectFns = _.map(fnList, function (fn) {
+        var collectFns = Promise.map(fnList, function (fn) {
             var collectForFn = function(){
                 console.log('Executing ' + fn.name);
                 return collectBothDimensions(fn, knexLeft, knexRight, leftSchemaOwner, rightSchemaOwner)
@@ -82,9 +83,11 @@ module.exports = function(knexLeft, knexRight, options){
                     .catch(function (err) {
                         console.error("Error executing collectForFn");
                         console.error(err);
-                    });;
-        });
-        return Promise.all(collectFns)
+                    });
+        }, { concurrency: 4 });
+        //});
+        //return Promise.all(collectFns)
+        return collectFns
         .then(function (result) {
             console.log("Done Executing Queries");
             //console.log("Dimensions:\n" + JSON.stringify(dimensions, null, 4));

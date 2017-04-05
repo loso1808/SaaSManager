@@ -11,7 +11,7 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_14_1' });
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_17_0' });
 //var schemaConfig = require('../schemaConfig')({ });
 
 
@@ -19,7 +19,7 @@ var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_14_1' });
 // var connInfo = {
 //     user: "PEONY_OWNER",
 //     password: "master#0503",
-//     connectString: "localhost/ORCL"
+//     connectString: "localhost:3521/ORCL"
 // };
 
 // var connInfo = {

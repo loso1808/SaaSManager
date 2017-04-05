@@ -106,7 +106,27 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 120000
+<<<<<<< HEAD
     },
+=======
+    },  
+    "aws_rc115": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "WGLgjQLLOJRUUIfUN",
+            "user": "PNY_RC_1_15_0_DBO",
+            "port": 1521,
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    }, 
+>>>>>>> eec7597a2565e38a919ffee501851bfc4c7e3d3b
     "aws_rc113": {
         "client": "strong-oracle",
         "connection": {
@@ -122,7 +142,27 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 120000
+<<<<<<< HEAD
     },
+=======
+    }, 
+    "aws_rc114": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "P1nrnt67ADQZ2JnEH",
+            "user": "PNY_RC_1_14_1_DBO",
+            "port": 1521,
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 120000
+    }, 
+>>>>>>> eec7597a2565e38a919ffee501851bfc4c7e3d3b
     "se2_rc113": {
         "client": "strong-oracle",
         "connection": {
@@ -681,7 +721,26 @@
         },
         "debug": false,
         "acquireConnectionTimeout": 220000
+<<<<<<< HEAD
     },
+=======
+    },         
+    "aws_rc116": {
+        "client": "strong-oracle",
+        "connection": {
+            "host": "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com",
+            "database": "ORCL",
+            "password": "12RKuaK8VFX8F5kZm",
+            "user": "PNY_RC_1_16_0_DBO",
+            "pool": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "debug": false,
+        "acquireConnectionTimeout": 320000
+    },         
+>>>>>>> eec7597a2565e38a919ffee501851bfc4c7e3d3b
     "aws_rc117": {
         "client": "strong-oracle",
         "connection": {
