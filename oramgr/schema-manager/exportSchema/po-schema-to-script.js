@@ -11,7 +11,7 @@ var fse = require('fs-extra');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_14_0' });
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_14_1' });
 //var schemaConfig = require('../schemaConfig')({ });
 
 

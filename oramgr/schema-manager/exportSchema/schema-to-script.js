@@ -8,46 +8,36 @@ var util = require('util');
 var Promise = require('bluebird');
 var path = require('path');
 var fse = require('fs-extra');
+var fs = require('fs');
 
 //var formatTemplatedScript = require('../generateScript/formatTemplatedScript');
 var generateScript = require('../generateScript');
-var schemaConfig = require('../schemaConfig')({ schemaCode: 'RC_1_11_0' });
-
-
-
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "localhost/ORCL"
-// };
+var schemaConfig = require('../schemaConfig')({ schemaCode: 'DOCKER' });
 
 var connInfo = {
-    user: "PNY_RC_1_11_0_DBO",
-    password: "1KsmrH6ZG1MB8Akgy",
-    connectString: "localhost:3521/ORCL"
+       user: "PNY_PROD_DBO",
+       password: "STdqcMM6OXAOH9sfg",
+       connectString: "peony-prod.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
 };
 
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "192.168.1.28/ORCL"
-// };
-
-// var connInfo = {
-//     user: "PEONY_OWNER",
-//     password: "master#0503",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
-
-// var connInfo = {
-//     user: "PNY_RC_1_10_0_DBO",
-//     password: "58YefAHBfGTB1MopJ",
-//     connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
-// };
+//var connInfo = {
+//       user: "PNY_RC_1_18_0_DBO",
+//       password: "WEVUWYW1iUT6IUReX",
+//       connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+//};
 
 
-var scratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_template.json');
-var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', connInfo.user + '_schema.sql');
+//var connInfo = {
+//       user: "PEONY_OWNER",
+//       password: "master#0503",
+//       connectString: "peony-test.c1grsxamme4w.us-west-1.rds.amazonaws.com/ORCL"
+//};
+
+
+
+fs.writeFileSync(__dirname+"/schemacode.txt", connInfo.user+".sql", 'utf8');
+var scratchPath = path.resolve(__dirname, '..', 'scratch', 'export_template.json');
+var sqlScratchPath = path.resolve(__dirname, '..', 'scratch', 'export_schema.sql');
 
 var exportSchema = require('./index');
 

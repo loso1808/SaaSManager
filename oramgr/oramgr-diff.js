@@ -339,6 +339,7 @@ function performSchemaComparison(options){
         knexLeft = require('knex')(connInfo[0]);
         leftSchemaName = getSchemaName(knexLeft);
         if(connInfo.length > 1){
+             console.log(JSON.stringify(connInfo));
             knexRight = require('knex')(connInfo[1]);
             rightSchemaName = getSchemaName(knexRight);
         }else{
