@@ -1,0 +1,34 @@
+
+https://8a5ba7d7650301a232e08b287b6bccb306663756:x-oauth-basic@github.com/TeselaGen/SaaSManager.git
+go to /home/teselagen/SaaSManager/oramgr/schema-manager/exportSchema
+edit schema-to-script.js and change schemaCode and desired connection
+make sure using node 0.12.x+
+do npm install with 0.12.x+
+output will be in /home/teselagen/SaaSManager/oramgr/schema-manager/scratch/schema.sql
+/usr/local/n/versions/node/0.12.16/bin/node oramgr-diff.js -c -n aws_rc110,prod-arzeda
+/usr/local/n/versions/node/0.12.16/bin/node oramgr-diff.js -c -n aws_rc110,prod-lanzatech
+
+ALTER TABLE "tag_access" DROP CONSTRAINT "tag_access_tag_fk";
+ALTER TABLE "tag_access" ADD CONSTRAINT "tag_access_tag_fk" FOREIGN KEY ("tag_id") REFERENCES "tag" ("id") ON DELETE CASCADE ENABLE;
+
+/usr/local/n/versions/node/0.12.16/bin/node oramgr-diff.js -s -n aws_sfdev
+/usr/local/n/versions/node/0.12.16/bin/node oramgr-diff.js -c snapshot_aws_sfdev_1476410371873.json -n mydb
+
+to sync
+ex. exampleJob.json
+connect to first one, make a copy, and then sync seconds one with copy
+
+{
+    "type": "sync-schema",
+    "source": {
+        "file...":path..
+    },
+    "target": {
+        "connectionName": "local_po"
+    }
+}
+
+/usr/local/n/versions/node/0.12.16/bin/node oramgr-sync.js exampleJob.json
+it will sync tables and constrains complete data lost in target database
+
+before creating a part trigger auto-save and wait for callback
