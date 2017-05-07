@@ -1,0 +1,12 @@
+Release Notes for RC 1.19.x 2017-05-01
+
+The scripts inside the contained folders update the database schema from RC 1.18.x to be compatible with the version RC 1.17.x.
+
+Before running the scripts make sure you have the appropriate access and privileges to the database. Also make sure that the app has been shutdown.
+
+There are two sets of scripts. One set to be run as the schema owner and the other to be run as the app user. The schema owner script should be run first. Each script set has a master script prefixed with “01-“. Each master script has a defines section at the top which must be adjusted to match your specific schema and role names. Each master script will run all other scripts in the folder in the correct order.
+
+These script sets perform the following updates:
+
+1. This script set performs the following: 
+	a. Adds colums to user, j5run and create dd_j5 table
